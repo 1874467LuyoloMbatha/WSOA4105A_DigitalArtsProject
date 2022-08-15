@@ -352,7 +352,10 @@ MonoBehaviour:
   timeDisplay: {fileID: 1850309088}
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   timesUpColor: {r: 1, g: 0, b: 0, a: 1}
-  duration: 15
+  duration: 4000
+  timeCap: 3000
+  flashMinCap: 2
+  flashSecCap: 10
   onTimerEnd:
     m_PersistentCalls:
       m_Calls:

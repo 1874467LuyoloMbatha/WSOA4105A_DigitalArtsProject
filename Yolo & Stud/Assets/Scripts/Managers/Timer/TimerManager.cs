@@ -20,6 +20,12 @@ public class TimerManager : MonoBehaviour
 
     [Header("Floats")]
     [SerializeField] float duration;
+    [Tooltip("This will format the text on screeen")]
+    [SerializeField] float timeCap = 3000f;
+    [Tooltip("This is the minute cap before timer flashes red")]
+    [SerializeField] float flashMinCap = 2f;
+    [Tooltip("This is the seconds  cap before timer flashes red")]
+    [SerializeField] float flashSecCap = 2f;
 
     [Header("Unity Events")]
     [Tooltip("Assign the action to be taken after the timer finishes")]
@@ -60,18 +66,23 @@ public class TimerManager : MonoBehaviour
         presentTime += 1;
 
         //THis is to diplay the time in a clock format
+        //float hours = Mathf.FloorToInt((presentTime / 3600) % 60);
+       // float m = t % 3600;
         float mins = Mathf.FloorToInt(presentTime / 60);
         float secs = Mathf.FloorToInt(presentTime % 60);
 
         if(presentTime <= 0f)
             presentTime = 0f;
 
-        timeDisplay.text = String.Format("{0:00} : {1:00}", mins, secs);
-
-
+        //UI quality control
+        if(presentTime <= timeCap)
+            timeDisplay.text = String.Format("{0:00} : {1:00}",mins, secs);
+        else
+            timeDisplay.text = mins.ToString("00") + " minutes remaining";
+        //timeDisplay.text =  hours.ToString("00") + " : " + mins.ToString("00") + " : " +secs.ToString("00");
 
         //FLash Red & Animation Logic
-        if (secs <= 10f && timeDisplay != null)
+        if (mins <= flashMinCap && secs <= flashSecCap && timeDisplay != null)
         {
             timeDisplay.gameObject.GetComponent<Animator>().Play("DisplayFlash");
             timeDisplay.color = timesUpColor;
