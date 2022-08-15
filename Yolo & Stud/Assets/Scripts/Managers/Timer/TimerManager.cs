@@ -19,6 +19,7 @@ public class TimerManager : MonoBehaviour
     [SerializeField] Color timesUpColor;
 
     [Header("Floats")]
+	[Tooltip("How long should the time run for")]
     [SerializeField] float duration;
     [Tooltip("This will format the text on screeen")]
     [SerializeField] float timeCap = 3000f;
