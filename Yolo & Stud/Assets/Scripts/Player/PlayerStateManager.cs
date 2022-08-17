@@ -10,21 +10,22 @@ public class PlayerStateManager : MonoBehaviour
 	#region Variables
 	[Header("External References")]
     [Tooltip("Holds information on the current state the player is in")]
-    PlayerBaseState currentPlayerState;
-    
-    //Create instances of the states the player has
-    public PlayerIdleState idleState = new PlayerIdleState();
-    public PlayerSleepingState sleepingState = new PlayerSleepingState();
-    public PlayerWorkingState workingState = new PlayerWorkingState();
+    public PlayerBaseState currentPlayerState;
+    public PlayerStateFactory states;
 
     [Header("Unity Handles")]
-    Animator anim;
-    NavMeshAgent agent;
-    Vector3 destination;
+    [SerializeField] Animator anim;
+    [SerializeField] NavMeshAgent agent;
+    [SerializeField] Vector3 destination, currentPos;
+    [SerializeField] Transform destTrans;
 
     [Header("Player Floats")]
     [Tooltip("Handles how faast the player can rotate")]
     [SerializeField] float rotationTime;
+    [SerializeField] float distanceBeforeStopping;
+
+    [Header("Player Booleans")]
+    [SerializeField] bool isMoving;
 
     [Header("Animation Strings")]
     [SerializeField] string idlingAnimName;
@@ -32,28 +33,35 @@ public class PlayerStateManager : MonoBehaviour
     [SerializeField] string workingAnimName;
 
     [Header("Animation Integers")]
-    int isIdlingHash;
-    int isWalkingHash;
-    int isWorkingHash;
+     int isIdlingHash;
+     int isWalkingHash;
+     int isWorkingHash;
 
 #endregion
 	private void Awake()
 	{
         SettingUp();
-	}
-	void Start()
-    {
+
+        states = new PlayerStateFactory(this);
+
         //set current state to idle by default
-        currentPlayerState = idleState;
+        currentPlayerState = states.Idle();
+        Debug.Log(currentPlayerState);
 
         //This is the context
-        currentPlayerState.EnterState(this);
+        currentPlayerState.EnterState();
+
+    }
+	void Start()
+    {
+        distanceBeforeStopping = agent.stoppingDistance;
     }
 
    
     void Update()
     {
-        currentPlayerState.UpdateState(this);
+        currentPlayerState.UpdateState();
+        HandleRotation();
     }
 
 
@@ -101,13 +109,56 @@ public class PlayerStateManager : MonoBehaviour
         transform.rotation = Quaternion.Slerp(currentRot, targetRotation, rotationTime * Time.deltaTime);
 
 	}
-    #endregion
 
-    #region Public Methods
-    public void SwitchState(PlayerBaseState state)
+    #region Referenced Outside Of Script
+    public NavMeshAgent Agent()
+    {
+        return agent;
+    }
+
+    public Animator Anim()
+    {
+        return anim;
+    }
+    //Floats
+    public float StoppingDistance { get { return distanceBeforeStopping; } }
+
+    //Booleans
+    public bool IsMoving()
+	{
+        return isMoving;
+	}
+    public bool SetIsMoving(bool v)
+    {
+        isMoving = v;
+        return isMoving;
+    }
+
+    //Stringsss
+    public string IsIdleHash { get { return idlingAnimName; } }
+    public string IsWalkingHash { get { return walkingAnimName; } }
+    public string IsWorkingHas { get { return workingAnimName; } }
+
+    //Positions
+    public Vector3 GetCurrentPos()
+	{
+        currentPos = transform.position;
+        return currentPos;
+	}
+    public Vector3 Destination()
+	{
+        destination = destTrans.position;   
+        return destination;
+	}
+
+	#endregion
+	#endregion
+
+	#region Public Methods
+	public void SwitchState(PlayerBaseState state)
     {
         currentPlayerState = state;
-        state.EnterState(this);
+        state.EnterState();
     }
     #endregion
 }

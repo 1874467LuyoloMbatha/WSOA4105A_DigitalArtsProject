@@ -6,19 +6,32 @@ using UnityEngine;
 
 public class PlayerWorkingState : PlayerBaseState
 {
-	public override void EnterState(PlayerStateManager stateManager)
+	public PlayerWorkingState(PlayerStateManager ctx, PlayerStateFactory stateFactory)
+		: base(ctx, stateFactory) { }
+	public override void CheckSwitchStates()
 	{
 		
 	}
 
-	public override void OnCollisionEnter(PlayerStateManager stateManager)
+
+	public override void EnterState()
 	{
 		
 	}
 
-	public override void UpdateState(PlayerStateManager stateManager)
+	public override void ExitState()
 	{
 		
+	}
+
+	public override void InitialiseSubState()
+	{
+		
+	}
+
+	public override void UpdateState()
+	{
+		CheckSwitchStates();
 	}
 }
 

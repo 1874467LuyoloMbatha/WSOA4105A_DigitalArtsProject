@@ -6,19 +6,36 @@ using UnityEngine;
 
 public class PlayerIdleState : PlayerBaseState
 {
-	public override void EnterState(PlayerStateManager stateManager)
+	public PlayerIdleState(PlayerStateManager ctx, PlayerStateFactory stateFactory)
+		: base(ctx, stateFactory) { }
+	public override void CheckSwitchStates()
 	{
-		Debug.Log("Idling");
+		//when the player moves
+		if(state.IsMoving())
+		{
+			SwitchState(factory.Move());
+		}
 	}
 
-	public override void OnCollisionEnter(PlayerStateManager stateManager)
+	public override void EnterState()
 	{
-		
+		Debug.Log("Player is Idling");
+		state.Anim().Play(state.IsIdleHash);
 	}
 
-	public override void UpdateState(PlayerStateManager stateManager)
+	public override void ExitState()
 	{
-		
+	
+	}
+
+	public override void InitialiseSubState()
+	{
+	
+	}
+
+	public override void UpdateState()
+	{
+		CheckSwitchStates();
 	}
 }
 

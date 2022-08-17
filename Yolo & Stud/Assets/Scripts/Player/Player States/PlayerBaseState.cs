@@ -4,11 +4,39 @@ using UnityEngine;
 
 public abstract class PlayerBaseState 
 {
-	public abstract void EnterState(PlayerStateManager stateManager);
+	protected PlayerStateFactory factory;
+	protected PlayerStateManager state;
+	public PlayerBaseState(PlayerStateManager ctx, PlayerStateFactory stateFactory)
+	{
+		state = ctx;
+		factory = stateFactory;
+	}
 
-	public abstract void UpdateState(PlayerStateManager stateManager);
+	public abstract void EnterState();
 
-	public abstract void OnCollisionEnter(PlayerStateManager stateManager);
+	public abstract void UpdateState();
+
+	public abstract void CheckSwitchStates();
+
+	public abstract void InitialiseSubState();
+	public abstract void ExitState();
+
+	void UpdateStates() { }
+
+	protected void SwitchState(PlayerBaseState newState) 
+	{
+		//urrent State to be exited
+		ExitState();
+
+		//Neww state
+		newState.EnterState();
+
+		//Switch
+		state.currentPlayerState = newState;
+		Debug.Log("New State: " + newState);
+	}
+	protected void SetSuperState() { }
+	protected void SetSubState() { }
    
 }
 

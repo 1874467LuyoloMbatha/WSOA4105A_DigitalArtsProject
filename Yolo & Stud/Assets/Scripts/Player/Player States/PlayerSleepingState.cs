@@ -6,19 +6,31 @@ using UnityEngine;
 
 public class PlayerSleepingState : PlayerBaseState
 {
-	public override void EnterState(PlayerStateManager stateManager)
+	public PlayerSleepingState(PlayerStateManager ctx, PlayerStateFactory stateFactory)
+		: base(ctx, stateFactory) { }
+	public override void CheckSwitchStates()
+	{
+
+	}
+
+	public override void EnterState()
 	{
 		
 	}
 
-	public override void OnCollisionEnter(PlayerStateManager stateManager)
+	public override void ExitState()
 	{
 		
 	}
 
-	public override void UpdateState(PlayerStateManager stateManager)
+	public override void InitialiseSubState()
 	{
 		
+	}
+
+	public override void UpdateState()
+	{
+		CheckSwitchStates();
 	}
 }
 

@@ -160,7 +160,7 @@ public class TaskManager : Singleton<TaskManager>
 			{
                 if (item.Trim() != "")
                 {
-                    Debug.Log(item);
+                   // Debug.Log(item);
                     TaskList obj = JsonUtility.FromJson<TaskList>(item);
                     AddTask(obj.gameObjectName, obj.taskIndex, true);
                 }
