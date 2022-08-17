@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class TaskManager : MonoBehaviour
+public class TaskManager : Singleton<TaskManager>
 {
     [Header("Eternal References")]
     [SerializeField] List<TaskGameObject> tasks = new List<TaskGameObject>();
@@ -15,7 +15,7 @@ public class TaskManager : MonoBehaviour
     [SerializeField] Transform contentGameObject;
     [Tooltip("Drag The ToDo prefab here")]
     [SerializeField] GameObject toDoPrefab;
-    [SerializeField] InputField[] inputFields; //for the name and type
+    [SerializeField] InputField inputFields; //for the name and type
     [SerializeField] Button temmpBtn;
 
     [Header("User Specificc Settings")]
@@ -30,6 +30,7 @@ public class TaskManager : MonoBehaviour
     [Header("Button Funtionality Variables")]
     bool active;
 
+
     void Start()
     {
 
@@ -37,24 +38,25 @@ public class TaskManager : MonoBehaviour
         filePath = Application.persistentDataPath + "/TaskList.txt";
         LoadTaskData();
 
-        temmpBtn.onClick.AddListener(delegate { AddTask(inputFields[0].text, inputFields[1].text); });
+        //makes it possible to open/add a task
+        temmpBtn.onClick.AddListener(delegate { AddTask(); });
     }
-
-
-    void AddTask(string name, string type, int loadIndex = 0, bool load = false)
+    #region Old & Unused 
+    //Old Version
+    void AddTaskOld(string name, int loadIndex = 0, bool load = false)
     {
         GameObject taskItem = Instantiate(toDoPrefab); //creates it
         taskItem.transform.SetParent(contentGameObject); //puts it under the content gameobject
 
         //
         int index = loadIndex;
-       
-        if(!load)
+
+        if (!load)
             index = tasks.Count;
 
         //Assign all the data given to the specific item made
         TaskGameObject taskItemObj = taskItem.GetComponent<TaskGameObject>();
-        taskItemObj.SetTaskInfo(name, type, index);
+        taskItemObj.SetTaskInfo(name, index);
 
         //Add it to our Array/List
         tasks.Add(taskItemObj);
@@ -64,27 +66,59 @@ public class TaskManager : MonoBehaviour
         taskItemObj.GetComponent<Toggle>().onValueChanged.AddListener(delegate { TaskCheckMark(temp); });
 
         //Save
-        if(!load)
+        if (!load)
             SaveTaskData();
 
         //Swwith on Panel maybe...
     }
+	#endregion
 
-    void TaskCheckMark(TaskGameObject obj)
+	#region Used outside
+	public void AddToList(TaskGameObject obj)
+    {
+        // obj.SetTaskInfo(ta, index);
+        tasks.Add(obj);
+    }
+    public void TaskCheckMark(TaskGameObject obj)
     {
         if (checkMarkDestroys)
         {
-
             //Remove from list, delete it
             tasks.Remove(obj);
+
+            //Save file before destroying
+            SaveTaskData();
+
             Destroy(obj.gameObject);
         }
 
         //Save file
         SaveTaskData();
     }
+	#endregion
 
-    #region Asssigned In Inspector
+	#region Asssigned In Inspector
+	//New Version
+	public void AddTask(string name = " ", int loadIndex = 0, bool load = false)
+	{
+        GameObject taskItem = Instantiate(toDoPrefab); //creates it
+        taskItem.transform.SetParent(contentGameObject); //puts it under the content gameobject
+
+        if(load)
+		{
+            taskItem.GetComponent<TaskGameObject>().SetTaskInfo(name, loadIndex);
+		}
+        //
+        int index = loadIndex;
+
+        if (!load)
+        {
+            Debug.Log("Added New Task!");
+            index = tasks.Count;
+            Debug.Log("Current Add Index: " + index);
+            SaveTaskData();
+        }
+    }
     //For Gameobjeccts to swith on and off
     public void ButtonSwitch(GameObject obj)
     {
@@ -96,20 +130,21 @@ public class TaskManager : MonoBehaviour
     //May be removveds
     #region Saving Logic
 
-
-    void SaveTaskData() 
+    public void SaveTaskData() 
     {
         //Check if this file exists then override (ight remove the if)
         string contents = "";
 
 		for (int i = 0; i < tasks.Count; i++)
 		{
-            TaskList tl = new TaskList(tasks[i].gameObjectName, tasks[i].sortType, tasks[i].taskIndex);
+            TaskList tl = new TaskList(tasks[i].gameObjectName, tasks[i].taskIndex);
             contents += JsonUtility.ToJson(tl) + "\n";
+            Debug.Log("Interation " + i);
 		}
 
         //save
         File.WriteAllText(filePath, contents);
+        Debug.Log("Save Process Completed!");
     }
 
     void LoadTaskData()
@@ -127,7 +162,7 @@ public class TaskManager : MonoBehaviour
                 {
                     Debug.Log(item);
                     TaskList obj = JsonUtility.FromJson<TaskList>(item);
-                    AddTask(obj.gameObjectName, obj.sortType, obj.taskIndex, true);
+                    AddTask(obj.gameObjectName, obj.taskIndex, true);
                 }
             }
 
@@ -140,13 +175,11 @@ public class TaskManager : MonoBehaviour
     public class TaskList
 	{
         public string gameObjectName;
-        public string sortType;
         public int taskIndex;
 
-        public TaskList(string name, string type, int indcx)
+        public TaskList(string name, int indcx)
         {
             this.gameObjectName = name;
-            this.sortType = type;
             this.taskIndex = indcx;
         }
     }
