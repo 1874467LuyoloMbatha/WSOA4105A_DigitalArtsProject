@@ -60,8 +60,8 @@ public class PlayerStateManager : MonoBehaviour
    
     void Update()
     {
-        currentPlayerState.UpdateState();
         HandleRotation();
+        currentPlayerState.UpdateState();
     }
 
 
