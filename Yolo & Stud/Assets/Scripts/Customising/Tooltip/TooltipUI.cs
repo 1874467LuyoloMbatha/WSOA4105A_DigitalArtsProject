@@ -1,15 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.InputSystem.UI;
 using UnityEngine.UI;
 using UnityEngine;
 
 
 public class TooltipUI : MonoBehaviour
 {
-	[Header("Input System")]
-	[SerializeField] InputSystemUIInputModule inputModule;
-
 	[Header("Unity Handles")]
 	[SerializeField] Text header;
 	[SerializeField] Text contentField;
@@ -59,7 +55,7 @@ public class TooltipUI : MonoBehaviour
 				layoutElement.enabled = false;
 		}
 
-		Vector2 MousePos = inputModule.point.action.ReadValue<Vector2>();
+		Vector2 MousePos = Input.mousePosition;
 
 		float pivotX = MousePos.x / Screen.width + xOffset;
 		float pivotY = MousePos.y / Screen.height + yOffset;
