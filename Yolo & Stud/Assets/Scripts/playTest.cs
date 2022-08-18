@@ -15,7 +15,7 @@ public class playTest : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P)) 
         {
-            FindObjectOfType<soundsManager>().Play("Success");
+            soundsManager.Instance.Play("Success");
 
 
         }

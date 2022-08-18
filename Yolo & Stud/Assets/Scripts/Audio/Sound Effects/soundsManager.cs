@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 using System;
 
 
-public class soundsManager : MonoBehaviour
+public class soundsManager : Singleton<soundsManager>
 {
     public Sound[] sounds;
 
