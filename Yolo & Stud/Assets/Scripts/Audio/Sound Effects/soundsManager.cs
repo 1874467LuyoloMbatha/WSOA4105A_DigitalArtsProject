@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using System;
 
 
 public class soundsManager : MonoBehaviour
@@ -11,6 +12,7 @@ public class soundsManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+
         foreach (Sound soundCurrentlyLookingAt in sounds) //The current sound being checked in "sounds" array 
         {
             soundCurrentlyLookingAt.AudioSource = gameObject.AddComponent<AudioSource>();
@@ -36,10 +38,17 @@ public class soundsManager : MonoBehaviour
     /// </summary>
 
     // Update is called once per frame
-    void Update()
+    public void Play(string name) 
     {
-        
+        Sound SoundThatWeFind = Array.Find(sounds, sound => sound.Name == name);
+        SoundThatWeFind.AudioSource.Play();
+
+        if (SoundThatWeFind == null) //If sound is not found// 
+        {
+            Debug.LogWarning("Music reference " + name + " is not found");
+            return;
+        }
     }
 
-    //7.24
+    //FindObjectOfType<MusicManager>().Play("Name of audio")//
 }
