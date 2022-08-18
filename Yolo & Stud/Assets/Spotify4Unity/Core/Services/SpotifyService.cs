@@ -33,7 +33,7 @@ public enum AuthenticationType
 /// Uses DontDestroyOnLoad() and lasts for the lifecycle of the app. Use SpotifyService.Instance to access anywhere in code.
 /// Call SpotifyService.StartService() or use AuthorizeUserOnStart to begin authorization.
 /// </summary>
-public class SpotifyService : SceneSingleton<SpotifyService>
+public class SpotifyService : Singleton<SpotifyService>
 {
     // Should the service attempt to authorize the user on MonoBehaviour.Start()
     public bool AuthorizeUserOnStart = true;
