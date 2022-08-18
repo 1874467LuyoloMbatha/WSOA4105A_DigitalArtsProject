@@ -29,4 +29,16 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 	{
 		TooltipSystem.Hide();
 	}
+
+	private void OnMouseOver()
+	{
+		ShowToolTip();
+		GetComponent<InteractableObject>().StartHighlight();
+	}
+
+	private void OnMouseExit()
+	{
+		HideToolTip();
+		GetComponent<InteractableObject>().StopHighlight();
+	}
 }
