@@ -19,7 +19,7 @@ public class PlayerIdleState : PlayerBaseState
 
 	public override void EnterState()
 	{
-		Debug.Log("Player is Idling");
+		
 		state.Anim().Play(state.IsIdleHash);
 	}
 

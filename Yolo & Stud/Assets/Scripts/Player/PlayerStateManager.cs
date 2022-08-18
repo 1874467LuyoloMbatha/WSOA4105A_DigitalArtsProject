@@ -18,6 +18,7 @@ public class PlayerStateManager : MonoBehaviour
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Vector3 destination, currentPos;
     [SerializeField] Transform destTrans;
+    [SerializeField] Text debugText;
 
     [Header("Player Floats")]
     [Tooltip("Handles how faast the player can rotate")]
@@ -46,7 +47,9 @@ public class PlayerStateManager : MonoBehaviour
 
         //set current state to idle by default
         currentPlayerState = states.Idle();
-        Debug.Log(currentPlayerState);
+        
+        if(debugText != null)
+             DebugText(currentPlayerState.ToString());
 
         //This is the context
         currentPlayerState.EnterState();
@@ -120,6 +123,16 @@ public class PlayerStateManager : MonoBehaviour
     {
         return anim;
     }
+
+    public Text DebugText(string v)
+	{
+        if (debugText != null)
+        {
+            debugText.text = v;
+            return debugText;
+        }
+        return null;
+	}
     //Floats
     public float StoppingDistance { get { return distanceBeforeStopping; } }
 
