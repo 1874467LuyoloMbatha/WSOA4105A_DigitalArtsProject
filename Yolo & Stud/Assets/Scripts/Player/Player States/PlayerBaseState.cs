@@ -33,7 +33,8 @@ public abstract class PlayerBaseState
 
 		//Switch
 		state.currentPlayerState = newState;
-		Debug.Log("New State: " + newState);
+		//Debug.Log("New State: " + newState);
+		state.DebugText(newState.ToString());
 	}
 	protected void SetSuperState() { }
 	protected void SetSubState() { }

@@ -78,6 +78,7 @@ MonoBehaviour:
   destination: {x: 10, y: 0, z: 10}
   currentPos: {x: 0, y: 0, z: 0}
   destTrans: {fileID: 0}
+  debugText: {fileID: 0}
   rotationTime: 0.25
   distanceBeforeStopping: 0
   isMoving: 1
