@@ -2081,7 +2081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89aa3cd9589e984391abe1cde2d76ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AuthorizeUserOnStart: 0
+  AuthorizeUserOnStart: 1
   AuthType: 0
   _authMethodConfig: {fileID: 0}
 --- !u!4 &779872343
@@ -2110,7 +2110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 075e842a5527e274595cba51e52001c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ClientID: 
+  ClientID: 6a39d0f09d0d433797766bd5b88b8dce
   APIScopes:
   - app-remote-control
   - playlist-modify-private
@@ -2953,7 +2953,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 654541728}
   m_HandleRect: {fileID: 654541727}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
