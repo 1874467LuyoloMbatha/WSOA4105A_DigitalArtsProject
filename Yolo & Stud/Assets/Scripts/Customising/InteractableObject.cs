@@ -16,6 +16,10 @@ public class InteractableObject : MonoBehaviour
 	[Header("Floats")]
 	[SerializeField] float moveSpeed = 5f;
 
+	[Header("Booleans")]
+	[Tooltip("Only enable for objects that will change colour")]
+	[SerializeField] bool isColourPicker = false;
+
 	private void Awake()
 	{
 		defaultMat = gameObject.GetComponent<Renderer>().sharedMaterial;
