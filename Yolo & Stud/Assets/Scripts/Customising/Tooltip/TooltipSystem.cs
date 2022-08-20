@@ -8,6 +8,10 @@ public class TooltipSystem : Singleton<TooltipSystem>
 	[SerializeField] TooltipUI toolTip;
 	[SerializeField] TooltipColourPicker colourPicker;
 
+	[Header("Temp GameObject")]
+	[Tooltip("This will just temporarily store the currently active game object")]
+	[SerializeField] GameObject tempGameObject;
+
 	private void Awake()
 	{
 		Hide();
@@ -21,21 +25,37 @@ public class TooltipSystem : Singleton<TooltipSystem>
 
 	public static void ShowColourPicker(string header = "")
 	{
+		//Disable Previous Temporary Object
+		if(Instance.tempGameObject != null)
+		{
+			Instance.tempGameObject.GetComponent<InteractableObject>().IsSelected(false);
+			Instance.tempGameObject.GetComponent<ColourPickerTrigger>().canEscape = false;
+			Instance.tempGameObject = null;
+		}
+
 		Instance.colourPicker.SetMoving(true);
 		Instance.colourPicker.SetColour(header);
 		Instance.colourPicker.EnableDisableObject(true);
 		//Instance.colourPicker.gameObject.SetActive(true);
 	}
 
+	public GameObject TempGameObject(GameObject temp)
+	{
+		tempGameObject = temp;
+		return tempGameObject;
+	}
 
 	public static void Hide()
 	{
 		Instance.toolTip.gameObject.SetActive(false);
-
 	}
 
 	public static void HideColourPicker()
 	{
+		if (Instance.tempGameObject != null)
+			Instance.tempGameObject = null;
+
+
 		Instance.colourPicker.SetMoving(false);
 		Instance.colourPicker.EnableDisableObject(false);
 	}

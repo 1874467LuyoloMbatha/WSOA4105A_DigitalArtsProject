@@ -11,7 +11,7 @@ public class ColourPickerTrigger : MonoBehaviour, IPointerEnterHandler, IPointer
 
 	[Header("Booleans")]
 	[Tooltip("This will allow the player to disable the colour picker window")]
-	[SerializeField] bool canEscape = false;
+	public bool canEscape = false;
 	void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
 	{
 		TooltipSystem.ShowColourPicker(header);
@@ -31,17 +31,33 @@ public class ColourPickerTrigger : MonoBehaviour, IPointerEnterHandler, IPointer
 	{
 		TooltipSystem.HideColourPicker();
 	}
+	//Store Temp gameObject
+	GameObject temp;
 
 	private void OnMouseUp()
 	{
 		ShowToolTip();
+
+
+		temp = TooltipSystem.Instance.TempGameObject(this.gameObject);
+		temp.GetComponent<InteractableObject>().IsSelected(true);
+		ColourPicker.Instance.SetObjectToChange(temp);
+
 		canEscape = true;
-		GetComponent<InteractableObject>().StopHighlight();
+		temp.GetComponent<InteractableObject>().StopHighlight();
+
 	}
 
 	private void OnMouseOver()
 	{
-		GetComponent<InteractableObject>().StartHighlight();
+		//Disabled highlighting when player has already clicked on the object
+		if(!canEscape)
+			GetComponent<InteractableObject>().StartHighlight();
+	}
+
+	private void OnMouseExit()
+	{
+		GetComponent<InteractableObject>().StopHighlight();
 	}
 
 	private void Update()
@@ -50,7 +66,11 @@ public class ColourPickerTrigger : MonoBehaviour, IPointerEnterHandler, IPointer
 		{
 			HideToolTip();
 			canEscape = false;
+			GetComponent<InteractableObject>().ChangeColour(ColourPicker.Instance.GetColour());
 			GetComponent<InteractableObject>().StopHighlight();
+
+			GetComponent<InteractableObject>().IsSelected(false);
+			temp = null;
 		}
 	}
 }

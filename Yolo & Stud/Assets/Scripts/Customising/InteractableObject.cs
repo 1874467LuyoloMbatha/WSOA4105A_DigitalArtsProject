@@ -19,6 +19,8 @@ public class InteractableObject : MonoBehaviour
 	[Header("Booleans")]
 	[Tooltip("Only enable for objects that will change colour")]
 	[SerializeField] bool isColourPicker = false;
+	[Tooltip("Will make it possible to check which object is selected")]
+	[SerializeField] bool isSelected = false;
 
 	private void Awake()
 	{
@@ -51,6 +53,23 @@ public class InteractableObject : MonoBehaviour
 
     public void StopHighlight()
 	{
+		if (isColourPicker && isSelected)
+			defaultMat.color = ColourPicker.Instance.GetColour();
+
 		gameObject.GetComponent<Renderer>().sharedMaterial = defaultMat;
+	}
+
+	public void ChangeColour(Color c)
+	{
+		if(isColourPicker && isSelected)
+		{
+			defaultMat.color = c;
+		}
+	}
+
+	public bool IsSelected(bool v)
+	{
+		isSelected = v;
+		return isSelected;
 	}
 }
