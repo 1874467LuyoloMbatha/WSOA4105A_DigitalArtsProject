@@ -95,6 +95,7 @@ MonoBehaviour:
   textureRect: {fileID: 0}
   objectToChange: {fileID: 0}
   refSprite: {fileID: 2800000, guid: 03913ce346713c6478f97315309929ff, type: 3}
+  storedColour: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &110218157424686461
 GameObject:
   m_ObjectHideFlags: 0
