@@ -7,7 +7,7 @@ public class ColourPickerTrigger : MonoBehaviour, IPointerEnterHandler, IPointer
 {
 	[Header("Generic Elements")]
 	[Tooltip("We use these string to state what elements will do")]
-	[SerializeField] string header;
+	[SerializeField] string header = "Material Colour";
 
 	[Header("Booleans")]
 	[Tooltip("This will allow the player to disable the colour picker window")]
@@ -37,7 +37,6 @@ public class ColourPickerTrigger : MonoBehaviour, IPointerEnterHandler, IPointer
 	private void OnMouseUp()
 	{
 		ShowToolTip();
-
 
 		temp = TooltipSystem.Instance.TempGameObject(this.gameObject);
 		temp.GetComponent<InteractableObject>().IsSelected(true);
