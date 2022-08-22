@@ -174,9 +174,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5076484507258936684, guid: 6416fa3b5568c634794d5c860a6eaf92, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1660384031183063813, guid: 6416fa3b5568c634794d5c860a6eaf92, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3b6df2ee61e14e84583c3b547b808af5, type: 2}
     - target: {fileID: 919132149155446097, guid: 6416fa3b5568c634794d5c860a6eaf92, type: 3}
       propertyPath: m_Name
       value: isometric room test for unity (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500723717418909357, guid: 6416fa3b5568c634794d5c860a6eaf92, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6416fa3b5568c634794d5c860a6eaf92, type: 3}
@@ -1389,7 +1401,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1807829252033741788, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.27914992
+      value: -0.27914995
       objectReference: {fileID: 0}
     - target: {fileID: 1807829252275733608, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_Name
@@ -1445,7 +1457,7 @@ PrefabInstance:
       objectReference: {fileID: 1481263225}
     - target: {fileID: 1807829252366892621, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.27914992
+      value: -0.27914995
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
