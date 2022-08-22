@@ -16,9 +16,18 @@ public class InteractableObject : MonoBehaviour
 	[Header("Floats")]
 	[SerializeField] float moveSpeed = 5f;
 
+	[Header("Booleans")]
+	[Tooltip("Only enable for objects that will change colour")]
+	[SerializeField] bool isColourPicker = false;
+	[Tooltip("Will make it possible to check which object is selected")]
+	[SerializeField] bool isSelected = false;
+	[Tooltip("For Objects that can be moved")]
+	[SerializeField] bool canBeMoved = false;
+
 	private void Awake()
 	{
-		defaultMat = gameObject.GetComponent<Renderer>().sharedMaterial;
+		if(defaultMat == null)
+			defaultMat = gameObject.GetComponent<Renderer>().sharedMaterial;
 
 		startingPos = transform.position;
 		currentPos = startingPos;
@@ -26,7 +35,8 @@ public class InteractableObject : MonoBehaviour
 	}
 	private void Update()
 	{
-		transform.position = Vector3.Lerp(transform.position, currentPos, Time.deltaTime * moveSpeed);
+		if(canBeMoved)
+			transform.position = Vector3.Lerp(transform.position, currentPos, Time.deltaTime * moveSpeed);
 	}
 	public void Select(Vector3 focusPos, Vector3 tar)
 	{
@@ -47,6 +57,23 @@ public class InteractableObject : MonoBehaviour
 
     public void StopHighlight()
 	{
+		if (isColourPicker && isSelected)
+			defaultMat.color = ColourPicker.Instance.GetColour();
+
 		gameObject.GetComponent<Renderer>().sharedMaterial = defaultMat;
+	}
+
+	public void ChangeColour(Color c)
+	{
+		if(isColourPicker && isSelected)
+		{
+			defaultMat.color = c;
+		}
+	}
+
+	public bool IsSelected(bool v)
+	{
+		isSelected = v;
+		return isSelected;
 	}
 }
