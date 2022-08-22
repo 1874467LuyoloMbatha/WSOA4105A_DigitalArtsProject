@@ -48,7 +48,10 @@ public class GameManager : Singleton<GameManager>
     }
 
 	#region Public Functions Referenced
-	
+	public GameState GetGameState()
+	{
+		return gameState;
+	}
 	#endregion
 }
 
