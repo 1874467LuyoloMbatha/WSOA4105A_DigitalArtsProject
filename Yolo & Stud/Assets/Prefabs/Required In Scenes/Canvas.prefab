@@ -2099,10 +2099,10 @@ RectTransform:
   m_Father: {fileID: 5237323715318048724}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 429.7708, y: -40}
+  m_SizeDelta: {x: 284.5139, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &3890214159569847917
 CanvasRenderer:
@@ -2989,6 +2989,7 @@ MonoBehaviour:
   objsToSwap:
   - {fileID: 2240708620598402728}
   - {fileID: 462837113482962789}
+  - {fileID: 8702050045755307275}
   selectedButton: {fileID: 0}
   typeOfButton: 1
   tabIdle: {fileID: 0}
@@ -3434,7 +3435,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1639679944481583029
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4042,10 +4043,10 @@ RectTransform:
   m_Father: {fileID: 5237323715318048724}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 144.25694, y: -40}
+  m_SizeDelta: {x: 284.5139, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &7874055817337571112
 CanvasRenderer:
@@ -4851,10 +4852,10 @@ RectTransform:
   m_Father: {fileID: 5237323715318048724}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 144.25694, y: -141}
+  m_SizeDelta: {x: 284.5139, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &7451023018725836672
 CanvasRenderer:
