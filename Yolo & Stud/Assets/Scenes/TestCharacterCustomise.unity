@@ -2972,6 +2972,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 783594320428613092, guid: 059dcff3b98190148a3117dfdf490915, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 059dcff3b98190148a3117dfdf490915, type: 3}
       propertyPath: m_Name
       value: DavidCharacterCustomisingTest (1)
