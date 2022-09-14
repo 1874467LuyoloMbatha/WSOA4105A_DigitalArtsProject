@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class IntroScript : MonoBehaviour
 {
-    public float waitTime = 15f;
+    public float waitTime = 16.5f;
   
     void Start()
     {
