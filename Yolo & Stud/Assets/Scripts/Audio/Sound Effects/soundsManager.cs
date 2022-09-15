@@ -48,7 +48,9 @@ public class soundsManager : Singleton<soundsManager>
             Debug.LogWarning("Music reference " + name + " is not found");
             return;
         }
+        FindObjectOfType<soundsManager>().Play("Name of audio");
     }
 
     //FindObjectOfType<MusicManager>().Play("Name of audio")//
+   
 }
