@@ -606,7 +606,7 @@ GameObject:
   - component: {fileID: 254066027}
   - component: {fileID: 254066026}
   m_Layer: 0
-  m_Name: 'musicManager '
+  m_Name: 'offlineMusicManager '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -640,13 +640,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicClips:
   - {fileID: 8300000, guid: 55a0d0fd803c28f469b2f425da09cb33, type: 3}
-  - {fileID: 8300000, guid: 25245b73b24d20b46ad2bf0e44a217d2, type: 3}
-  - {fileID: 8300000, guid: eecc906bc01863744aebb7315bc89763, type: 3}
-  - {fileID: 8300000, guid: 0141b62a17205b744a9c007fca2472f9, type: 3}
-  - {fileID: 8300000, guid: 616130655b58a654f87fd2f94d8aa3b5, type: 3}
-  - {fileID: 8300000, guid: 4d6420198f59f3346b5d94f23c7a6c0d, type: 3}
-  - {fileID: 8300000, guid: fd3ffe0bdd1bbf44fa3a6d8af0b1ac26, type: 3}
-  - {fileID: 8300000, guid: a4d6c4e836da0054a8d8eff63e6d2f28, type: 3}
 --- !u!82 &254066027
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1226,11 +1219,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1807829252033741788, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.5237475
+      value: 0.52374744
       objectReference: {fileID: 0}
     - target: {fileID: 1807829252033741788, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.12556398
+      value: 0.12556395
       objectReference: {fileID: 0}
     - target: {fileID: 1807829252033741788, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1238,7 +1231,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1807829252033741788, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.19643244
+      value: 0.19643247
       objectReference: {fileID: 0}
     - target: {fileID: 1807829252275733608, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_Name
@@ -1310,11 +1303,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1807829252366892621, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.5237475
+      value: 0.52374744
       objectReference: {fileID: 0}
     - target: {fileID: 1807829252366892621, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.12556398
+      value: 0.12556395
       objectReference: {fileID: 0}
     - target: {fileID: 1807829252366892621, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1322,7 +1315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1807829252366892621, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.19643244
+      value: 0.19643247
       objectReference: {fileID: 0}
     - target: {fileID: 1807829252366892621, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1351,7 +1344,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &897720399
 MonoBehaviour:
   m_ObjectHideFlags: 0
