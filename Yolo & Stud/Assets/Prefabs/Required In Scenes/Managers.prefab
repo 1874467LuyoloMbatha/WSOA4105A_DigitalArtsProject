@@ -183,6 +183,9 @@ MonoBehaviour:
     Loop: 0
     PlayOnAwake: 1
     AudioSource: {fileID: 0}
+  playAndPauseBtn: {fileID: 0}
+  playBtnImg: {fileID: 21300000, guid: 465b36d1c47d06e479df037e8ff343de, type: 3}
+  pauseBtnImg: {fileID: 21300000, guid: 9c3093d4a36e9074a94551e11146e256, type: 3}
   trackIndex: 0
   artistName: 
   songName: 

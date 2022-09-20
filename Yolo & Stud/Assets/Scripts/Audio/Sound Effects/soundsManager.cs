@@ -16,6 +16,12 @@ public class soundsManager : Singleton<soundsManager>
     public Sound[] sounds;
     public OfflineMusic[] offlineMusic;
 
+    [Header("Music Controller Images")]
+    [Tooltip("Drag Play/Pause Button GameObject Here")]
+    [SerializeField] Image playAndPauseBtn;
+    [Tooltip("Drag Images To Pause And Play here")]
+    [SerializeField] Sprite playBtnImg, pauseBtnImg;
+
     [Header("Audio Integers")]
     [SerializeField] int trackIndex;
 
@@ -188,11 +194,21 @@ public class soundsManager : Singleton<soundsManager>
             if (isPaused)
             {
                 isPaused = false;
+
+                //Change Image
+                if (playAndPauseBtn != null)
+                    playAndPauseBtn.sprite = pauseBtnImg;
+
                 offlineAudioSource.Play();
             }
             else if (!isPaused)
             {
                 isPaused = true;
+
+                //Change Image
+                if (playAndPauseBtn != null)
+                    playAndPauseBtn.sprite = playBtnImg;
+
                 offlineAudioSource.Pause();
             }
         }
@@ -202,6 +218,7 @@ public class soundsManager : Singleton<soundsManager>
             offlineAudioSource.Play();
         }
     }
+
 
     public void StopAudio()
     {

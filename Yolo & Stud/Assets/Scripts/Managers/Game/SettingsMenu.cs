@@ -32,8 +32,8 @@ public class SettingsMenu : Singleton<SettingsMenu>
 	/// 
 	private void Start()
 	{
-        UpdateSliderOutput();
         SetUpPrefs();
+        UpdateSliderOutput();
 	}
 
     #region Audio & Music
@@ -46,7 +46,10 @@ public class SettingsMenu : Singleton<SettingsMenu>
             soundsManager.Instance.SetOfflineVolume(masterVolume.value);
         }
         else
+        {
             masterVolume.value = soundsManager.Instance.GetOfflineVolume();
+            PlayerPrefs.SetFloat("MainBGMusic", masterVolume.value);
+        }
 
 
         if (PlayerPrefs.HasKey("FX"))
@@ -56,20 +59,22 @@ public class SettingsMenu : Singleton<SettingsMenu>
                 item.value = PlayerPrefs.GetFloat("FX");
             }
         }
+
+        masterVolume.value = soundsManager.Instance.GetOfflineVolume();
     }
 
     public void UpdateSliderOutput()
     {
         soundsManager.Instance.SetOfflineVolume(masterVolume.value);
-
     }
     public void SetMainBGLevel(float v)
     {
         masterVolume.value = v;
+        PlayerPrefs.SetFloat("MainBGMusic", masterVolume.value);
 
         UpdateSliderOutput();
 
-        PlayerPrefs.SetFloat("MainBGMusic", v);
+        
     }
 
     public void SetFXLevel(float v)
