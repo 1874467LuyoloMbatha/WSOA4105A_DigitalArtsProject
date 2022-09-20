@@ -135,8 +135,18 @@ public class soundsManager : Singleton<soundsManager>
         artistTextName.text = artistName;
         trackName.text = songName;
     }
-	#endregion
-	public void Play(string name) 
+
+    public void SetOffileAudioVolume(float v)
+	{
+        offlineAudioSource.volume = v;
+	}
+
+    public float GetOfflineAudioVolume()
+	{
+        return offlineAudioSource.volume;
+	}
+    #endregion
+    public void Play(string name) 
     {
         Sound SoundThatWeFind = Array.Find(sounds, sound => sound.Name == name);
         SoundThatWeFind.AudioSource.Play();
