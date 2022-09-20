@@ -87,17 +87,34 @@ public class SettingsMenu : Singleton<SettingsMenu>
 
         PlayerPrefs.SetFloat("FX", v);
     }
-    #endregion
+	#endregion
 
-    public void QuitGame()
+	#region UI And Stuff
+    public void ToggleGameObject(GameObject obj)
+	{
+
+        if (obj.activeInHierarchy)
+        {
+            if(obj.GetComponent<TweeningUI>() != null)
+                obj.GetComponent<TweeningUI>().Disable();
+            else
+                obj.SetActive(false);
+        }
+        else
+            obj.SetActive(true);
+
+	}
+	public void QuitGame()
     {
         Application.Quit();
         Debug.Log("Exiting Game... Consider Saving here");
     }
 
+	#endregion
+
 	#region Public & Private Audio Variables
-    
-    public bool GetMusicMode()
+
+	public bool GetMusicMode()
 	{
         return offlineMode;
 	}
