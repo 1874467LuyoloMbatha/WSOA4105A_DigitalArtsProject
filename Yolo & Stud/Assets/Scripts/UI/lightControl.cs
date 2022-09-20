@@ -42,8 +42,11 @@ public class lightControl : MonoBehaviour
 
 		for (int i = 0; i < Lights.Length; i++)
 		{
-			Lights[i].intensity = IntensityLight;
-            Lights[i].color = newColorRGB;
+            if (Lights.Length > 0)
+            {
+                Lights[i].intensity = IntensityLight;
+                Lights[i].color = newColorRGB;
+            }
 		}
 
     }
