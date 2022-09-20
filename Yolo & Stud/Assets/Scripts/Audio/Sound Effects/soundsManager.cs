@@ -224,10 +224,9 @@ public class soundsManager : Singleton<soundsManager>
             return;
 
 
-        Debug.Log("TODO: Previous SONG");
         trackIndex--;
 
-        if (trackIndex < offlineMusic.Length)
+        if (trackIndex < 0)
             trackIndex = offlineMusic.Length - 1;
 
         AudioClip songToPlay = offlineMusic[trackIndex].clip;
@@ -282,11 +281,12 @@ public class soundsManager : Singleton<soundsManager>
 
     public void LoopSong()
 	{
+
         //Only Allow these buttons to work if the player is in Offline Mode
         if (!SettingsMenu.Instance.GetMusicMode())
             return;
 
-        offlineAudioSource.loop = offlineAudioSource.loop;
+        offlineAudioSource.loop = !offlineAudioSource.loop;
 	}
         #endregion
         //FindObjectOfType<MusicManager>().Play("Name of audio")//
