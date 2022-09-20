@@ -135,6 +135,16 @@ public class soundsManager : Singleton<soundsManager>
         artistTextName.text = artistName;
         trackName.text = songName;
     }
+
+    public void SetOfflineVolume(float v)
+	{
+        offlineAudioSource.volume = v;
+	}
+
+    public float GetOfflineVolume()
+	{
+        return offlineAudioSource.volume;
+	}
 	#endregion
 	public void Play(string name) 
     {

@@ -607,7 +607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e91315a91d9011429ebee43ac638ef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterVolume: []
+  masterVolume: {fileID: 0}
   currFXVolume: []
   languageDropDown: []
   fontTexts: []

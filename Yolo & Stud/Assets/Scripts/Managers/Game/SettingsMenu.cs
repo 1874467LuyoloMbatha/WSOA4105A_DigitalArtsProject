@@ -11,7 +11,7 @@ using System.Collections.Generic;
 public class SettingsMenu : Singleton<SettingsMenu>
 {
     [Header("Volume Sliders")]
-    public Slider[] masterVolume;
+    public Slider masterVolume;
     public Slider[] currFXVolume;
 
 
@@ -33,25 +33,21 @@ public class SettingsMenu : Singleton<SettingsMenu>
 	private void Start()
 	{
         UpdateSliderOutput();
+        SetUpPrefs();
 	}
 
     #region Audio & Music
 
     void SetUpPrefs()
     {
-        if (PlayerPrefs.HasKey("Master"))
-        {
-            foreach (var item in masterVolume)
-            {
-                item.value = PlayerPrefs.GetFloat("Master");
-            }
-
-        }
-
         if (PlayerPrefs.HasKey("MainBGMusic"))
         {
-           
+            masterVolume.value = PlayerPrefs.GetFloat("MainBGMusic");
+            soundsManager.Instance.SetOfflineVolume(masterVolume.value);
         }
+        else
+            masterVolume.value = soundsManager.Instance.GetOfflineVolume();
+
 
         if (PlayerPrefs.HasKey("FX"))
         {
@@ -64,11 +60,12 @@ public class SettingsMenu : Singleton<SettingsMenu>
 
     public void UpdateSliderOutput()
     {
-
+        soundsManager.Instance.SetOfflineVolume(masterVolume.value);
 
     }
     public void SetMainBGLevel(float v)
     {
+        masterVolume.value = v;
 
         UpdateSliderOutput();
 
