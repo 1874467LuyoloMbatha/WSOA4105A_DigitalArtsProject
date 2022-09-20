@@ -46,7 +46,6 @@ public class soundsManager : Singleton<soundsManager>
     // Start is called before the first frame update
     void Awake()
     {
-        //Sound Effects
         foreach (Sound soundCurrentlyLookingAt in sounds) //The current sound being checked in "sounds" array 
         {
             if (soundEffectsSource == null)
@@ -106,6 +105,8 @@ public class soundsManager : Singleton<soundsManager>
             songName = soundCurrentlyLookingAt.songName;
 
         }
+
+
     }
 
 	private void Start()
@@ -205,7 +206,6 @@ public class soundsManager : Singleton<soundsManager>
             return;
 
         //trackIndex++;
-        Debug.Log("TODO: NEXT SONG");
         trackIndex++;
 
         if(trackIndex > offlineMusic.Length - 1)
@@ -279,7 +279,7 @@ public class soundsManager : Singleton<soundsManager>
         //StartCoroutine(PlayMusic());
     }
 
-    public void LoopSong()
+    public void LoopSong(GameObject loopTxt)
 	{
 
         //Only Allow these buttons to work if the player is in Offline Mode
@@ -287,6 +287,7 @@ public class soundsManager : Singleton<soundsManager>
             return;
 
         offlineAudioSource.loop = !offlineAudioSource.loop;
+        loopTxt.SetActive(offlineAudioSource.loop);
 	}
         #endregion
         //FindObjectOfType<MusicManager>().Play("Name of audio")//
