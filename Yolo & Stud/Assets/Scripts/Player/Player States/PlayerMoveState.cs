@@ -12,13 +12,19 @@ public class PlayerMoveState : PlayerBaseState
 	{
 		//distanee
 		//Debug.Log(Vector3.Distance(state.GetCurrentPos(), state.Destination()));
-		if(Vector3.Distance(state.GetCurrentPos(), state.Destination()) < state.StoppingDistance)
+		if(Vector3.Distance(state.GetCurrentPos(), state.Destination()) <= state.StoppingDistance)
 		{
 			Debug.Log("Reached Destination");
 			state.SetIsMoving(false);
 			SwitchState(factory.Idle());
 		}
 		
+		if(GameManager.Instance.GetGameState() == GameManager.GameState.PlayerCustomiserMode)
+		{
+			state.SetIsMoving(false);
+			SwitchState(factory.Idle());
+		}
+
 		if(!state.IsMoving())
 		{
 			state.SetIsMoving(false);
