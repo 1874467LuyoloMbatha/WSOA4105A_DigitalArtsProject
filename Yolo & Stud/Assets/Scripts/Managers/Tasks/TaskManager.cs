@@ -11,6 +11,8 @@ public class TaskManager : Singleton<TaskManager>
     [SerializeField] List<TaskGameObject> tasks = new List<TaskGameObject>();
 
     [Header("Unity Handles")]
+    [Tooltip("Drag The ToDo parent prefab here")]
+    [SerializeField] GameObject parentTaskManager;
     [Tooltip("Drag The content game object under Canvas. This will allow us to populate our ToDo list")]
     [SerializeField] Transform contentGameObject;
     [Tooltip("Drag The ToDo prefab here")]
@@ -40,6 +42,8 @@ public class TaskManager : Singleton<TaskManager>
 
         //makes it possible to open/add a task
         temmpBtn.onClick.AddListener(delegate { AddTask(); });
+
+        parentTaskManager.SetActive(false);
     }
     #region Old & Unused 
     //Old Version
@@ -103,6 +107,7 @@ public class TaskManager : Singleton<TaskManager>
 	{
         GameObject taskItem = Instantiate(toDoPrefab); //creates it
         taskItem.transform.SetParent(contentGameObject); //puts it under the content gameobject
+        taskItem.transform.localScale = Vector3.one;
 
         if(load)
 		{

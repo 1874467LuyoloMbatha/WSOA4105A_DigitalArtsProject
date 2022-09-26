@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tasks: []
+  parentTaskManager: {fileID: 0}
   contentGameObject: {fileID: 0}
   toDoPrefab: {fileID: 3451573735071977006, guid: 86205f1bc35f0d1498211c9197aaee19, type: 3}
   inputFields: {fileID: 0}

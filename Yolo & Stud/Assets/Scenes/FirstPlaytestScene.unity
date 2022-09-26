@@ -1900,6 +1900,10 @@ PrefabInstance:
       propertyPath: contentGameObject
       value: 
       objectReference: {fileID: 1693295601}
+    - target: {fileID: 1065089501, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: parentTaskManager
+      value: 
+      objectReference: {fileID: 1790937500}
     - target: {fileID: 1199223139, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
       propertyPath: tabParent
       value: 
@@ -2159,6 +2163,11 @@ Transform:
   m_Father: {fileID: 453062485}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1790937500 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5985757917378414833, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
+  m_PrefabInstance: {fileID: 1847311101}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1809282788 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3222411197290959794, guid: eb1b1615355dec04892a7df6f612003a, type: 3}

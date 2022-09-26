@@ -31,6 +31,11 @@ public class GameManager : Singleton<GameManager>
 	[Tooltip("This will determine if the player is Customising themeselves or not")]
 	[SerializeField] bool isCustomising;
 	#endregion
+
+	private void Awake()
+	{
+		Application.runInBackground = true;
+	}
 	void Start()
     {
         tabParent.SetActive(isTabParentOpen);
