@@ -183,6 +183,46 @@ MonoBehaviour:
     Loop: 0
     PlayOnAwake: 1
     AudioSource: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 0141b62a17205b744a9c007fca2472f9, type: 3}
+    songName: Missing You
+    artistName: Unknown
+    volume: 1
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 1
+    AudioSource: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 616130655b58a654f87fd2f94d8aa3b5, type: 3}
+    songName: On My Way
+    artistName: Unknown
+    volume: 1
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 1
+    AudioSource: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 4d6420198f59f3346b5d94f23c7a6c0d, type: 3}
+    songName: Breathtaking
+    artistName: Purrple Cat
+    volume: 1
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 1
+    AudioSource: {fileID: 0}
+  - clip: {fileID: 8300000, guid: fd3ffe0bdd1bbf44fa3a6d8af0b1ac26, type: 3}
+    songName: Wild Strawberry
+    artistName: Purrple Cat
+    volume: 1
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 1
+    AudioSource: {fileID: 0}
+  - clip: {fileID: 8300000, guid: a4d6c4e836da0054a8d8eff63e6d2f28, type: 3}
+    songName: SAX LoFi
+    artistName: Unknown
+    volume: 1
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 1
+    AudioSource: {fileID: 0}
   playAndPauseBtn: {fileID: 0}
   playBtnImg: {fileID: 21300000, guid: 465b36d1c47d06e479df037e8ff343de, type: 3}
   pauseBtnImg: {fileID: 21300000, guid: 9c3093d4a36e9074a94551e11146e256, type: 3}

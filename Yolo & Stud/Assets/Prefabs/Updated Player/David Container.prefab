@@ -61,8 +61,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16e8f9a60b567fc42918b33eeff3d61d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 3594832924945282394}
-  agent: {fileID: 6956369096677869775}
+  anim: {fileID: 5820361374229333466}
+  agent: {fileID: 6799452177608423759}
   destination: {x: 10, y: 0, z: 10}
   currentPos: {x: 0, y: 0, z: 0}
   destTrans: {fileID: 0}
