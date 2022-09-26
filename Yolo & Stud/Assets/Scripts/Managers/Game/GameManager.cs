@@ -98,6 +98,11 @@ public class GameManager : Singleton<GameManager>
 	{
 		Application.OpenURL(link);
 	}
+
+	public void ExitApplication()
+	{
+		Application.Quit();
+	}
 	#endregion
 }
 
