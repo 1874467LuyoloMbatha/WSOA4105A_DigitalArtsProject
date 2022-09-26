@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Intro.unity
     guid: 93d65ef3d6305a84b8b7dc241b7b8ec0
   - enabled: 1
-    path: Assets/Scenes/StudSandbox.unity
-    guid: 773582264cbabf94bbd725facf1e25a1
-  - enabled: 1
-    path: Assets/Scenes/LuyoloSandbox.unity
-    guid: a55451b055f3a794e8b955437702d41b
+    path: Assets/Scenes/FirstPlaytestScene.unity
+    guid: 1dc61040d644c5e4a9d089e3cc70853c
   m_configObjects: {}

@@ -16,12 +16,24 @@ public class lightControl : MonoBehaviour
     [Header("Light Colour")]
     public Slider[] RGBSliders;
     public Light[] Lights;
-    //public Slider colourSlider; 
-    //public Light lightColour; 
-   
+	//public Slider colourSlider; 
+	//public Light lightColour; 
 
-   
-    void Update()
+	private void Start()
+	{
+        foreach (Light light in Lights)
+		{
+            RGBSliders[0].value = light.intensity;
+            RGBSliders[1].value = light.color.r;
+            RGBSliders[2].value = light.color.b;
+            RGBSliders[3].value = light.color.g;
+        }
+
+        this.gameObject.GetComponentInParent<RectTransform>().gameObject.SetActive(false);
+    }
+
+
+	void Update()
     {
         //lightIntensity.intensity  = intensitySlider.value;
 

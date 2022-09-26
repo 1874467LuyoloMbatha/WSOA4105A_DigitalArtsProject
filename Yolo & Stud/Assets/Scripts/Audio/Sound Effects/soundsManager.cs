@@ -45,6 +45,10 @@ public class soundsManager : Singleton<soundsManager>
     [Tooltip("Drag The Track Text Here")]
     [SerializeField] Text trackName;
 
+    [Header("Alarm Sound Effects Integers")]
+    [Tooltip("This integer should be one higher than the number of alarm clock integers we have")]
+    [SerializeField] int maxAlarmClockSoundEffect;
+
     [Header("Audio Booleans")]
     [SerializeField] bool isPaused;
     [SerializeField] bool isStopped;
@@ -162,7 +166,27 @@ public class soundsManager : Singleton<soundsManager>
             Debug.LogWarning("Music reference " + name + " is not found");
             return;
         }
-        FindObjectOfType<soundsManager>().Play("Name of audio");
+        //soundEffectsSource.Play("Name of audio");
+    }
+
+    public void PlayRandomAlarm(string name)
+    {
+
+        int rendClip = UnityEngine.Random.Range(1, maxAlarmClockSoundEffect);
+        Debug.Log(rendClip);
+
+        
+        Sound SoundThatWeFind = Array.Find(sounds, sound => sound.Name == name + rendClip.ToString());
+
+        if (SoundThatWeFind == null) //If sound is not found// 
+        {
+            Debug.LogWarning("Music reference " + name + " is not found");
+            return;
+        }
+
+        soundEffectsSource.clip = SoundThatWeFind.clip;
+        soundEffectsSource.Play();
+        //.Play("Name of audio " + rendClip.ToString());
     }
 
     void AssignTrackIndex()

@@ -158,6 +158,41 @@ MonoBehaviour:
     Loop: 0
     PlayOnAwake: 0
     AudioSource: {fileID: 0}
+  - Name: AlarmClock 1
+    clip: {fileID: 8300000, guid: 626741560025fa24eb82787f67981113, type: 3}
+    volume: 0.35
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 0
+    AudioSource: {fileID: 0}
+  - Name: AlarmClock 2
+    clip: {fileID: 8300000, guid: d43aa17baf0cf16408bbef33771152ad, type: 3}
+    volume: 0.35
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 0
+    AudioSource: {fileID: 0}
+  - Name: AlarmClock 3
+    clip: {fileID: 8300000, guid: 0ccf1c24876ae7c42acee97f3f268335, type: 3}
+    volume: 0.35
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 0
+    AudioSource: {fileID: 0}
+  - Name: AlarmClock 4
+    clip: {fileID: 8300000, guid: 3a728fb90f33cd44b88026a6a27c657a, type: 3}
+    volume: 0.35
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 0
+    AudioSource: {fileID: 0}
+  - Name: AlarmClock 5
+    clip: {fileID: 8300000, guid: 4703918d09a857847b3d95efafc5448a, type: 3}
+    volume: 0.56
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 0
+    AudioSource: {fileID: 0}
   offlineMusic:
   - clip: {fileID: 8300000, guid: 55a0d0fd803c28f469b2f425da09cb33, type: 3}
     songName: Devyzed Down
@@ -234,6 +269,7 @@ MonoBehaviour:
   musicModeText: {fileID: 0}
   artistTextName: {fileID: 0}
   trackName: {fileID: 0}
+  maxAlarmClockSoundEffect: 6
   isPaused: 1
   isStopped: 0
 --- !u!1 &444677966622398354
@@ -455,7 +491,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -592,23 +628,23 @@ MonoBehaviour:
   timeDisplay: {fileID: 0}
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   timesUpColor: {r: 1, g: 0, b: 0, a: 1}
-  duration: 4000
+  duration: 0
   timeCap: 3000
   flashMinCap: 2
   flashSecCap: 10
   onTimerEnd:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 4487620104233532781}
+        m_TargetAssemblyTypeName: soundsManager, Assembly-CSharp
+        m_MethodName: PlayRandomAlarm
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 'AlarmClock '
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &5952252432183440053

@@ -92,6 +92,12 @@ public class GameManager : Singleton<GameManager>
 			gameState = GameState.PlayMode;
 
 	}
+
+	//Assign To Buttons you want to open links
+	public void OpenUrl(string link)
+	{
+		Application.OpenURL(link);
+	}
 	#endregion
 }
 
