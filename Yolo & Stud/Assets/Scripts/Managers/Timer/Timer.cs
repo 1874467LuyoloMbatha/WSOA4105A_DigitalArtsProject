@@ -18,7 +18,8 @@ public class Timer
 		if (secondsLeft == 0f)
 			return;
 
-		secondsLeft -= deltaTime;
+		if(!SettingsMenu.Instance.GetTimeState())
+			secondsLeft -= deltaTime;
 
 		CheckTimerEnd();
 	}

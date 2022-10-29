@@ -9,11 +9,11 @@ using UnityEngine.Audio;
 
 public class OfflineMusic 
 {
-    public AudioClip clip;
-    
     public string songName;
     public string artistName;
 
+    public AudioClip clip;
+    
 
     //Range attribute adds a slider to each field in inspector
     [Range(0f, 1f)]

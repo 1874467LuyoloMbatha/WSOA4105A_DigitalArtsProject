@@ -16,6 +16,7 @@ public class lightControl : MonoBehaviour
     [Header("Light Colour")]
     public Slider[] RGBSliders;
     public Light[] Lights;
+    public GameObject parent;
 	//public Slider colourSlider; 
 	//public Light lightColour; 
 
@@ -29,7 +30,10 @@ public class lightControl : MonoBehaviour
             RGBSliders[3].value = light.color.g;
         }
 
-        this.gameObject.GetComponentInParent<RectTransform>().gameObject.SetActive(false);
+        if (parent == null)
+            this.gameObject.GetComponentInParent<RectTransform>().gameObject.SetActive(false);
+        else
+            parent.SetActive(false);
     }
 
 

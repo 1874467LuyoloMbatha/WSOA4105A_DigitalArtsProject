@@ -26,6 +26,11 @@ public class SettingsMenu : Singleton<SettingsMenu>
 
 	[Header("Audio Settings")]
 	[SerializeField] bool offlineMode = true;
+
+    [Header("Timer Settings")]
+    [SerializeField] bool autoTransitionTimer = true;
+    [SerializeField] bool showTimeInWords = false;
+    [SerializeField] bool timeIsPaused;
 	/// <summary>
 	/// allows player to change volume of music in settings menu through slider
 	/// </summary>
@@ -125,5 +130,37 @@ public class SettingsMenu : Singleton<SettingsMenu>
         return offlineMode;
 	}
 	#endregion
+
+	#region Public & Private Timer Related Settings
+    public bool GetTransition()
+	{
+        return autoTransitionTimer;
+	}
+
+    public void SetTransition(bool v)
+	{
+        autoTransitionTimer = v;
+	}
+
+    public bool GetTimeDisplay()
+    {
+        return showTimeInWords;
+    }
+
+    public void SetTimeDisplay(bool v)
+    {
+        showTimeInWords = v;
+    }
+
+    public bool GetTimeState()
+	{
+        return timeIsPaused;
+	}
+
+    public void SetTimeState(bool v)
+	{
+        timeIsPaused = v;
+	}
+    #endregion
 }
 
