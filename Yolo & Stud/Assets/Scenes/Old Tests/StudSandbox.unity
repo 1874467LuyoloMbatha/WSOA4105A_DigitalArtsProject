@@ -13050,7 +13050,7 @@ PrefabInstance:
       objectReference: {fileID: 930892789}
     - target: {fileID: 1807829252033741788, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.26509616
+      value: -0.2650962
       objectReference: {fileID: 0}
     - target: {fileID: 1807829252275733608, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_Name
@@ -13110,7 +13110,7 @@ PrefabInstance:
       objectReference: {fileID: 257611804}
     - target: {fileID: 1807829252366892621, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.26509616
+      value: -0.2650962
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
@@ -14345,7 +14345,7 @@ PrefabInstance:
       objectReference: {fileID: 1169817025}
     - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
       propertyPath: musicGenre
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
       propertyPath: playBtnImg
@@ -14408,6 +14408,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 25245b73b24d20b46ad2bf0e44a217d2, type: 3}
     - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: jazzMusic.Array.data[0].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: jazzMusic.Array.data[1].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: lofiMusic.Array.data[0].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: lofiMusic.Array.data[1].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
       propertyPath: jazzMusic.Array.data[0].volume
       value: 1
       objectReference: {fileID: 0}
@@ -14447,6 +14463,14 @@ PrefabInstance:
       propertyPath: classicalMusic.Array.data[1].clip
       value: 
       objectReference: {fileID: 8300000, guid: fc5e7be74ece3604894ff300da22c348, type: 3}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: classicalMusic.Array.data[0].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: classicalMusic.Array.data[1].pitch
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
       propertyPath: jazzMusic.Array.data[0].artistName
       value: Unknown

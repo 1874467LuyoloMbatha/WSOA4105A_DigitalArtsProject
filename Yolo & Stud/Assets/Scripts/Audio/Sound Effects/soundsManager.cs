@@ -359,7 +359,7 @@ public class soundsManager : Singleton<soundsManager>
 
     private void Update()
     {
-        Debug.Log(offlineAudioSource.isPlaying);
+      //  Debug.Log(offlineAudioSource.isPlaying);
     }
     private void Start()
     {
