@@ -8,6 +8,11 @@ using System;
 
 public class TimerManager : MonoBehaviour
 {
+    public enum PomodoroStages { Pomodoro, shortBreak, longBreak}
+
+	[Header("Timer Stages")]
+    public PomodoroStages PomodoroSteps;
+
     [Header("External Scripts")]
     Timer timer;
 
@@ -21,8 +26,10 @@ public class TimerManager : MonoBehaviour
     [Header("Floats")]
     [Tooltip("How long should the time run for")]
     [SerializeField] float duration;
+    [Tooltip("How long should the time run for during breaks")]
+    [SerializeField] float shortBreakDuration, longBreakDuration;
     [Tooltip("This will format the text on screeen")]
-    [SerializeField] float timeCap = 3000f;
+    [SerializeField] float timeCap = 3000f, shortTimeCap, longTimeCap;
     [Tooltip("This is the minute cap before timer flashes red")]
     [SerializeField] float flashMinCap = 2f;
     [Tooltip("This is the seconds  cap before timer flashes red")]
@@ -34,7 +41,7 @@ public class TimerManager : MonoBehaviour
 
     void Start()
     {
-        TimerSetUp(duration);
+      //  TimerSetUp(duration);
     }
 
     void TimerSetUp(float duration)
@@ -58,7 +65,9 @@ public class TimerManager : MonoBehaviour
         //set Colors
         defaultColor = timeDisplay.color;
 
-        timeCap = duration * .3f;
+       /* timeCap = duration * .3f;
+        shortTimeCap = duration * .3f;
+        longTimeCap = duration * .3f;*/
 
         //Setting flash values
         flashMinCap = timeCap * .2f;
@@ -67,17 +76,38 @@ public class TimerManager : MonoBehaviour
 
     void Update()
     {
-        timer.TimeTick(Time.deltaTime);
-        UpdateUI(timer.secondsLeft);
+        if (timer != null)
+        {
+            timer.TimeTick(Time.deltaTime);
+            UpdateUI(timer.secondsLeft);
+        }
     }
 
     #region Private Functions
     void HandleTimeEnd()
     {
-        duration = timer.secondsLeft;
+        if (PomodoroSteps == PomodoroStages.Pomodoro)
+            duration = timer.secondsLeft;
+        if (PomodoroSteps == PomodoroStages.shortBreak)
+            shortBreakDuration = timer.secondsLeft;
+        if (PomodoroSteps == PomodoroStages.longBreak)
+            longBreakDuration = timer.secondsLeft;
+
+        if (SettingsMenu.Instance.GetTransition())
+            StagesSetUp();
+		else //If player have this setting off, it will just move to the next stage and wait for input
+		{
+            if (PomodoroSteps == PomodoroStages.Pomodoro)
+                PomodoroSteps = PomodoroStages.shortBreak;
+            if (PomodoroSteps == PomodoroStages.shortBreak)
+                PomodoroSteps = PomodoroStages.longBreak;
+            if (PomodoroSteps == PomodoroStages.longBreak)
+                PomodoroSteps = PomodoroStages.Pomodoro;
+        }
+
 
         timeDisplay.color = defaultColor;
-        timeDisplay.text = "Click Me To Set A Timer";
+        //timeDisplay.text = "Click Me To Set A Timer";
 
         onTimerEnd.Invoke();
 
@@ -89,10 +119,27 @@ public class TimerManager : MonoBehaviour
 
     void UpdateUI(float presentTime)
     {
-        if(duration <= 0f)
-		{
-            return;
-		}
+        if (PomodoroSteps == PomodoroStages.Pomodoro)
+        {
+            if (duration <= 0f)
+            {
+                return;
+            }
+        }
+        if (PomodoroSteps == PomodoroStages.shortBreak)
+        {
+            if (shortBreakDuration <= 0f)
+            {
+                return;
+            }
+        }
+        if (PomodoroSteps == PomodoroStages.longBreak)
+        {
+            if (longBreakDuration <= 0f)
+            {
+                return;
+            }
+        }
         presentTime += 1;
 
         //THis is to diplay the time in a clock format
@@ -101,7 +148,7 @@ public class TimerManager : MonoBehaviour
         float mins = Mathf.FloorToInt(presentTime / 60);
         float secs = Mathf.FloorToInt(presentTime % 60);
 
-        if (presentTime <= 0f)
+        if (presentTime < 0f)
         {
             presentTime = 0f;
             mins = 0f;
@@ -109,7 +156,7 @@ public class TimerManager : MonoBehaviour
         }
 
         //UI quality control
-        if (presentTime <= timeCap || timer.secondsLeft <= 60f)
+        if (!SettingsMenu.Instance.GetTimeDisplay())
             timeDisplay.text = String.Format("{0:00} : {1:00}",mins, secs);
         else
             timeDisplay.text = mins.ToString("00") + " minutes remaining";
@@ -123,11 +170,77 @@ public class TimerManager : MonoBehaviour
         }
         
 	}
+
+    void StagesSetUp()
+	{
+        if (PomodoroSteps == PomodoroStages.Pomodoro)
+        {
+            //duration = timer.secondsLeft;
+
+            if (duration != 0)
+            {
+                TimerSetUp(duration);
+                return;
+            }
+
+            if (shortBreakDuration != 0)
+            {
+                PomodoroSteps = PomodoroStages.shortBreak;
+                TimerSetUp(shortBreakDuration);
+                return;
+            }
+
+            if (shortBreakDuration == 0 && longBreakDuration != 0)
+            {
+                duration = timer.secondsLeft;
+                PomodoroSteps = PomodoroStages.longBreak;
+                TimerSetUp(longBreakDuration);
+                return;
+            }
+        }
+
+        if(PomodoroSteps == PomodoroStages.shortBreak)
+		{
+            if(longBreakDuration != 0)
+			{
+                PomodoroSteps = PomodoroStages.longBreak;
+                TimerSetUp(longBreakDuration);
+                return;
+            }
+		}
+
+
+        if (PomodoroSteps == PomodoroStages.longBreak)
+        {
+            longBreakDuration = timer.secondsLeft;
+
+            if (longBreakDuration == 0)
+            {
+                PomodoroSteps = PomodoroStages.Pomodoro;
+            }
+        }
+    }
 	#endregion
 
 	#region Public Functions
 
-    public void SetTimer(string timeToSet)
+    public void PlayTimer()
+	{
+        if(SettingsMenu.Instance.GetTimeState())
+		{
+            SettingsMenu.Instance.SetTimeState(!SettingsMenu.Instance.GetTimeState());
+            return;
+        }
+
+        StagesSetUp();
+    }
+
+    public void PauseTimer()
+    {
+       SettingsMenu.Instance.SetTimeState(!SettingsMenu.Instance.GetTimeState());
+    }
+
+    public void SetPomoTimer(string timeToSet)
 	{
         
         if (float.TryParse(timeToSet, out duration))
@@ -135,12 +248,42 @@ public class TimerManager : MonoBehaviour
             //Debug.Log("String is the number: " + duration);
 
             duration *= 60;
+            timeCap = duration * .3f;
             //duration = timeToSet.to;
-            TimerSetUp(duration);
+            //  TimerSetUp(duration);
         }
 
 	}
-	#endregion
+
+    public void SetShortBreakTimer(string timeToSet)
+    {
+
+        if (float.TryParse(timeToSet, out shortBreakDuration))
+        {
+            //Debug.Log("String is the number: " + duration);
+
+            shortBreakDuration *= 60;
+            shortTimeCap = shortBreakDuration * .3f;
+            //duration = timeToSet.to;
+            //TimerSetUp(shortBreakDuration);
+        }
+
+    }
+    public void SetLongBreakimer(string timeToSet)
+    {
+
+        if (float.TryParse(timeToSet, out longBreakDuration))
+        {
+            //Debug.Log("String is the number: " + duration);
+
+            longBreakDuration *= 60;
+            longTimeCap = longBreakDuration * .3f;
+            //duration = timeToSet.to;
+            //TimerSetUp(longBreakDuration);
+        }
+
+    }
+    #endregion
 }
 
 /*
