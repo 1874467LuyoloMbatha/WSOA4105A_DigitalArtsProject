@@ -434,14 +434,77 @@ public class soundsManager : Singleton<soundsManager>
 
     void AssignTrackIndex()
     {
-        for (int i = 0; i < lofiMusic.Length; i++)
-        {
-            if (lofiMusic[i].AudioSource.isPlaying)
-            {
-                trackIndex = i;
-            }
-        }
-    }
+		switch (musicGenre)
+		{
+			case MusicGenre.African:
+                for (int i = 0; i < africanMusic.Length; i++)
+                {
+                    if (africanMusic[i].AudioSource.isPlaying)
+                    {
+                        trackIndex = i;
+                    }
+                }
+                break;
+			case MusicGenre.Classical:
+                for (int i = 0; i < classicalMusic.Length; i++)
+                {
+                    if (classicalMusic[i].AudioSource.isPlaying)
+                    {
+                        trackIndex = i;
+                    }
+                }
+                break;
+			case MusicGenre.Jazz:
+                for (int i = 0; i < jazzMusic.Length; i++)
+                {
+                    if (jazzMusic[i].AudioSource.isPlaying)
+                    {
+                        trackIndex = i;
+                    }
+                }
+                break;
+			case MusicGenre.Lofi:
+                for (int i = 0; i < lofiMusic.Length; i++)
+                {
+                    if (lofiMusic[i].AudioSource.isPlaying)
+                    {
+                        trackIndex = i;
+                    }
+                }
+                break;
+			case MusicGenre.Nature:
+                for (int i = 0; i < natureMusic.Length; i++)
+                {
+                    if (natureMusic[i].AudioSource.isPlaying)
+                    {
+                        trackIndex = i;
+                    }
+                }
+                break;
+			case MusicGenre.Relaxation:
+                for (int i = 0; i < relaxationMusic.Length; i++)
+                {
+                    if (relaxationMusic[i].AudioSource.isPlaying)
+                    {
+                        trackIndex = i;
+                    }
+                }
+                break;
+			case MusicGenre.Rock:
+                for (int i = 0; i < rockMusic.Length; i++)
+                {
+                    if (rockMusic[i].AudioSource.isPlaying)
+                    {
+                        trackIndex = i;
+                    }
+                }
+                break;
+			case MusicGenre.Custom:
+				break;
+			default:
+				break;
+		}
+	}
 
     #region Offline Music Logic
     public void PlayPauseAudio()
