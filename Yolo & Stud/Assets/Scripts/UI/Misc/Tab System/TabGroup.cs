@@ -74,7 +74,11 @@ public class TabGroup : MonoBehaviour
         ResetTabs();
 
         if (typeOfButton == ButtonType.sprite)
-            btn.bg.sprite = tabSelected;
+        {
+            // btn.bg.sprite = tabSelected;
+            // btn.buttonLine.sprite = tabSelected;
+            btn.buttonLine.gameObject.SetActive(true);
+        }
         if (typeOfButton == ButtonType.colour)
             btn.bg.color = colorSelected;
 
@@ -157,8 +161,11 @@ public class TabGroup : MonoBehaviour
             if (selectedButton != null && btn == selectedButton)
                 continue;
 
-            if(typeOfButton == ButtonType.sprite)
-                 btn.bg.sprite = tabIdle;
+            if (typeOfButton == ButtonType.sprite)
+            {
+                btn.bg.sprite = tabIdle;
+                btn.buttonLine.gameObject.SetActive(false);
+            }
             if (typeOfButton == ButtonType.colour)
                 btn.bg.color = colorIdle;
 		}

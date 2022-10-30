@@ -87,6 +87,23 @@ public class GameManager : Singleton<GameManager>
 		}
 	}
 
+	public void SwitchForceCustomisingMode()
+	{
+		isCustomising = true;
+		SetCustomising();
+
+		if (gameState == GameState.PlayerCustomiserMode)
+		{
+			mainVirtualCam.Priority = 0;
+			customisingVirtualCamera.Priority = 1;
+		}
+		else
+		{
+			mainVirtualCam.Priority = 1;
+			customisingVirtualCamera.Priority = 0;
+		}
+	}
+
 	public void SetCustomising()
 	{
 		isCustomising = !isCustomising;

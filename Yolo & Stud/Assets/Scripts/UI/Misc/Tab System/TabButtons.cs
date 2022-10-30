@@ -17,6 +17,7 @@ public class TabButtons : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 
 	[Header("Tab Button Data")]
     public Image bg;
+	public Image buttonLine;
 
 	[Header("Back Button")]
 	public bool isBackButton;
@@ -25,6 +26,7 @@ public class TabButtons : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     {
         //Find the Image and assign
         bg = GetComponent<Image>();
+		buttonLine.gameObject.SetActive(false);
 
         tabGroup.Subscribe(this);
     }
