@@ -376,10 +376,14 @@ public class soundsManager : Singleton<soundsManager>
         //Changes rthe text that informs the player if they are connected to Spotify or not
         if (SettingsMenu.Instance.GetMusicMode())
         {
-            musicModeText.text = offlineMusicMode;
+            if (musicModeText != null)
+                musicModeText.text = offlineMusicMode;
         }
         else
-            musicModeText.text = onlineMusicMode;
+        {
+            if (musicModeText != null)
+                musicModeText.text = onlineMusicMode;
+        }
     }
 
     public void UpdateAudioUi()

@@ -14,6 +14,11 @@ public class SettingsMenu : Singleton<SettingsMenu>
     public Slider masterVolume;
     public Slider[] currFXVolume;
 
+    [Header("Screen Related GameObjects")]
+	[Tooltip("Drag Image from Hierachy under Right Panel that controls fullscreen mode")]
+    [SerializeField] Image fullScreenImg;
+	[Tooltip("Drag Sprites from assets to switch between minimise and maximise")]
+    [SerializeField] Sprite maximiseSpr, minimiseSpr;
 
     [Header("Accessibility Settings")]
     public Dropdown[] languageDropDown;
@@ -23,6 +28,8 @@ public class SettingsMenu : Singleton<SettingsMenu>
     public Text[] fontTexts;
     public Slider[] fontTextsSizes;
 
+    [Header("Screen Settings")]
+    [SerializeField] bool fullScreen = true;
 
 	[Header("Audio Settings")]
 	[SerializeField] bool offlineMode = true;
@@ -39,6 +46,8 @@ public class SettingsMenu : Singleton<SettingsMenu>
 	{
         SetUpPrefs();
         UpdateSliderOutput();
+
+        Screen.fullScreen = fullScreen;
 	}
 
     #region Audio & Music
@@ -161,6 +170,21 @@ public class SettingsMenu : Singleton<SettingsMenu>
 	{
         timeIsPaused = v;
 	}
-    #endregion
+	#endregion
+
+	#region Public & Private Screen Related Settings
+
+    public void SetScreenMode()
+	{
+        fullScreen = !fullScreen;
+
+        if (fullScreen)
+            fullScreenImg.sprite = maximiseSpr;
+        else
+            fullScreenImg.sprite = minimiseSpr;
+
+        Screen.fullScreen = fullScreen;
+	}
+	#endregion
 }
 

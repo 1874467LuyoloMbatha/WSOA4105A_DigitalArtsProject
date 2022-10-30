@@ -46,10 +46,137 @@ MonoBehaviour:
   tasks: []
   parentTaskManager: {fileID: 0}
   contentGameObject: {fileID: 0}
-  toDoPrefab: {fileID: 3451573735071977006, guid: 86205f1bc35f0d1498211c9197aaee19, type: 3}
+  toDoPrefab: {fileID: 3451573735071977006, guid: 428b0b252a9384348a9f2664cc0eb942, type: 3}
   inputFields: {fileID: 0}
   temmpBtn: {fileID: 0}
   checkMarkDestroys: 1
+--- !u!1 &1150065988
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1150065989}
+  - component: {fileID: 1150065990}
+  m_Layer: 0
+  m_Name: Ambient Audio Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1150065989
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150065988}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6040976707322955360}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1150065990
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150065988}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &34110190740202510
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,6 +254,7 @@ Transform:
   m_Children:
   - {fileID: 5404566738703071810}
   - {fileID: 3193854761485695443}
+  - {fileID: 1150065989}
   m_Father: {fileID: 4487620104775278912}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -142,7 +270,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cec334bc9a0f31418d9d4f643471314, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicGenre: 1
+  genreDropdown: {fileID: 0}
+  africanMusic: []
+  classicalMusic:
+  - songName: Sad Reflection
+    artistName: Stud
+    clip: {fileID: 8300000, guid: eaf723558b2a3e849b71911456ca2bff, type: 3}
+    volume: 0
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 1
+    AudioSource: {fileID: 0}
+  - songName: Mellow Sweet
+    artistName: Luyolo
+    clip: {fileID: 8300000, guid: fc5e7be74ece3604894ff300da22c348, type: 3}
+    volume: 0
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 1
+    AudioSource: {fileID: 0}
+  jazzMusic:
+  - songName: Brazilian Lover
+    artistName: Unknown
+    clip: {fileID: 8300000, guid: 5482e6583fd54f142acb636eaaf27608, type: 3}
+    volume: 1
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 1
+    AudioSource: {fileID: 0}
+  - songName: Airwaves
+    artistName: Sascha Ende
+    clip: {fileID: 8300000, guid: ce39eadf132367f4c823051beced88de, type: 3}
+    volume: 1
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 1
+    AudioSource: {fileID: 0}
+  lofiMusic:
+  - songName: Devyzed Down
+    artistName: Ghostrifter
+    clip: {fileID: 8300000, guid: 55a0d0fd803c28f469b2f425da09cb33, type: 3}
+    volume: 1
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 1
+    AudioSource: {fileID: 0}
+  - songName: Well Fly
+    artistName: Ghostrifter
+    clip: {fileID: 8300000, guid: 25245b73b24d20b46ad2bf0e44a217d2, type: 3}
+    volume: 1
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 1
+    AudioSource: {fileID: 0}
+  natureMusic: []
+  relaxationMusic: []
+  rockMusic: []
+  customMusic: []
   offlineAudioSource: {fileID: 1315777073}
+  ambienceAudioSource: {fileID: 1150065990}
   soundEffectsSource: {fileID: 197005637}
   sounds:
   - Name: Success
@@ -194,75 +381,18 @@ MonoBehaviour:
     Loop: 0
     PlayOnAwake: 0
     AudioSource: {fileID: 0}
-  offlineMusic:
-  - clip: {fileID: 8300000, guid: 55a0d0fd803c28f469b2f425da09cb33, type: 3}
-    songName: Devyzed Down
-    artistName: GhostRifter
-    volume: 1
-    pitch: 1
-    Loop: 0
-    PlayOnAwake: 1
-    AudioSource: {fileID: 0}
-  - clip: {fileID: 8300000, guid: 25245b73b24d20b46ad2bf0e44a217d2, type: 3}
-    songName: Well Fly
-    artistName: Ghostrifter
-    volume: 1
-    pitch: 1
-    Loop: 0
-    PlayOnAwake: 1
-    AudioSource: {fileID: 0}
-  - clip: {fileID: 8300000, guid: eecc906bc01863744aebb7315bc89763, type: 3}
-    songName: LoFi Chill Hip Hop
-    artistName: Unknown
-    volume: 1
-    pitch: 1
-    Loop: 0
-    PlayOnAwake: 1
-    AudioSource: {fileID: 0}
-  - clip: {fileID: 8300000, guid: 0141b62a17205b744a9c007fca2472f9, type: 3}
-    songName: Missing You
-    artistName: Unknown
-    volume: 1
-    pitch: 1
-    Loop: 0
-    PlayOnAwake: 1
-    AudioSource: {fileID: 0}
-  - clip: {fileID: 8300000, guid: 616130655b58a654f87fd2f94d8aa3b5, type: 3}
-    songName: On My Way
-    artistName: Unknown
-    volume: 1
-    pitch: 1
-    Loop: 0
-    PlayOnAwake: 1
-    AudioSource: {fileID: 0}
-  - clip: {fileID: 8300000, guid: 4d6420198f59f3346b5d94f23c7a6c0d, type: 3}
-    songName: Breathtaking
-    artistName: Purrple Cat
-    volume: 1
-    pitch: 1
-    Loop: 0
-    PlayOnAwake: 1
-    AudioSource: {fileID: 0}
-  - clip: {fileID: 8300000, guid: fd3ffe0bdd1bbf44fa3a6d8af0b1ac26, type: 3}
-    songName: Wild Strawberry
-    artistName: Purrple Cat
-    volume: 1
-    pitch: 1
-    Loop: 0
-    PlayOnAwake: 1
-    AudioSource: {fileID: 0}
-  - clip: {fileID: 8300000, guid: a4d6c4e836da0054a8d8eff63e6d2f28, type: 3}
-    songName: SAX LoFi
-    artistName: Unknown
-    volume: 1
-    pitch: 1
-    Loop: 0
-    PlayOnAwake: 1
-    AudioSource: {fileID: 0}
+  ambienceMusic: []
   playAndPauseBtn: {fileID: 0}
-  playBtnImg: {fileID: 21300000, guid: 465b36d1c47d06e479df037e8ff343de, type: 3}
-  pauseBtnImg: {fileID: 21300000, guid: 9c3093d4a36e9074a94551e11146e256, type: 3}
+  playBtnImg: {fileID: 21300000, guid: b8881db604fe3924dbb3dc56596366c7, type: 3}
+  pauseBtnImg: {fileID: 21300000, guid: df577c1d60e7e6f45994b395654e6152, type: 3}
+  loopBtn: {fileID: 0}
+  loopImg: {fileID: 21300000, guid: 3d87d0f7833074247a67882c94170eed, type: 3}
+  notLoopingImg: {fileID: 21300000, guid: 1c55087debf03644cbb021dd4d32ab34, type: 3}
+  muteBtn: {fileID: 0}
+  unMutedImg: {fileID: 21300000, guid: bdbd96ae825151a4b995ec1426647a50, type: 3}
+  mutedImg: {fileID: 21300000, guid: 5d57130cfd2be744486d6c0d28f29905, type: 3}
   trackIndex: 0
+  genreIndex: 0
   artistName: 
   songName: 
   offlineMusicMode: Playing Music Offline
@@ -273,6 +403,18 @@ MonoBehaviour:
   maxAlarmClockSoundEffect: 6
   isPaused: 1
   isStopped: 0
+  isLooping: 0
+  song:
+    songName: 
+    artistName: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    Loop: 0
+    PlayOnAwake: 0
+    AudioSource: {fileID: 0}
+  songToPlay: {fileID: 0}
+  songToSkip: {fileID: 0}
 --- !u!1 &444677966622398354
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,11 +768,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e3b8af72a0f5049bce94427ce66af5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PomodoroSteps: 0
   timeDisplay: {fileID: 0}
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   timesUpColor: {r: 1, g: 0, b: 0, a: 1}
   duration: 0
+  shortBreakDuration: 0
+  longBreakDuration: 0
   timeCap: 3000
+  shortTimeCap: 0
+  longTimeCap: 0
   flashMinCap: 2
   flashSecCap: 10
   onTimerEnd:
@@ -692,11 +839,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masterVolume: {fileID: 0}
-  currFXVolume: []
+  currFXVolume:
+  - {fileID: 0}
+  - {fileID: 0}
+  fullScreenImg: {fileID: 0}
+  maximiseSpr: {fileID: 21300000, guid: 80e9666bf78a0ed4b957fe40eec7063b, type: 3}
+  minimiseSpr: {fileID: 21300000, guid: 4a31c477259440749bdca691bebba61f, type: 3}
   languageDropDown: []
   fontTexts: []
   fontTextsSizes: []
+  fullScreen: 1
   offlineMode: 1
+  autoTransitionTimer: 1
+  showTimeInWords: 0
+  timeIsPaused: 0
 --- !u!1001 &5540814312837110014
 PrefabInstance:
   m_ObjectHideFlags: 0

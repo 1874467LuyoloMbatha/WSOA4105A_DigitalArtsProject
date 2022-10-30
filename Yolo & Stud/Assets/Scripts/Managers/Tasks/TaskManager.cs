@@ -43,7 +43,8 @@ public class TaskManager : Singleton<TaskManager>
         //makes it possible to open/add a task
         temmpBtn.onClick.AddListener(delegate { AddTask(); });
 
-        parentTaskManager.SetActive(false);
+        if(parentTaskManager != null)
+             parentTaskManager.SetActive(false);
     }
     #region Old & Unused 
     //Old Version

@@ -33,7 +33,12 @@ public class DragWindow : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
 	[SerializeField] float objWidth, objHeight;
 	private void Awake()
 	{
-		bgColor = bgImage.color;
+		if(bgImage == null && this.GetComponent<Image>() != null)
+			bgImage = GetComponent<Image>();
+
+		if(bgImage != null)
+			bgColor = bgImage.color;
+
 		bgAlpha = bgColor.a;
 
 		defaultPos =  rectTransform.anchoredPosition;
