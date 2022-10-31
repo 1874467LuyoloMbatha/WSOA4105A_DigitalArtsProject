@@ -854,34 +854,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 075e842a5527e274595cba51e52001c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ClientID: 6a39d0f09d0d433797766bd5b88b8dce
-  APIScopes:
-  - app-remote-control
-  - playlist-modify-private
-  - playlist-modify-public
-  - playlist-read-collaborative
-  - playlist-read-private
-  - streaming
-  - ugc-image-upload
-  - user-follow-modify
-  - user-follow-read
-  - user-library-modify
-  - user-library-read
-  - user-modify-playback-state
-  - user-read-currently-playing
-  - user-read-email
-  - user-read-playback-position
-  - user-read-playback-state
-  - user-read-private
-  - user-read-recently-played
-  - user-top-read
-  RedirectUri: http://localhost:5000/callback
-  ServerPort: 5000
-  Length: 100
-  Verifier: 
-  TokenSaveType: 0
-  TokenPath: PKCE-credentials.json
-  PlayerPrefsKey: PKCE-credentials
 --- !u!114 &515882942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -894,9 +866,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89aa3cd9589e984391abe1cde2d76ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AuthorizeUserOnStart: 1
-  AuthType: 0
-  _authMethodConfig: {fileID: 0}
 --- !u!114 &637910245 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 637910245, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
