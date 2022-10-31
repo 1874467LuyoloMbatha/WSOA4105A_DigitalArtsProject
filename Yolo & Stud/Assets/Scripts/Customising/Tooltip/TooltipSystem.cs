@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class TooltipSystem : Singleton<TooltipSystem>	
@@ -22,7 +23,12 @@ public class TooltipSystem : Singleton<TooltipSystem>
 		Instance.toolTip.SetText(content, header);
 		Instance.toolTip.gameObject.SetActive(true);
 	}
+	public static void Position(Vector3 pos, float xPOffset, float yOffset)
+	{
+		//RectTransform rectTrans = Instance.toolTip.gameObject.GetComponent<RectTransform>();
+		Instance.toolTip.gameObject.transform.position = new Vector3(pos.x + xPOffset, pos.y + yOffset);
 
+	}
 	public static void ShowColourPicker(string header = "")
 	{
 		//Disable Previous Temporary Object

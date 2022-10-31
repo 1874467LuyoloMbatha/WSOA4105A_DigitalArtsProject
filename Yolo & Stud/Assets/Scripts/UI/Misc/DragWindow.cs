@@ -36,14 +36,18 @@ public class DragWindow : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
 		if(bgImage == null && this.GetComponent<Image>() != null)
 			bgImage = GetComponent<Image>();
 
-		if(bgImage != null)
-			bgColor = bgImage.color;
-
-		bgAlpha = bgColor.a;
+		SetImages();
 
 		defaultPos =  rectTransform.anchoredPosition;
 	}
 
+	public void SetImages()
+	{
+		if (bgImage != null)
+			bgColor = bgImage.color;
+
+		bgAlpha = bgColor.a;
+	}
 	private void Start()
 	{
 		//Get screen bounds

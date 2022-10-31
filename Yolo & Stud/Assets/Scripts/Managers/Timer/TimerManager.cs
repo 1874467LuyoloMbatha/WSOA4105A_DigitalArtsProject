@@ -17,6 +17,8 @@ public class TimerManager : MonoBehaviour
     Timer timer;
 
     [Header("Time Related Variables")]
+    [Tooltip("Assign the timer pause button")]
+    [SerializeField] Button pauseBtn;
     [Tooltip("Assign the text GameObject to display the time")]
     [SerializeField] Text timeDisplay;
     [Tooltip("Assign the colors needed to display the time")]
@@ -28,6 +30,10 @@ public class TimerManager : MonoBehaviour
     [SerializeField] float duration;
     [Tooltip("How long should the time run for during breaks")]
     [SerializeField] float shortBreakDuration, longBreakDuration;
+    [Tooltip("Inputted values")]
+    [SerializeField] float playerDuration, playerShortBreak, playerLongBreak;
+    [Tooltip("Default values for POMODORO")]
+    [SerializeField] float defaultDuration = 1200f, defaultShortBreak = 300f, defaultLongBreak = 900f;
     [Tooltip("This will format the text on screeen")]
     [SerializeField] float timeCap = 3000f, shortTimeCap, longTimeCap;
     [Tooltip("This is the minute cap before timer flashes red")]
@@ -35,13 +41,20 @@ public class TimerManager : MonoBehaviour
     [Tooltip("This is the seconds  cap before timer flashes red")]
     [SerializeField] float flashSecCap = 2f;
 
+    [Header("Integers")]
+    [Tooltip("Track if the timer has repeated")]
+    [SerializeField] int checkIfTimerRan;
+
     [Header("Unity Events")]
     [Tooltip("Assign the action to be taken after the timer finishes")]
     [SerializeField] UnityEvent onTimerEnd = null;
 
     void Start()
     {
-      //  TimerSetUp(duration);
+        //  TimerSetUp(duration);
+        //set Colors
+        defaultColor = timeDisplay.color;
+        timeDisplay.gameObject.GetComponent<Animator>().Play("DisplayIdle");
     }
 
     void TimerSetUp(float duration)
@@ -63,15 +76,28 @@ public class TimerManager : MonoBehaviour
         timer.onTimerEnd += HandleTimeEnd;
 
         //set Colors
-        defaultColor = timeDisplay.color;
+        timeDisplay.color = defaultColor;
 
-       /* timeCap = duration * .3f;
-        shortTimeCap = duration * .3f;
-        longTimeCap = duration * .3f;*/
+        /* timeCap = duration * .3f;
+         shortTimeCap = duration * .3f;
+         longTimeCap = duration * .3f;*/
 
         //Setting flash values
-        flashMinCap = timeCap * .2f;
-        flashSecCap = timeCap * .3f;
+        if (PomodoroSteps == PomodoroStages.Pomodoro)
+        {
+            flashMinCap = timeCap * .2f;
+            flashSecCap = timeCap * .3f;
+        }
+        if (PomodoroSteps == PomodoroStages.shortBreak)
+        {
+            flashMinCap = shortTimeCap * .2f;
+            flashSecCap = shortTimeCap * .3f;
+        }
+        if (PomodoroSteps == PomodoroStages.longBreak)
+        {
+            flashMinCap = longTimeCap * .2f;
+            flashSecCap = longTimeCap * .3f;
+        }
     }
 
     void Update()
@@ -86,23 +112,70 @@ public class TimerManager : MonoBehaviour
     #region Private Functions
     void HandleTimeEnd()
     {
-        if (PomodoroSteps == PomodoroStages.Pomodoro)
-            duration = timer.secondsLeft;
-        if (PomodoroSteps == PomodoroStages.shortBreak)
-            shortBreakDuration = timer.secondsLeft;
-        if (PomodoroSteps == PomodoroStages.longBreak)
-            longBreakDuration = timer.secondsLeft;
+        if(checkIfTimerRan >= 2)
+            SettingsMenu.Instance.SetRestarted(true);
+
+        if (!SettingsMenu.Instance.GetRestarted())
+        {
+            if (PomodoroSteps == PomodoroStages.Pomodoro)
+                duration = timer.secondsLeft;
+            if (PomodoroSteps == PomodoroStages.shortBreak)
+                shortBreakDuration = timer.secondsLeft;
+            if (PomodoroSteps == PomodoroStages.longBreak)
+                longBreakDuration = timer.secondsLeft;
+        }
+        else
+		{
+            timeDisplay.color = defaultColor;
+
+            duration = playerDuration;
+            shortBreakDuration = playerShortBreak;
+            longBreakDuration = playerLongBreak;
+
+            SettingsMenu.Instance.SetTimeState(true);
+            TimerSetUp(duration);
+            UpdateUI(duration);
+		}
+
+        /*else
+		{
+            if (PomodoroSteps == PomodoroStages.Pomodoro)
+                duration = playerDuration;
+            if (PomodoroSteps == PomodoroStages.shortBreak)
+                shortBreakDuration = playerShortBreak;
+            if (PomodoroSteps == PomodoroStages.longBreak)
+                longBreakDuration = playerLongBreak;
+        }*/
+
 
         if (SettingsMenu.Instance.GetTransition())
             StagesSetUp();
 		else //If player have this setting off, it will just move to the next stage and wait for input
 		{
             if (PomodoroSteps == PomodoroStages.Pomodoro)
+            {
                 PomodoroSteps = PomodoroStages.shortBreak;
+               // TimerSetUp(shortBreakDuration);
+                UpdateUI(shortBreakDuration);
+                pauseBtn.onClick.Invoke();
+                SettingsMenu.Instance.SetTimeState(false);
+            }
             if (PomodoroSteps == PomodoroStages.shortBreak)
+            {
                 PomodoroSteps = PomodoroStages.longBreak;
+                // TimerSetUp(shortBreakDuration);
+                UpdateUI(longBreakDuration);
+                pauseBtn.onClick.Invoke();
+                SettingsMenu.Instance.SetTimeState(false);
+            }
             if (PomodoroSteps == PomodoroStages.longBreak)
+            {
                 PomodoroSteps = PomodoroStages.Pomodoro;
+                // TimerSetUp(shortBreakDuration);
+                UpdateUI(duration);
+                pauseBtn.onClick.Invoke();
+                SettingsMenu.Instance.SetTimeState(false);
+            }
         }
 
 
@@ -173,6 +246,20 @@ public class TimerManager : MonoBehaviour
 
     void StagesSetUp()
 	{
+       /* if(!SettingsMenu.Instance.GetTransition())
+            SettingsMenu.Instance.SetTimeState(false);  */
+
+        if(SettingsMenu.Instance.GetFirstTime())
+		{
+            duration = defaultDuration;
+            shortBreakDuration = defaultShortBreak;
+            longBreakDuration = defaultLongBreak;
+            SettingsMenu.Instance.SetFirstTime(false);
+		}
+
+        if (SettingsMenu.Instance.GetRestarted())
+            return;
+
         if (PomodoroSteps == PomodoroStages.Pomodoro)
         {
             //duration = timer.secondsLeft;
@@ -180,43 +267,54 @@ public class TimerManager : MonoBehaviour
             if (duration != 0)
             {
                 TimerSetUp(duration);
-                return;
+               // return;
             }
 
-            if (shortBreakDuration != 0)
+            else if (shortBreakDuration != 0)
             {
-                PomodoroSteps = PomodoroStages.shortBreak;
                 TimerSetUp(shortBreakDuration);
-                return;
+                PomodoroSteps = PomodoroStages.shortBreak;
+               
+               // return;
             }
 
-            if (shortBreakDuration == 0 && longBreakDuration != 0)
+           else if (shortBreakDuration == 0 && longBreakDuration != 0)
             {
+                TimerSetUp(longBreakDuration);
                 duration = timer.secondsLeft;
                 PomodoroSteps = PomodoroStages.longBreak;
-                TimerSetUp(longBreakDuration);
-                return;
+               // return;
             }
         }
 
-        if(PomodoroSteps == PomodoroStages.shortBreak)
+       else if(PomodoroSteps == PomodoroStages.shortBreak)
 		{
-            if(longBreakDuration != 0)
+            if(!SettingsMenu.Instance.GetRestarted() && checkIfTimerRan <= 0)
+			{
+                PomodoroSteps = PomodoroStages.Pomodoro;
+                duration = playerDuration;
+                TimerSetUp(duration);
+                checkIfTimerRan++;
+			}
+            else if(longBreakDuration != 0 && checkIfTimerRan >= 1)
 			{
                 PomodoroSteps = PomodoroStages.longBreak;
                 TimerSetUp(longBreakDuration);
-                return;
+                //return;
             }
 		}
 
 
-        if (PomodoroSteps == PomodoroStages.longBreak)
+        else if (PomodoroSteps == PomodoroStages.longBreak)
         {
             longBreakDuration = timer.secondsLeft;
 
             if (longBreakDuration == 0)
             {
                 PomodoroSteps = PomodoroStages.Pomodoro;
+                checkIfTimerRan = 3;
+                pauseBtn.onClick.Invoke();
+                HandleTimeEnd();
             }
         }
     }
@@ -226,12 +324,18 @@ public class TimerManager : MonoBehaviour
 
     public void PlayTimer()
 	{
-        if(SettingsMenu.Instance.GetTimeState())
+
+        if (!SettingsMenu.Instance.GetFirstTime() && SettingsMenu.Instance.GetRestarted() && SettingsMenu.Instance.GetTimeState())
+        {
+            checkIfTimerRan = 0;
+            SettingsMenu.Instance.SetRestarted(false);
+            SettingsMenu.Instance.SetTimeState(!SettingsMenu.Instance.GetTimeState());
+        }
+        else if (SettingsMenu.Instance.GetTimeState())
 		{
             SettingsMenu.Instance.SetTimeState(!SettingsMenu.Instance.GetTimeState());
             return;
         }
-
         StagesSetUp();
     }
 
@@ -248,7 +352,9 @@ public class TimerManager : MonoBehaviour
             //Debug.Log("String is the number: " + duration);
 
             duration *= 60;
+            playerDuration = duration;
             timeCap = duration * .3f;
+            SettingsMenu.Instance.SetFirstTime(false);
             //duration = timeToSet.to;
             //  TimerSetUp(duration);
         }
@@ -263,7 +369,9 @@ public class TimerManager : MonoBehaviour
             //Debug.Log("String is the number: " + duration);
 
             shortBreakDuration *= 60;
+            playerShortBreak = shortBreakDuration;
             shortTimeCap = shortBreakDuration * .3f;
+            SettingsMenu.Instance.SetFirstTime(false);
             //duration = timeToSet.to;
             //TimerSetUp(shortBreakDuration);
         }
@@ -277,7 +385,9 @@ public class TimerManager : MonoBehaviour
             //Debug.Log("String is the number: " + duration);
 
             longBreakDuration *= 60;
+            playerLongBreak = longBreakDuration;
             longTimeCap = longBreakDuration * .3f;
+            SettingsMenu.Instance.SetFirstTime(false);
             //duration = timeToSet.to;
             //TimerSetUp(longBreakDuration);
         }

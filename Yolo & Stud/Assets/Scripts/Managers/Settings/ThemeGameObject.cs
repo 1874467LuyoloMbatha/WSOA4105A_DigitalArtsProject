@@ -9,15 +9,31 @@ public class ThemeGameObject : MonoBehaviour
 	[Header("Unity Handles")]
 	[Tooltip("Drag Image component from this object to change its colour")]
     public Image themeObject;
-   
+
+    [Header("Booleans")]
+    [Tooltip("Enable of objects that should be off when app starts")]
+    [SerializeField] bool shouldBeOff;
     void Start()
     {
         SettingsMenu.Instance.AddToList(this);
 
-        if (themeObject == null)
-            themeObject = GetComponent<Image>();
+        
+
+       // gameObject.SetActive(shouldBeOff);
     }
 
+	private void OnEnable()
+	{
+        SettingsMenu.Instance.AddToList(this);
+
+        if (themeObject == null && GetComponent<Image>())
+            themeObject = GetComponent<Image>();
+
+        SettingsMenu.Instance.EnableTheme(this);
+
+        if (GetComponent<DragWindow>())
+            GetComponent<DragWindow>().SetImages();
+    }
 
 }
 

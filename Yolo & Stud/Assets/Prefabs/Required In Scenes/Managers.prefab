@@ -768,17 +768,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PomodoroSteps: 0
+  pauseBtn: {fileID: 0}
   timeDisplay: {fileID: 0}
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   timesUpColor: {r: 1, g: 0, b: 0, a: 1}
   duration: 0
   shortBreakDuration: 0
   longBreakDuration: 0
+  playerDuration: 0
+  playerShortBreak: 0
+  playerLongBreak: 0
+  defaultDuration: 1200
+  defaultShortBreak: 300
+  defaultLongBreak: 900
   timeCap: 3000
   shortTimeCap: 0
   longTimeCap: 0
   flashMinCap: 2
   flashSecCap: 10
+  checkIfTimerRan: 0
   onTimerEnd:
     m_PersistentCalls:
       m_Calls:
@@ -853,10 +861,12 @@ MonoBehaviour:
   autoTransitionTimer: 1
   showTimeInWords: 0
   timeIsPaused: 0
+  firstTimeOpening: 0
+  timerHasRestarted: 0
   checkMarkDestroys: 1
   darkMode: 0
   lightTheme: {r: 0.8509804, g: 0.8509804, b: 0.8509804, a: 1}
-  darkTheme: {r: 0.5176471, g: 0.5058824, b: 0.5058824, a: 1}
+  darkTheme: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
 --- !u!1001 &5540814312837110014
 PrefabInstance:
   m_ObjectHideFlags: 0

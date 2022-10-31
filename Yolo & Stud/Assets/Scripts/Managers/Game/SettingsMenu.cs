@@ -41,7 +41,7 @@ public class SettingsMenu : Singleton<SettingsMenu>
     [Header("Timer Settings")]
     [SerializeField] bool autoTransitionTimer = true;
     [SerializeField] bool showTimeInWords = false;
-    [SerializeField] bool timeIsPaused;
+    [SerializeField] bool timeIsPaused, firstTimeOpening, timerHasRestarted;
 
     [Header("General Settings")]
     [Tooltip("This boolean will determine if after clearing a task it disappears or just crossed out")]
@@ -64,6 +64,8 @@ public class SettingsMenu : Singleton<SettingsMenu>
         Screen.fullScreen = fullScreen;
 
         CheckThemeMode();
+
+        firstTimeOpening = true;
 	}
 
     #region Audio & Music
@@ -92,7 +94,7 @@ public class SettingsMenu : Singleton<SettingsMenu>
 
         masterVolume.value = soundsManager.Instance.GetOfflineVolume();
 
-        //Dakr or Light Mode
+        //Dark or Light Mode
         if(PlayerPrefs.HasKey("DarkMode"))
 		{
             if(PlayerPrefs.GetInt("DarkMode") == 1)
@@ -100,6 +102,15 @@ public class SettingsMenu : Singleton<SettingsMenu>
             else if(PlayerPrefs.GetInt("DarkMode") == 0)
                 darkMode= false;
 		}
+
+        if (PlayerPrefs.HasKey("TimeDisplay"))
+        {
+            if (PlayerPrefs.GetInt("TimeDisplay") == 1)
+                showTimeInWords = true;
+            else if (PlayerPrefs.GetInt("TimeDisplay") == 0)
+                showTimeInWords = false;
+        }
+        
     }
 
     public void UpdateSliderOutput()
@@ -175,7 +186,15 @@ public class SettingsMenu : Singleton<SettingsMenu>
 	{
         autoTransitionTimer = v;
 	}
+    public bool GetRestarted()
+    {
+        return timerHasRestarted;
+    }
 
+    public void SetRestarted(bool v)
+    {
+        timerHasRestarted = v;
+    }
     public bool GetTimeDisplay()
     {
         return showTimeInWords;
@@ -184,8 +203,21 @@ public class SettingsMenu : Singleton<SettingsMenu>
     public void SetTimeDisplay(bool v)
     {
         showTimeInWords = v;
+
+        if (showTimeInWords)
+            PlayerPrefs.SetInt("TimeDisplay", 1);
+        else
+            PlayerPrefs.SetInt("TimeDisplay", 0);
+    }
+    public bool GetFirstTime()
+    {
+        return firstTimeOpening;
     }
 
+    public void SetFirstTime(bool v)
+    {
+        firstTimeOpening = v;
+    }
     public bool GetTimeState()
 	{
         return timeIsPaused;
@@ -243,19 +275,41 @@ public class SettingsMenu : Singleton<SettingsMenu>
             if (!darkMode)
             {
                 item.themeObject.color = lightTheme;
+
+                if (item.GetComponent<DragWindow>())
+                    item.GetComponent<DragWindow>().SetImages();
             }
 
             //set dark mode
             if (darkMode)
             {
                 item.themeObject.color = darkTheme;
+
+                if (item.GetComponent<DragWindow>())
+                    item.GetComponent<DragWindow>().SetImages();
             }
+        }
+    }
+
+    public void EnableTheme(ThemeGameObject item)
+	{
+        //set light mode
+        if (!darkMode)
+        {
+            item.themeObject.color = lightTheme;
+        }
+
+        //set dark mode
+        if (darkMode)
+        {
+            item.themeObject.color = darkTheme;
         }
     }
     public void AddToList(ThemeGameObject obj)
     {
         // obj.SetTaskInfo(ta, index);
-        themes.Add(obj);
+        if(!themes.Contains(obj))
+            themes.Add(obj);
     }
     #endregion
 

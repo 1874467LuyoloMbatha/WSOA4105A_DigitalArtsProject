@@ -16,7 +16,7 @@ public class TooltipUI : MonoBehaviour
 	[SerializeField] int wrapLimit;
 
 	[Header("Offset")]
-	[SerializeField] float xOffset, yOffset;
+	public float xOffset, yOffset;
 
 	private void Awake()
 	{
