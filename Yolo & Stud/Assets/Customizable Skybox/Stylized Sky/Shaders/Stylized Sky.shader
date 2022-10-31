@@ -21,6 +21,7 @@
         _SkyGradientTop ("Top", Color) = (0.172549, 0.5686274, 0.6941177, 1)
         _SkyGradientBottom ("Bottom", Color) = (0.764706, 0.8156863, 0.8509805)
         _SkyGradientExponent ("Exponent", float) = 2.5
+
     }
     SubShader
     {
@@ -54,6 +55,7 @@
             float3 _SkyGradientTop;
             float3 _SkyGradientBottom;
             float _SkyGradientExponent;
+
 
             struct appdata
             {

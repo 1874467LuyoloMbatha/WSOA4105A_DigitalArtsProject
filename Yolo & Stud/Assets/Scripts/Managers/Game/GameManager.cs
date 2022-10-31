@@ -10,12 +10,21 @@ public class GameManager : Singleton<GameManager>
 	#region Enums
 	public enum GameState { PlayMode, BuildMode, PlayerCustomiserMode}
     public enum PlayerMode { IdleWalk, Studying, Resting}
+
+	public enum Weather { idle, rain, snow, lightning }
 	#endregion
 
 	#region Variables
 	[Header("States & Enums")]
 	[SerializeField] GameState gameState;
 	[SerializeField] PlayerMode playerMode;
+	[SerializeField] Weather weather;
+
+	[Header("Mood Variables")]
+	[SerializeField] Material defaultSky;
+	[SerializeField] Material currentSky, nightSky, daySky;
+	[SerializeField] GameObject raining, snowing, lightning;
+	[SerializeField] float duration;
 
 	[Header("Unity Handles")]
 	[Tooltip("Drag The Tab Parent here")]
@@ -35,6 +44,7 @@ public class GameManager : Singleton<GameManager>
 	private void Awake()
 	{
 		Application.runInBackground = true;
+		defaultSky = RenderSettings.skybox;
 	}
 	void Start()
     {
@@ -124,6 +134,49 @@ public class GameManager : Singleton<GameManager>
 	public void ExitApplication()
 	{
 		Application.Quit();
+	}
+	#endregion
+
+	#region Atmosphere
+	public void ChangeMood(int v)
+	{
+		weather = (Weather)v;
+
+		switch (weather)
+		{
+			case Weather.idle:
+				raining.SetActive(false);
+				snowing.SetActive(false);
+				lightning.SetActive(false);	
+				break;
+			case Weather.rain:
+				raining.SetActive(true);
+				snowing.SetActive(false);
+				lightning.SetActive(false);
+				break;
+			case Weather.snow:
+				raining.SetActive(false);
+				snowing.SetActive(true);
+				lightning.SetActive(false);
+				break;
+			case Weather.lightning:
+				raining.SetActive(false);
+				snowing.SetActive(false);
+				lightning.SetActive(true);
+				break;
+			default:
+				break;
+		}
+	}
+
+	public void ChangeSky(int v)
+	{
+		if (v == 0)
+			RenderSettings.skybox = defaultSky;
+		if (v == 1)
+			RenderSettings.skybox = daySky;
+		if (v == 2)
+			RenderSettings.skybox = nightSky;
 	}
 	#endregion
 }
