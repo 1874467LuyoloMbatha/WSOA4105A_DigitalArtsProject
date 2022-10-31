@@ -56,6 +56,7 @@ SpriteAtlas:
     - {fileID: 102900000, guid: 76806a8788b157c4abac4234893917c3, type: 3}
     - {fileID: 102900000, guid: 628aa1a5fced97c478a71f3d7ff0e0f3, type: 3}
     - {fileID: 102900000, guid: a1d435960a8d81640b01bf6ca98c09dd, type: 3}
+    - {fileID: 102900000, guid: c26a52db87bbbd148992d6498ff692b7, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -99,6 +100,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: e77c90836ce392c439561bdd55b39a58, type: 3}
   - {fileID: 21300000, guid: 59b8ed9388357cc4c90a64d4877eadf2, type: 3}
   - {fileID: 21300000, guid: 4712c4e3daa99ae41a86b2700d4693d8, type: 3}
+  - {fileID: 21300000, guid: 03913ce346713c6478f97315309929ff, type: 3}
   - {fileID: 21300000, guid: 592259042157b86489d0eadc32142b0c, type: 3}
   - {fileID: 21300000, guid: d291ce443984a9b4189b9ec3793a7107, type: 3}
   - {fileID: 21300000, guid: 2fae7054dd03abb4daf70f264d9052cd, type: 3}
@@ -179,6 +181,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 9e8938bd01ba0f146b20bc13cceeb0fc, type: 3}
   - {fileID: 21300000, guid: 4acdd3ddbe8c72f4786f833b7f70d2ad, type: 3}
   - {fileID: 21300000, guid: 3d7b8bdd76d70114cb3851ac3f2d82fe, type: 3}
+  - {fileID: 21300000, guid: c2d8ae2e5325c474cb06222aa68e61eb, type: 3}
   - {fileID: 21300000, guid: de06093ef4eb50f46b741668cfb5ae98, type: 3}
   - {fileID: 21300000, guid: 809fde3ef85a2ee4cb6519ed5804a704, type: 3}
   - {fileID: 21300000, guid: 649b1e8e4c5cd1e4ea6ae40c4b425f1e, type: 3}
@@ -227,6 +230,7 @@ SpriteAtlas:
   - Control Player
   - minus-square
   - stop
+  - spectrum_chart
   - Exercise
   - cloud-drizzle
   - arrow-right
@@ -307,6 +311,7 @@ SpriteAtlas:
   - cloud-sunny
   - timer-pause
   - DescriptionInputField
+  - Square
   - HeaderLine
   - 3d-rotate
   - Character Creation
