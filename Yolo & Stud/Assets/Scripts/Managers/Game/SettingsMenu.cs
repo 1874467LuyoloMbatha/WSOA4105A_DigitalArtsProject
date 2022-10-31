@@ -1,3 +1,4 @@
+using System.IO;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -10,6 +11,9 @@ using System.Collections.Generic;
 /// </summary>
 public class SettingsMenu : Singleton<SettingsMenu>
 {
+	[Header("External References")]
+    [SerializeField] List<ThemeGameObject> themes = new List<ThemeGameObject>();
+
     [Header("Volume Sliders")]
     public Slider masterVolume;
     public Slider[] currFXVolume;
@@ -38,16 +42,28 @@ public class SettingsMenu : Singleton<SettingsMenu>
     [SerializeField] bool autoTransitionTimer = true;
     [SerializeField] bool showTimeInWords = false;
     [SerializeField] bool timeIsPaused;
-	/// <summary>
-	/// allows player to change volume of music in settings menu through slider
-	/// </summary>
-	/// 
-	private void Start()
+
+    [Header("General Settings")]
+    [Tooltip("This boolean will determine if after clearing a task it disappears or just crossed out")]
+    [SerializeField] bool checkMarkDestroys = true;
+    [Tooltip("This boolean will set the light or dark theme")]
+    [SerializeField] bool darkMode = false;
+    [Tooltip("These two colours are for the themes")]
+    [SerializeField] Color lightTheme, darkTheme;
+
+
+    /// <summary>
+    /// allows player to change volume of music in settings menu through slider
+    /// </summary>
+    /// 
+    private void Start()
 	{
         SetUpPrefs();
         UpdateSliderOutput();
 
         Screen.fullScreen = fullScreen;
+
+        CheckThemeMode();
 	}
 
     #region Audio & Music
@@ -75,6 +91,15 @@ public class SettingsMenu : Singleton<SettingsMenu>
         }
 
         masterVolume.value = soundsManager.Instance.GetOfflineVolume();
+
+        //Dakr or Light Mode
+        if(PlayerPrefs.HasKey("DarkMode"))
+		{
+            if(PlayerPrefs.GetInt("DarkMode") == 1)
+                darkMode = true;
+            else if(PlayerPrefs.GetInt("DarkMode") == 0)
+                darkMode= false;
+		}
     }
 
     public void UpdateSliderOutput()
@@ -186,5 +211,53 @@ public class SettingsMenu : Singleton<SettingsMenu>
         Screen.fullScreen = fullScreen;
 	}
 	#endregion
+
+	#region Public & Private General Settings
+    public void SetTaskMode(bool v)
+	{
+        checkMarkDestroys = v;
+	}
+
+    public bool GetTaskMode()
+	{
+        return checkMarkDestroys;
+	}
+
+    public void SetTheme(bool v)
+	{
+        darkMode = v;
+
+        if(darkMode)
+            PlayerPrefs.SetInt("DarkMode", 1);
+        else
+            PlayerPrefs.SetInt("DarkMode", 0);
+
+        CheckThemeMode();
+	}
+
+    void CheckThemeMode()
+	{
+        foreach (var item in themes)
+        {
+            //set light mode
+            if (!darkMode)
+            {
+                item.themeObject.color = lightTheme;
+            }
+
+            //set dark mode
+            if (darkMode)
+            {
+                item.themeObject.color = darkTheme;
+            }
+        }
+    }
+    public void AddToList(ThemeGameObject obj)
+    {
+        // obj.SetTaskInfo(ta, index);
+        themes.Add(obj);
+    }
+    #endregion
+
 }
 

@@ -49,7 +49,6 @@ MonoBehaviour:
   toDoPrefab: {fileID: 3451573735071977006, guid: 428b0b252a9384348a9f2664cc0eb942, type: 3}
   inputFields: {fileID: 0}
   temmpBtn: {fileID: 0}
-  checkMarkDestroys: 1
 --- !u!1 &1150065988
 GameObject:
   m_ObjectHideFlags: 0
@@ -838,6 +837,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e91315a91d9011429ebee43ac638ef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  themes: []
   masterVolume: {fileID: 0}
   currFXVolume:
   - {fileID: 0}
@@ -853,6 +853,10 @@ MonoBehaviour:
   autoTransitionTimer: 1
   showTimeInWords: 0
   timeIsPaused: 0
+  checkMarkDestroys: 1
+  darkMode: 0
+  lightTheme: {r: 0.8509804, g: 0.8509804, b: 0.8509804, a: 1}
+  darkTheme: {r: 0.5176471, g: 0.5058824, b: 0.5058824, a: 1}
 --- !u!1001 &5540814312837110014
 PrefabInstance:
   m_ObjectHideFlags: 0

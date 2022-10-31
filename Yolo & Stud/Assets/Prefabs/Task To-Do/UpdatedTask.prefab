@@ -329,7 +329,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!114 &3365385372845388345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,6 +345,9 @@ MonoBehaviour:
   gameObjectName: 
   taskIndex: 0
   taskText: {fileID: 5612484855119883291}
+  taskBg: {fileID: 8212568659396801445}
+  defaultColour: {r: 0, g: 0, b: 0, a: 0}
+  finishedColour: {r: 0.39580473, g: 0.9245283, b: 0.13431823, a: 1}
 --- !u!114 &6629044501820624644
 MonoBehaviour:
   m_ObjectHideFlags: 0

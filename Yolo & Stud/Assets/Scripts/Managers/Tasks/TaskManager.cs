@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class TaskManager : Singleton<TaskManager>
 {
-    [Header("Eternal References")]
+    [Header("External References")]
     [SerializeField] List<TaskGameObject> tasks = new List<TaskGameObject>();
 
     [Header("Unity Handles")]
@@ -19,10 +19,6 @@ public class TaskManager : Singleton<TaskManager>
     [SerializeField] GameObject toDoPrefab;
     [SerializeField] InputField inputFields; //for the name and type
     [SerializeField] Button temmpBtn;
-
-    [Header("User Specificc Settings")]
-    [Tooltip("This boolean will determine if after clearing a task it disappears or just crossed out")]
-    [SerializeField] bool checkMarkDestroys = true;
 
     //TO EDIT LATER
     [Header("Storing Data")]
@@ -86,7 +82,7 @@ public class TaskManager : Singleton<TaskManager>
     }
     public void TaskCheckMark(TaskGameObject obj)
     {
-        if (checkMarkDestroys)
+        if (SettingsMenu.Instance.GetTaskMode())
         {
             //Remove from list, delete it
             tasks.Remove(obj);
@@ -96,6 +92,10 @@ public class TaskManager : Singleton<TaskManager>
 
             Destroy(obj.gameObject);
         }
+        else
+		{
+            obj.taskBg.color = obj.finishedColour;
+		}
 
         //Save file
         SaveTaskData();
