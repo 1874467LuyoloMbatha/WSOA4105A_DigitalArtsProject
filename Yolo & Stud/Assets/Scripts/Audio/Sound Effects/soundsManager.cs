@@ -354,7 +354,7 @@ public class soundsManager : Singleton<soundsManager>
         }
         //Offline Music
 
-
+        songToSkip = offlineAudioSource.clip;
 
     }
 
@@ -1034,9 +1034,30 @@ public class soundsManager : Singleton<soundsManager>
     void SortThroughGenre()
 	{
         StopAudio();
-        PlayPauseAudio();
-        NextSong();
-	}
+
+        if (SettingsMenu.Instance.GetAutoPlayMode())
+        {
+            isPaused = false;
+
+            //Change Image
+            if (playAndPauseBtn != null)
+                playAndPauseBtn.sprite = pauseBtnImg;
+
+            offlineAudioSource.Play();
+            NextSong();
+        }
+        else if (!SettingsMenu.Instance.GetAutoPlayMode())
+        {
+            isPaused = true;
+
+            //Change Image
+            if (playAndPauseBtn != null)
+                playAndPauseBtn.sprite = playBtnImg;
+
+            NextSong();
+            offlineAudioSource.Pause();
+        }
+    }
 	#endregion
 
 	//FindObjectOfType<MusicManager>().Play("Name of audio")//
