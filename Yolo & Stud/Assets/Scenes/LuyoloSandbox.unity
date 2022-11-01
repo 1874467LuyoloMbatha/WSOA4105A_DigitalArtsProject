@@ -246,6 +246,38 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1984572219}
     - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: electroMusic.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: electroMusic.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1d3276e6b65c2b543b0d73f13d7bee81, type: 3}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: electroMusic.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6b0a1dbb1ac697d40b750385829f8ebb, type: 3}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: electroMusic.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 680a883d5afc12945a42f4cc1eef8898, type: 3}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: electroMusic.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2241ac062068a5543aef4e5efe0e61b9, type: 3}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: electroMusic.Array.data[4].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9faa8124df1e5f242a263514e32be7dc, type: 3}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: electroMusic.Array.data[5].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 32aaa0ead20cfbc4fa1d3baaaa90ea8e, type: 3}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: electroMusic.Array.data[6].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: e6dbc1dcb83329b438769a2260ac14c2, type: 3}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
       propertyPath: africanMusic.Array.data[0].pitch
       value: 1
       objectReference: {fileID: 0}
@@ -270,12 +302,68 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: electroMusic.Array.data[0].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: electroMusic.Array.data[1].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: electroMusic.Array.data[2].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: electroMusic.Array.data[3].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: electroMusic.Array.data[4].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: electroMusic.Array.data[5].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: electroMusic.Array.data[6].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
       propertyPath: africanMusic.Array.data[1].volume
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
       propertyPath: africanMusic.Array.data[5].songName
       value: Too Far Gone
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: electroMusic.Array.data[0].songName
+      value: Chapter Two
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: electroMusic.Array.data[1].songName
+      value: 'Computer Love '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: electroMusic.Array.data[2].songName
+      value: Electro Pop
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: electroMusic.Array.data[3].songName
+      value: Flow
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: electroMusic.Array.data[4].songName
+      value: 'Password Infinity '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: electroMusic.Array.data[5].songName
+      value: 'Slow Trap '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: electroMusic.Array.data[6].songName
+      value: 'Stranger Things '
       objectReference: {fileID: 0}
     - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
       propertyPath: africanMusic.Array.data[3].artistName
@@ -288,6 +376,34 @@ PrefabInstance:
     - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
       propertyPath: africanMusic.Array.data[5].artistName
       value: Bigvee
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: electroMusic.Array.data[0].artistName
+      value: Leonell Cassio
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: electroMusic.Array.data[1].artistName
+      value: MarkDeeHD
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: electroMusic.Array.data[2].artistName
+      value: 'AlexiAction '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: electroMusic.Array.data[3].artistName
+      value: 'AlexiAction '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: electroMusic.Array.data[4].artistName
+      value: EnvyBardyuzha
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: electroMusic.Array.data[5].artistName
+      value: Anton Vlasov
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: electroMusic.Array.data[6].artistName
+      value: 'Music Unlimited '
       objectReference: {fileID: 0}
     - target: {fileID: 4487620104775278912, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
       propertyPath: m_RootOrder
