@@ -4071,6 +4071,30 @@ PrefabInstance:
       propertyPath: playAndPauseBtn
       value: 
       objectReference: {fileID: 2074038811}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: relaxationMusic.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7a8ffc97256164b44adbde8fa9670793, type: 3}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: relaxationMusic.Array.data[1].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: relaxationMusic.Array.data[1].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: relaxationMusic.Array.data[1].songName
+      value: 'Unknown '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: relaxationMusic.Array.data[1].artistName
+      value: Unknown
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487620104233532781, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: relaxationMusic.Array.data[1].PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4487620104775278912, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
       propertyPath: m_RootOrder
       value: 2
