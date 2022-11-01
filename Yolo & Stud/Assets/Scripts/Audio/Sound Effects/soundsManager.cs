@@ -24,12 +24,13 @@ public class soundsManager : Singleton<soundsManager>
 
     [Header("Audio Sources")]
     [SerializeField] AudioSource offlineAudioSource;
-    [SerializeField] AudioSource ambienceAudioSource;
+    [SerializeField] AudioSource ambienceAudioSource, additionalAmbienceAudioSource;
     [SerializeField] AudioSource soundEffectsSource;
 
     [Header("External References")]
     public Sound[] sounds;
     public OfflineMusic[] ambienceMusic;
+    public AudioClip rainAmbience, rainThunderAmbience, snowAmbience, sunnyAmbience;
 
     [Header("Music Controller Images")]
     [Tooltip("Drag Play/Pause Button GameObject Here")]
@@ -368,6 +369,10 @@ public class soundsManager : Singleton<soundsManager>
         UpdateAudioUi();
         PlayPauseAudio();
         AssignTrackIndex();
+        SettingsMenu.Instance.SetUpPrefs();
+
+        if(sunnyAmbience != null)
+          PlaySunnyAmbience();
     }
 
     #region Ui Stuff
@@ -1035,5 +1040,47 @@ public class soundsManager : Singleton<soundsManager>
 	#endregion
 
 	//FindObjectOfType<MusicManager>().Play("Name of audio")//
+    public void PlayMainAmbience(int v)
+	{
+        if(v == 1)
+		{
+            ambienceAudioSource.clip = ambienceMusic[0].clip;
+            ambienceAudioSource.loop = true;
+            ambienceAudioSource.Play();
+		}
+        if (v == 2)
+        {
+            ambienceAudioSource.clip = ambienceMusic[1].clip;
+            ambienceAudioSource.loop = true;
+            ambienceAudioSource.Play();
+        }
+    }
 
+    public void PlaySunnyAmbience()
+    {
+        additionalAmbienceAudioSource.clip = sunnyAmbience;
+        additionalAmbienceAudioSource.loop = true;
+        additionalAmbienceAudioSource.Play();
+    }
+
+    public void PlayRainAmbience()
+	{
+        additionalAmbienceAudioSource.clip = rainAmbience;
+        additionalAmbienceAudioSource.loop = true;
+        additionalAmbienceAudioSource.Play();
+	}
+
+    public void PlayRainThunderAmbience()
+    {
+        additionalAmbienceAudioSource.clip = rainThunderAmbience;
+        additionalAmbienceAudioSource.loop = true;
+        additionalAmbienceAudioSource.Play();
+    }
+
+    public void PlaySnowAmbience()
+    {
+        additionalAmbienceAudioSource.clip = snowAmbience;
+        additionalAmbienceAudioSource.loop = true;
+        additionalAmbienceAudioSource.Play();
+    }
 }

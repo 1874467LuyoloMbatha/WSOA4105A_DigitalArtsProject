@@ -9,7 +9,7 @@ public class GameManager : Singleton<GameManager>
 {
 	#region Enums
 	public enum GameState { PlayMode, BuildMode, PlayerCustomiserMode}
-    public enum PlayerMode { IdleWalk, Studying, Resting}
+    public enum PlayerMode { IdleWalk, Walking, Studying, Resting, Exercising}
 
 	public enum Weather { idle, rain, snow, lightning }
 	#endregion
@@ -26,6 +26,12 @@ public class GameManager : Singleton<GameManager>
 	[SerializeField] GameObject raining, snowing, lightning;
 	[SerializeField] float duration;
 
+	[Header("Player Variables")]
+	[SerializeField] PlayerStateManager player;
+	[SerializeField] Image controlImage;
+	[SerializeField] Sprite canControlSprite, cannotControlSprite;
+	[SerializeField] Transform desk, bed;
+
 	[Header("Unity Handles")]
 	[Tooltip("Drag The Tab Parent here")]
 	[SerializeField] GameObject tabParent;
@@ -33,6 +39,8 @@ public class GameManager : Singleton<GameManager>
 	[SerializeField] CinemachineVirtualCamera mainVirtualCam;
 	[Tooltip("Drag The Customising Virtual Camera Here!")]
 	[SerializeField] CinemachineVirtualCamera customisingVirtualCamera;
+	[Tooltip("Drag The Desk Virtual Camera Here!")]
+	[SerializeField] CinemachineVirtualCamera deskVirtualCamera;
 
 	[Header("Booleans")]
 	[Tooltip("This will determine if the tab parent will be on or off")]
@@ -45,6 +53,9 @@ public class GameManager : Singleton<GameManager>
 	{
 		Application.runInBackground = true;
 		defaultSky = RenderSettings.skybox;
+
+		if (player == null)
+			player = FindObjectOfType<PlayerStateManager>();
 	}
 	void Start()
     {
@@ -53,6 +64,7 @@ public class GameManager : Singleton<GameManager>
 		//Set The Cameras
 		mainVirtualCam.Priority = 1;
 		customisingVirtualCamera.Priority = 0;
+		deskVirtualCamera.Priority = 0;
 	}
 
    
@@ -81,6 +93,16 @@ public class GameManager : Singleton<GameManager>
 		return gameState;
 	}
 
+	public PlayerMode GetPlayerMode()
+	{
+		return playerMode;
+	}
+
+	public PlayerMode SetPlayerMode(PlayerMode m)
+	{
+		playerMode = m;
+		return playerMode;
+	}
 	public void SwitchToCustomisingMode()
 	{
 		SetCustomising();
@@ -113,7 +135,7 @@ public class GameManager : Singleton<GameManager>
 			customisingVirtualCamera.Priority = 0;
 		}
 	}
-
+	
 	public void SetCustomising()
 	{
 		isCustomising = !isCustomising;
@@ -153,16 +175,19 @@ public class GameManager : Singleton<GameManager>
 				raining.SetActive(true);
 				snowing.SetActive(false);
 				lightning.SetActive(false);
+				soundsManager.Instance.PlayRainAmbience();
 				break;
 			case Weather.snow:
 				raining.SetActive(false);
 				snowing.SetActive(true);
 				lightning.SetActive(false);
+				soundsManager.Instance.PlaySnowAmbience();
 				break;
 			case Weather.lightning:
 				raining.SetActive(false);
 				snowing.SetActive(false);
 				lightning.SetActive(true);
+				soundsManager.Instance.PlayRainThunderAmbience();
 				break;
 			default:
 				break;
@@ -177,6 +202,49 @@ public class GameManager : Singleton<GameManager>
 			RenderSettings.skybox = daySky;
 		if (v == 2)
 			RenderSettings.skybox = nightSky;
+
+		soundsManager.Instance.PlayMainAmbience(v);
+	}
+	#endregion
+
+	#region Player Controls
+	public void EnableDisablePlayerControl()
+	{
+		player.SetPlayerControl(!player.GetPlayerControl());
+		
+		if(player.GetPlayerControl())
+		{
+			if (controlImage != null)
+				controlImage.sprite = canControlSprite;
+		}
+		else
+			if (controlImage != null)
+				controlImage.sprite = cannotControlSprite;
+	}
+
+	public void GoToWork()
+	{
+		playerMode = PlayerMode.Studying;
+
+		player.SetDestination(desk.position);
+	}
+
+	public void GoRest()
+	{
+		playerMode = PlayerMode.Resting;
+
+		player.SetDestination(bed.position);
+
+		mainVirtualCam.Priority = 1;
+		customisingVirtualCamera.Priority = 0;
+		deskVirtualCamera.Priority = 0;
+	}
+
+	public void ChangeToStudyCamera()
+	{
+		mainVirtualCam.Priority = 0;
+		customisingVirtualCamera.Priority = 0;
+		deskVirtualCamera.Priority = 20;
 	}
 	#endregion
 }
