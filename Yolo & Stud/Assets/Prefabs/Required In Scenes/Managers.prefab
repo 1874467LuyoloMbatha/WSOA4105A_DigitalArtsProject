@@ -588,7 +588,63 @@ MonoBehaviour:
     Loop: 0
     PlayOnAwake: 1
     AudioSource: {fileID: 0}
-  electroMusic: []
+  electroMusic:
+  - songName: Chapter Two
+    artistName: Leonell Cassio
+    clip: {fileID: 8300000, guid: 1d3276e6b65c2b543b0d73f13d7bee81, type: 3}
+    volume: 0
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 0
+    AudioSource: {fileID: 0}
+  - songName: 'Computer Love '
+    artistName: MarkDeeHD
+    clip: {fileID: 8300000, guid: 6b0a1dbb1ac697d40b750385829f8ebb, type: 3}
+    volume: 0
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 0
+    AudioSource: {fileID: 0}
+  - songName: Electro Pop
+    artistName: 'AlexiAction '
+    clip: {fileID: 8300000, guid: 680a883d5afc12945a42f4cc1eef8898, type: 3}
+    volume: 0
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 0
+    AudioSource: {fileID: 0}
+  - songName: Flow
+    artistName: 'AlexiAction '
+    clip: {fileID: 8300000, guid: 2241ac062068a5543aef4e5efe0e61b9, type: 3}
+    volume: 0
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 0
+    AudioSource: {fileID: 0}
+  - songName: 'Password Infinity '
+    artistName: EnvyBardyuzha
+    clip: {fileID: 8300000, guid: 9faa8124df1e5f242a263514e32be7dc, type: 3}
+    volume: 0
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 0
+    AudioSource: {fileID: 0}
+  - songName: 'Slow Trap '
+    artistName: Anton Vlasov
+    clip: {fileID: 8300000, guid: 32aaa0ead20cfbc4fa1d3baaaa90ea8e, type: 3}
+    volume: 0
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 0
+    AudioSource: {fileID: 0}
+  - songName: 'Stranger Things '
+    artistName: 'Music Unlimited '
+    clip: {fileID: 8300000, guid: e6dbc1dcb83329b438769a2260ac14c2, type: 3}
+    volume: 0
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 0
+    AudioSource: {fileID: 0}
   relaxationMusic:
   - songName: 'Unknown '
     artistName: Unknown
@@ -1373,6 +1429,7 @@ MonoBehaviour:
   firstTimeOpening: 0
   timerHasRestarted: 0
   checkMarkDestroys: 1
+  autoPlayChangingGenre: 1
   darkMode: 0
   lightTheme: {r: 0.8509804, g: 0.8509804, b: 0.8509804, a: 1}
   darkTheme: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
