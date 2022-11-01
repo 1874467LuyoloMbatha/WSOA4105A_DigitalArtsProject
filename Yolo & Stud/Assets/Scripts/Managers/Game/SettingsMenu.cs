@@ -53,6 +53,8 @@ public class SettingsMenu : Singleton<SettingsMenu>
     [Header("General Settings")]
     [Tooltip("This boolean will determine if after clearing a task it disappears or just crossed out")]
     [SerializeField] bool checkMarkDestroys = true;
+    [Tooltip("This boolean will determine if music plays automatically after switching genres")]
+    [SerializeField] bool autoPlayChangingGenre = true;
     [Tooltip("This boolean will set the light or dark theme")]
     [SerializeField] bool darkMode = false;
     [Tooltip("These two colours are for the themes")]
@@ -396,6 +398,15 @@ public class SettingsMenu : Singleton<SettingsMenu>
         return checkMarkDestroys;
 	}
 
+    public void SetAutoPlayMode(bool v)
+    {
+        autoPlayChangingGenre = v;
+    }
+
+    public bool GetAutoPlayMode()
+    {
+        return autoPlayChangingGenre;
+    }
     public void SetTheme(bool v)
 	{
         darkMode = v;
