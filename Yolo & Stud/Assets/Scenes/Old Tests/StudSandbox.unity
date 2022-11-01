@@ -2648,7 +2648,7 @@ PrefabInstance:
       objectReference: {fileID: 930892789}
     - target: {fileID: 1807829252033741788, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.26509616
+      value: -0.2650962
       objectReference: {fileID: 0}
     - target: {fileID: 1807829252275733608, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_Name
@@ -2708,7 +2708,7 @@ PrefabInstance:
       objectReference: {fileID: 257611804}
     - target: {fileID: 1807829252366892621, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.26509616
+      value: -0.2650962
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
@@ -3178,6 +3178,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 941789685617808696, guid: ce8d7bc0d67427749872cd93863908e4, type: 3}
+      propertyPath: isMoving
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 941789685617808696, guid: ce8d7bc0d67427749872cd93863908e4, type: 3}
       propertyPath: debugText
       value: 
