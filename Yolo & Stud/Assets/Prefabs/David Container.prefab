@@ -23,13 +23,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 930892788}
-  m_LocalRotation: {x: 0, y: 0.9990483, z: 0.043619405, w: 0}
-  m_LocalPosition: {x: 1.49, y: 1.47, z: 1.16}
+  m_LocalRotation: {x: -0.10572961, y: 0.9810193, z: -0.008293875, w: 0.16233826}
+  m_LocalPosition: {x: 0.03, y: 0.92, z: 0.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1134632307103334642}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: -5, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: -1.035, y: 161.318, z: -12.132}
 --- !u!54 &5064613236716982406
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -105,7 +105,7 @@ MonoBehaviour:
   distanceBeforeStopping: 0
   yMousePos: -0.15
   distanceForRay: 100
-  isMoving: 1
+  isMoving: 0
   canControlPlayer: 0
   idlingAnimName: Idle
   walkingAnimName: Walk
