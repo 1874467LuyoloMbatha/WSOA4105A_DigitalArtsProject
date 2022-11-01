@@ -277,49 +277,49 @@ MonoBehaviour:
     artistName: SOFRA
     clip: {fileID: 8300000, guid: 59c68f3f6d5400e4cb0bf03a4fa04e33, type: 3}
     volume: 0
-    pitch: 0
+    pitch: 1
     Loop: 0
-    PlayOnAwake: 0
+    PlayOnAwake: 1
     AudioSource: {fileID: 0}
   - songName: 'African Inspiration '
     artistName: Juliush
     clip: {fileID: 8300000, guid: a2461664ef2223240ab1ee153d01ed2c, type: 3}
     volume: 0
-    pitch: 0
+    pitch: 1
     Loop: 0
-    PlayOnAwake: 0
+    PlayOnAwake: 1
     AudioSource: {fileID: 0}
   - songName: Miyagisama Serengeti Chillwave
     artistName: Miyagisama
     clip: {fileID: 8300000, guid: b614a34dbacebaa469fb0a28f2307e33, type: 3}
     volume: 0
-    pitch: 0
+    pitch: 1
     Loop: 0
-    PlayOnAwake: 0
+    PlayOnAwake: 1
     AudioSource: {fileID: 0}
   - songName: No Love Found
     artistName: bigvee
     clip: {fileID: 8300000, guid: d429ffd8348dd3145a9f306b752db525, type: 3}
     volume: 0
-    pitch: 0
+    pitch: 1
     Loop: 0
-    PlayOnAwake: 0
+    PlayOnAwake: 1
     AudioSource: {fileID: 0}
   - songName: Stressed
     artistName: bigvee
     clip: {fileID: 8300000, guid: 812b6dc78a7f24d4bb79c336e698464d, type: 3}
     volume: 0
-    pitch: 0
+    pitch: 1
     Loop: 0
-    PlayOnAwake: 0
+    PlayOnAwake: 1
     AudioSource: {fileID: 0}
   - songName: Too Far  Gone
     artistName: bigvee
     clip: {fileID: 8300000, guid: 3efe2519c0bede84a8685099afc924c6, type: 3}
     volume: 0
-    pitch: 0
+    pitch: 1
     Loop: 0
-    PlayOnAwake: 0
+    PlayOnAwake: 1
     AudioSource: {fileID: 0}
   - songName: Umlungu
     artistName: John Bartmann
@@ -327,7 +327,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     Loop: 0
-    PlayOnAwake: 0
+    PlayOnAwake: 1
     AudioSource: {fileID: 0}
   - songName: African Bliss
     artistName: John Bartmann
@@ -335,7 +335,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     Loop: 0
-    PlayOnAwake: 0
+    PlayOnAwake: 1
     AudioSource: {fileID: 0}
   classicalMusic:
   - songName: Soft Rain
@@ -588,7 +588,7 @@ MonoBehaviour:
     Loop: 0
     PlayOnAwake: 1
     AudioSource: {fileID: 0}
-  natureMusic: []
+  electroMusic: []
   relaxationMusic:
   - songName: 'Unknown '
     artistName: Unknown
@@ -603,65 +603,65 @@ MonoBehaviour:
     artistName: Tim Kulig
     clip: {fileID: 8300000, guid: 1027ded851980f54bbb4831fc9545c6f, type: 3}
     volume: 0
-    pitch: 0
+    pitch: 1
     Loop: 0
-    PlayOnAwake: 0
+    PlayOnAwake: 1
     AudioSource: {fileID: 0}
-  - songName: 
-    artistName: 
-    clip: {fileID: 0}
+  - songName: Embrace The Wind
+    artistName: Winniethemoog
+    clip: {fileID: 8300000, guid: c48cb821db4519c438b919b17ddb7824, type: 3}
     volume: 0
-    pitch: 0
+    pitch: 1
     Loop: 0
-    PlayOnAwake: 0
+    PlayOnAwake: 1
     AudioSource: {fileID: 0}
-  - songName: 
-    artistName: 
-    clip: {fileID: 0}
+  - songName: Hard Metal Intro
+    artistName: Winniethemoog
+    clip: {fileID: 8300000, guid: 5098e9f1ad023d74fb4f304d6f3573ef, type: 3}
     volume: 0
-    pitch: 0
+    pitch: 1
     Loop: 0
-    PlayOnAwake: 0
+    PlayOnAwake: 1
     AudioSource: {fileID: 0}
-  - songName: 
-    artistName: 
-    clip: {fileID: 0}
+  - songName: 'Motivational Indie Pop Rock '
+    artistName: Winniethemoog
+    clip: {fileID: 8300000, guid: b670054a97d87034ea5b8f5dbaf1548e, type: 3}
     volume: 0
-    pitch: 0
+    pitch: 1
     Loop: 0
-    PlayOnAwake: 0
+    PlayOnAwake: 1
     AudioSource: {fileID: 0}
-  - songName: 
-    artistName: 
-    clip: {fileID: 0}
+  - songName: Pure Rock N Roll
+    artistName: Nakarada
+    clip: {fileID: 8300000, guid: 79f639dd8e6138844aa5008b3e63831b, type: 3}
     volume: 0
-    pitch: 0
+    pitch: 1
     Loop: 0
-    PlayOnAwake: 0
+    PlayOnAwake: 1
     AudioSource: {fileID: 0}
-  - songName: 
-    artistName: 
-    clip: {fileID: 0}
+  - songName: 'Road Trip '
+    artistName: Frank Schroeter
+    clip: {fileID: 8300000, guid: b5bea5c3c2eabed4ab8bddb34ed218ed, type: 3}
     volume: 0
-    pitch: 0
+    pitch: 1
     Loop: 0
-    PlayOnAwake: 0
+    PlayOnAwake: 1
     AudioSource: {fileID: 0}
-  - songName: 
-    artistName: 
-    clip: {fileID: 0}
+  - songName: We love Punk Rock
+    artistName: Winniethemoog
+    clip: {fileID: 8300000, guid: 1e558cc8996bb2044bcf8fe0d22389d4, type: 3}
     volume: 0
-    pitch: 0
+    pitch: 1
     Loop: 0
-    PlayOnAwake: 0
+    PlayOnAwake: 1
     AudioSource: {fileID: 0}
-  - songName: 
-    artistName: 
-    clip: {fileID: 0}
+  - songName: Your Big Rock Concert
+    artistName: Winniethemoog
+    clip: {fileID: 8300000, guid: 78f1131d88c41c843b68f9ea6a0c344e, type: 3}
     volume: 0
-    pitch: 0
+    pitch: 1
     Loop: 0
-    PlayOnAwake: 0
+    PlayOnAwake: 1
     AudioSource: {fileID: 0}
   customMusic: []
   offlineAudioSource: {fileID: 1315777073}
