@@ -12,23 +12,37 @@ public class PlayerMoveState : PlayerBaseState
 	{
 		//distanee
 		//Debug.Log(Vector3.Distance(state.GetCurrentPos(), state.Destination()));
-		if(Vector3.Distance(state.GetCurrentPos(), state.Destination()) <= state.StoppingDistance)
+		if (Vector3.Distance(state.GetCurrentPos(), state.Destination()) <= state.StoppingDistance)
 		{
 			Debug.Log("Reached Destination");
 			state.SetIsMoving(false);
-			SwitchState(factory.Idle());
+			
+			if(GameManager.Instance.GetPlayerMode() == GameManager.PlayerMode.IdleWalk)
+				SwitchState(factory.Idle());
+			else if(GameManager.Instance.GetPlayerMode() == GameManager.PlayerMode.Studying)
+				SwitchState(factory.Working());
+		}
+		else
+		{
+			state.SetIsMoving(true);
+			HandleMovement();
 		}
 		
-		if(GameManager.Instance.GetGameState() == GameManager.GameState.PlayerCustomiserMode)
+	/*	if(GameManager.Instance.GetGameState() == GameManager.GameState.PlayerCustomiserMode)
 		{
 			state.SetIsMoving(false);
 			SwitchState(factory.Idle());
-		}
+		}*/
 
 		if(!state.IsMoving())
 		{
 			state.SetIsMoving(false);
-			SwitchState(factory.Idle());
+			if (GameManager.Instance.GetPlayerMode() == GameManager.PlayerMode.IdleWalk)
+				SwitchState(factory.Idle());
+			else if (GameManager.Instance.GetPlayerMode() == GameManager.PlayerMode.Studying)
+				SwitchState(factory.Working());
+			else if (GameManager.Instance.GetPlayerMode() == GameManager.PlayerMode.Resting)
+				SwitchState(factory.Sleeping());
 		}
 	}
 
@@ -36,6 +50,7 @@ public class PlayerMoveState : PlayerBaseState
 	{
 		//logic for the player moving
 		HandleMovement();
+		GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Walking);
 	}
 
 	public override void ExitState()

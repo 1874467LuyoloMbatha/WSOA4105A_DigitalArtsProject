@@ -402,6 +402,7 @@ MonoBehaviour:
   rainAmbience: {fileID: 8300000, guid: 0056acbcd08766743ba02a6b3fc418b4, type: 3}
   rainThunderAmbience: {fileID: 8300000, guid: 76b9ec41b4329ae42be57ed37ac45ca0, type: 3}
   snowAmbience: {fileID: 8300000, guid: 7d445bc5eaa2cb347af8f12f430c9bd0, type: 3}
+  sunnyAmbience: {fileID: 0}
   playAndPauseBtn: {fileID: 0}
   playBtnImg: {fileID: 21300000, guid: b8881db604fe3924dbb3dc56596366c7, type: 3}
   pauseBtnImg: {fileID: 21300000, guid: df577c1d60e7e6f45994b395654e6152, type: 3}
@@ -489,6 +490,12 @@ MonoBehaviour:
   snowing: {fileID: 0}
   lightning: {fileID: 0}
   duration: 0
+  player: {fileID: 0}
+  controlImage: {fileID: 0}
+  canControlSprite: {fileID: 21300000, guid: 2a8a9fd2af83bd24fa1ab8f520b4475d, type: 3}
+  cannotControlSprite: {fileID: 21300000, guid: 49c24472886c2b941a37dcee34e2a81d, type: 3}
+  desk: {fileID: 0}
+  bed: {fileID: 0}
   tabParent: {fileID: 0}
   mainVirtualCam: {fileID: 0}
   customisingVirtualCamera: {fileID: 0}

@@ -9,7 +9,7 @@ public class GameManager : Singleton<GameManager>
 {
 	#region Enums
 	public enum GameState { PlayMode, BuildMode, PlayerCustomiserMode}
-    public enum PlayerMode { IdleWalk, Studying, Resting}
+    public enum PlayerMode { IdleWalk, Walking, Studying, Resting, Exercising}
 
 	public enum Weather { idle, rain, snow, lightning }
 	#endregion
@@ -25,6 +25,12 @@ public class GameManager : Singleton<GameManager>
 	[SerializeField] Material currentSky, nightSky, daySky;
 	[SerializeField] GameObject raining, snowing, lightning;
 	[SerializeField] float duration;
+
+	[Header("Player Variables")]
+	[SerializeField] PlayerStateManager player;
+	[SerializeField] Image controlImage;
+	[SerializeField] Sprite canControlSprite, cannotControlSprite;
+	[SerializeField] Transform desk, bed;
 
 	[Header("Unity Handles")]
 	[Tooltip("Drag The Tab Parent here")]
@@ -45,6 +51,9 @@ public class GameManager : Singleton<GameManager>
 	{
 		Application.runInBackground = true;
 		defaultSky = RenderSettings.skybox;
+
+		if (player == null)
+			player = FindObjectOfType<PlayerStateManager>();
 	}
 	void Start()
     {
@@ -81,6 +90,16 @@ public class GameManager : Singleton<GameManager>
 		return gameState;
 	}
 
+	public PlayerMode GetPlayerMode()
+	{
+		return playerMode;
+	}
+
+	public PlayerMode SetPlayerMode(PlayerMode m)
+	{
+		playerMode = m;
+		return playerMode;
+	}
 	public void SwitchToCustomisingMode()
 	{
 		SetCustomising();
@@ -182,6 +201,36 @@ public class GameManager : Singleton<GameManager>
 			RenderSettings.skybox = nightSky;
 
 		soundsManager.Instance.PlayMainAmbience(v);
+	}
+	#endregion
+
+	#region Player Controls
+	public void EnableDisablePlayerControl()
+	{
+		player.SetPlayerControl(!player.GetPlayerControl());
+		
+		if(player.GetPlayerControl())
+		{
+			if (controlImage != null)
+				controlImage.sprite = canControlSprite;
+		}
+		else
+			if (controlImage != null)
+				controlImage.sprite = cannotControlSprite;
+	}
+
+	public void GoToWork()
+	{
+		playerMode = PlayerMode.Studying;
+
+		player.SetDestination(desk.position);
+	}
+
+	public void GoRest()
+	{
+		playerMode = PlayerMode.Resting;
+
+		player.SetDestination(bed.position);
 	}
 	#endregion
 }

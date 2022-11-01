@@ -16,7 +16,7 @@ public class PlayerWorkingState : PlayerBaseState
 
 	public override void EnterState()
 	{
-		
+		HandleWorking();
 	}
 
 	public override void ExitState()
@@ -32,6 +32,14 @@ public class PlayerWorkingState : PlayerBaseState
 	public override void UpdateState()
 	{
 		CheckSwitchStates();
+	}
+
+	void HandleWorking()
+	{
+		Debug.Log("Switch Camera + Sit down and work");
+		state.Anim().Play(state.IsWorkingHash);
+		state.Agent().SetDestination(state.Destination());
+		state.Agent().isStopped = false;
 	}
 }
 

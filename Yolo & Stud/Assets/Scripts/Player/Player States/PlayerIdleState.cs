@@ -10,8 +10,15 @@ public class PlayerIdleState : PlayerBaseState
 		: base(ctx, stateFactory) { }
 	public override void CheckSwitchStates()
 	{
+		if (Vector3.Distance(state.GetCurrentPos(), state.Destination()) <= state.StoppingDistance)
+		{
+			state.SetIsMoving(false);
+		}
+		else
+			state.SetIsMoving(true);
+
 		//when the player moves
-		if(state.IsMoving())
+		if (state.IsMoving())
 		{
 			SwitchState(factory.Move());
 		}
@@ -19,8 +26,8 @@ public class PlayerIdleState : PlayerBaseState
 
 	public override void EnterState()
 	{
-		
 		state.Anim().Play(state.IsIdleHash);
+		GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.IdleWalk);
 	}
 
 	public override void ExitState()

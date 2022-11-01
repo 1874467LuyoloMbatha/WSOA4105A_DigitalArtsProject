@@ -15,7 +15,8 @@ public class PlayerSleepingState : PlayerBaseState
 
 	public override void EnterState()
 	{
-		
+		HandleSleeping();
+		GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Resting);
 	}
 
 	public override void ExitState()
@@ -31,6 +32,14 @@ public class PlayerSleepingState : PlayerBaseState
 	public override void UpdateState()
 	{
 		CheckSwitchStates();
+	}
+
+	void HandleSleeping()
+	{
+		Debug.Log("Sleep/Rest now");
+		state.Anim().Play(state.IsRestingHash);
+		state.Agent().SetDestination(state.Destination());
+		state.Agent().isStopped = false;
 	}
 }
 
