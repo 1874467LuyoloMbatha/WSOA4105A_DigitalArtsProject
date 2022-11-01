@@ -16,7 +16,9 @@ public class SettingsMenu : Singleton<SettingsMenu>
 
     [Header("Volume Sliders")]
     public Slider masterVolume;
+    public Slider[] currMusicPlayerVolume;
     public Slider[] currFXVolume;
+    public Slider currAmbienceVolume;
 
     [Header("Screen Related GameObjects")]
 	[Tooltip("Drag Image from Hierachy under Right Panel that controls fullscreen mode")]
@@ -37,6 +39,11 @@ public class SettingsMenu : Singleton<SettingsMenu>
 
 	[Header("Audio Settings")]
 	[SerializeField] bool offlineMode = true;
+    [SerializeField] AudioMixer mainMixer;
+    [SerializeField] string musicMixerMaster = "MasterVolume";
+    [SerializeField] string musicMixerAmbient = "AmbientVolume";
+    [SerializeField] string musicMixerSfx = "SFXVolume";
+    [SerializeField] string musicMixerMainMusic = "MusicPlayer";
 
     [Header("Timer Settings")]
     [SerializeField] bool autoTransitionTimer = true;
@@ -52,11 +59,16 @@ public class SettingsMenu : Singleton<SettingsMenu>
     [SerializeField] Color lightTheme, darkTheme;
 
 
-    /// <summary>
-    /// allows player to change volume of music in settings menu through slider
-    /// </summary>
-    /// 
-    private void Start()
+	/// <summary>
+	/// allows player to change volume of music in settings menu through slider
+	/// </summary>
+	/// 
+
+	 void Awake()
+	{
+        SetUpSliders();
+	}
+	 void Start()
 	{
         SetUpPrefs();
         UpdateSliderOutput();
@@ -70,32 +82,120 @@ public class SettingsMenu : Singleton<SettingsMenu>
 
     #region Audio & Music
 
-    void SetUpPrefs()
-    {
-        if (PlayerPrefs.HasKey("MainBGMusic"))
-        {
-            masterVolume.value = PlayerPrefs.GetFloat("MainBGMusic");
-            soundsManager.Instance.SetOfflineVolume(masterVolume.value);
-        }
-        else
-        {
-            masterVolume.value = soundsManager.Instance.GetOfflineVolume();
-            PlayerPrefs.SetFloat("MainBGMusic", masterVolume.value);
-        }
+    void SetUpSliders()
+	{
+        if(masterVolume != null)
+		{
+            masterVolume.onValueChanged.AddListener(SetMasterLevel);
+		}
 
-
-        if (PlayerPrefs.HasKey("FX"))
+        if (currMusicPlayerVolume != null)
         {
-            foreach (var item in currFXVolume)
+            foreach (var item in currMusicPlayerVolume)
             {
-                item.value = PlayerPrefs.GetFloat("FX");
+                item.onValueChanged.AddListener(SetMainBGLevel);
             }
         }
 
-        masterVolume.value = soundsManager.Instance.GetOfflineVolume();
+        if (currFXVolume != null)
+        {
+            foreach (var item in currFXVolume)
+            {
+                item.onValueChanged.AddListener(SetFXLevel);
+            }
+        }
 
+        if (currAmbienceVolume != null)
+        {
+            currAmbienceVolume.onValueChanged.AddListener(SetAmbienceLevel);
+
+        }
+    }
+    void SetUpPrefs()
+    {
+        if (PlayerPrefs.HasKey(musicMixerMaster))
+        {
+            if (masterVolume != null)
+            {
+                masterVolume.value = PlayerPrefs.GetFloat(musicMixerMaster);
+                mainMixer.SetFloat(musicMixerMaster, Mathf.Log10(masterVolume.value) * 20);
+            }
+        }
+        else
+        {
+            if (masterVolume != null)
+            {
+                PlayerPrefs.SetFloat(musicMixerMaster, masterVolume.value);
+            }
+        }
+
+        if (PlayerPrefs.HasKey(musicMixerMainMusic))
+        {
+            if (currMusicPlayerVolume != null)
+            {
+                foreach (var item in currMusicPlayerVolume)
+                {
+                    item.value = PlayerPrefs.GetFloat(musicMixerMainMusic);
+                    mainMixer.SetFloat(musicMixerMainMusic, Mathf.Log10(item.value) * 20);
+                }
+            }
+        }
+        else
+        {
+
+            if (currMusicPlayerVolume != null)
+            {
+                foreach (var item in currMusicPlayerVolume)
+                {
+                   // item.value = soundsManager.Instance.GetOfflineVolume();
+                    PlayerPrefs.SetFloat(musicMixerMainMusic, item.value);
+                }
+            }
+        }
+
+
+        if (PlayerPrefs.HasKey(musicMixerSfx))
+        {
+            if (currFXVolume != null)
+            {
+                foreach (var item in currFXVolume)
+                {
+                    item.value = PlayerPrefs.GetFloat(musicMixerSfx);
+                    mainMixer.SetFloat(musicMixerSfx, Mathf.Log10(item.value) * 20);
+                }
+            }
+        }
+        else
+        {
+
+            if (currFXVolume != null)
+            {
+                foreach (var item in currFXVolume)
+                {
+                    //item.value = soundsManager.Instance.GetOfflineVolume();
+                    PlayerPrefs.SetFloat(musicMixerSfx, item.value);
+                }
+            }
+        }
+
+        if (PlayerPrefs.HasKey(musicMixerAmbient))
+        {
+            if (currAmbienceVolume != null)
+            {
+                currAmbienceVolume.value = PlayerPrefs.GetFloat(musicMixerAmbient);
+                mainMixer.SetFloat(musicMixerAmbient, Mathf.Log10(currAmbienceVolume.value) * 20);
+            }
+        }
+        else
+        {
+            if (currAmbienceVolume != null)
+            {
+              PlayerPrefs.SetFloat(musicMixerAmbient, currAmbienceVolume.value);
+               
+            }
+        }
         //Dark or Light Mode
-        if(PlayerPrefs.HasKey("DarkMode"))
+        if (PlayerPrefs.HasKey("DarkMode"))
 		{
             if(PlayerPrefs.GetInt("DarkMode") == 1)
                 darkMode = true;
@@ -117,25 +217,65 @@ public class SettingsMenu : Singleton<SettingsMenu>
     {
         soundsManager.Instance.SetOfflineVolume(masterVolume.value);
     }
+
+    public void SetMasterLevel(float v)
+    {
+        //masterVolume.value = v;
+        mainMixer.SetFloat(musicMixerMaster, Mathf.Log10(v) * 20);
+
+        if (masterVolume != null)
+            PlayerPrefs.SetFloat(musicMixerMaster, masterVolume.value);
+
+    }
     public void SetMainBGLevel(float v)
     {
-        masterVolume.value = v;
-        PlayerPrefs.SetFloat("MainBGMusic", masterVolume.value);
+        //masterVolume.value = v;
+        mainMixer.SetFloat(musicMixerMainMusic, Mathf.Log10(v) * 20);
 
-        UpdateSliderOutput();
+        if (currMusicPlayerVolume != null)
+        {
+            foreach (var item in currMusicPlayerVolume)
+            {
+                PlayerPrefs.SetFloat(musicMixerMainMusic, item.value);
+                item.value = PlayerPrefs.GetFloat(musicMixerMainMusic);
+            }
+        }
+      
+
+        //UpdateSliderOutput();
 
         
     }
+    public void SetAmbienceLevel(float v)
+    {
+        //masterVolume.value = v;
+        mainMixer.SetFloat(musicMixerAmbient, Mathf.Log10(v) * 20);
 
+        if(currAmbienceVolume != null)
+          PlayerPrefs.SetFloat(musicMixerAmbient, currAmbienceVolume.value);
+
+       // UpdateSliderOutput();
+
+
+    }
     public void SetFXLevel(float v)
     {
-        foreach (var item in currFXVolume)
+        mainMixer.SetFloat(musicMixerSfx, Mathf.Log10(v) * 20);
+
+        if (currFXVolume != null)
+        {
+            foreach (var item in currFXVolume)
+            {
+                PlayerPrefs.SetFloat(musicMixerSfx, item.value);
+                item.value = PlayerPrefs.GetFloat(musicMixerSfx);
+            }
+        }
+        /*foreach (var item in currFXVolume)
         {
             item.value = v;
-        }
-        UpdateSliderOutput();
+        }*/
+        //UpdateSliderOutput();
 
-        PlayerPrefs.SetFloat("FX", v);
     }
 	#endregion
 
