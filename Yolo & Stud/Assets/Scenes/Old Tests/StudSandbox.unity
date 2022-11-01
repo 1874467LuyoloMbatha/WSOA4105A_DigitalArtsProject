@@ -1861,10 +1861,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SnowParticles
       objectReference: {fileID: 0}
-    - target: {fileID: 4044749106128083076, guid: b64a61ec07bd9d44786289e7f4e6c6da, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b64a61ec07bd9d44786289e7f4e6c6da, type: 3}
 --- !u!4 &1944124080 stripped
@@ -2671,7 +2667,7 @@ PrefabInstance:
       objectReference: {fileID: 930892789}
     - target: {fileID: 42666016, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_Lens.FieldOfView
-      value: 10.80016
+      value: 11.6431
       objectReference: {fileID: 0}
     - target: {fileID: 42666016, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
