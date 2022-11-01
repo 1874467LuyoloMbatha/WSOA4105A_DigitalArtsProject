@@ -8,7 +8,7 @@ using System;
 
 public class soundsManager : Singleton<soundsManager>
 {
-    public enum MusicGenre { African, Classical, Jazz, Lofi, Nature, Relaxation, Rock, Custom }
+    public enum MusicGenre { African, Classical, Jazz, Lofi, Electro, Relaxation, Rock, Custom }
 
     [Header("Genre References")]
     public MusicGenre musicGenre;
@@ -17,7 +17,7 @@ public class soundsManager : Singleton<soundsManager>
     public OfflineMusic[] classicalMusic;
     public OfflineMusic[] jazzMusic;
     public OfflineMusic[] lofiMusic;
-    public OfflineMusic[] natureMusic;
+    public OfflineMusic[] electroMusic;
     public OfflineMusic[] relaxationMusic;
     public OfflineMusic[] rockMusic;
     public OfflineMusic[] customMusic;
@@ -245,8 +245,8 @@ public class soundsManager : Singleton<soundsManager>
 
                 }
                 break;
-            case MusicGenre.Nature:
-                foreach (OfflineMusic soundCurrentlyLookingAt in natureMusic) //The current sound being checked in "sounds" array 
+            case MusicGenre.Electro:
+                foreach (OfflineMusic soundCurrentlyLookingAt in electroMusic) //The current sound being checked in "sounds" array 
                 {
                     if (offlineAudioSource == null)
                     {
@@ -481,10 +481,10 @@ public class soundsManager : Singleton<soundsManager>
                     }
                 }
                 break;
-			case MusicGenre.Nature:
-                for (int i = 0; i < natureMusic.Length; i++)
+			case MusicGenre.Electro:
+                for (int i = 0; i < electroMusic.Length; i++)
                 {
-                    if (natureMusic[i].AudioSource.isPlaying)
+                    if (electroMusic[i].AudioSource.isPlaying)
                     {
                         trackIndex = i;
                     }
@@ -615,14 +615,14 @@ public class soundsManager : Singleton<soundsManager>
             if (trackIndex > lofiMusic.Length - 1)
                 trackIndex = 0;
         }
-        if (musicGenre == MusicGenre.Nature)
+        if (musicGenre == MusicGenre.Electro)
         {
-            songToSkip = natureMusic[trackIndex].clip;
+            songToSkip = electroMusic[trackIndex].clip;
 
             //trackIndex++;
             trackIndex++;
 
-            if (trackIndex > natureMusic.Length - 1)
+            if (trackIndex > electroMusic.Length - 1)
                 trackIndex = 0;
         }
         if (musicGenre == MusicGenre.Relaxation)
@@ -696,14 +696,14 @@ public class soundsManager : Singleton<soundsManager>
             if (trackIndex < 0)
                 trackIndex = lofiMusic.Length - 1;
         }
-        if (musicGenre == MusicGenre.Nature)
+        if (musicGenre == MusicGenre.Electro)
         {
-            songToPlay = natureMusic[trackIndex].clip;
+            songToPlay = electroMusic[trackIndex].clip;
 
             trackIndex--;
 
             if (trackIndex < 0)
-                trackIndex = natureMusic.Length - 1;
+                trackIndex = electroMusic.Length - 1;
         }
         if (musicGenre == MusicGenre.Relaxation)
         {
@@ -752,8 +752,8 @@ public class soundsManager : Singleton<soundsManager>
 			case MusicGenre.Lofi:
                 song = Array.Find(lofiMusic, sound => sound.clip == clip);
                 break;
-			case MusicGenre.Nature:
-                song = Array.Find(natureMusic, sound => sound.clip == clip);
+			case MusicGenre.Electro:
+                song = Array.Find(electroMusic, sound => sound.clip == clip);
                 break;
 			case MusicGenre.Relaxation:
                 song = Array.Find(relaxationMusic, sound => sound.clip == clip);
@@ -875,15 +875,15 @@ public class soundsManager : Singleton<soundsManager>
                     }
                 }
                 break;
-            case MusicGenre.Nature:
-                for (int i = 0; i < natureMusic.Length; i++)
+            case MusicGenre.Electro:
+                for (int i = 0; i < electroMusic.Length; i++)
                 {
-                    int random = UnityEngine.Random.Range(0, natureMusic.Length - 1);
+                    int random = UnityEngine.Random.Range(0, electroMusic.Length - 1);
 
-                    OfflineMusic temp = natureMusic[i];
+                    OfflineMusic temp = electroMusic[i];
 
-                    natureMusic[i] = natureMusic[random];
-                    natureMusic[random] = temp;
+                    electroMusic[i] = electroMusic[random];
+                    electroMusic[random] = temp;
 
                     if (temp.songName == offlineAudioSource.clip.name)
                     {
