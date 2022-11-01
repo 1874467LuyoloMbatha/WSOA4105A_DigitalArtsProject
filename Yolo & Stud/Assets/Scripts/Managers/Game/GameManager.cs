@@ -153,16 +153,19 @@ public class GameManager : Singleton<GameManager>
 				raining.SetActive(true);
 				snowing.SetActive(false);
 				lightning.SetActive(false);
+				soundsManager.Instance.PlayRainAmbience();
 				break;
 			case Weather.snow:
 				raining.SetActive(false);
 				snowing.SetActive(true);
 				lightning.SetActive(false);
+				soundsManager.Instance.PlaySnowAmbience();
 				break;
 			case Weather.lightning:
 				raining.SetActive(false);
 				snowing.SetActive(false);
 				lightning.SetActive(true);
+				soundsManager.Instance.PlayRainThunderAmbience();
 				break;
 			default:
 				break;
@@ -177,6 +180,8 @@ public class GameManager : Singleton<GameManager>
 			RenderSettings.skybox = daySky;
 		if (v == 2)
 			RenderSettings.skybox = nightSky;
+
+		soundsManager.Instance.PlayMainAmbience(v);
 	}
 	#endregion
 }

@@ -66,6 +66,7 @@ public class SettingsMenu : Singleton<SettingsMenu>
 
 	 void Awake()
 	{
+        SetUpPrefs();
         SetUpSliders();
 	}
 	 void Start()
@@ -111,7 +112,7 @@ public class SettingsMenu : Singleton<SettingsMenu>
 
         }
     }
-    void SetUpPrefs()
+    public void SetUpPrefs()
     {
         if (PlayerPrefs.HasKey(musicMixerMaster))
         {
