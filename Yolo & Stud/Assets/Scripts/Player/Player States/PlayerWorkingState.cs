@@ -10,13 +10,18 @@ public class PlayerWorkingState : PlayerBaseState
 		: base(ctx, stateFactory) { }
 	public override void CheckSwitchStates()
 	{
-		
+		if (Vector3.Distance(state.GetCurrentPos(), state.Destination()) <= state.StoppingDistance)
+		{
+			//Debug.Log("Camera Change");
+			GameManager.Instance.ChangeToStudyCamera();
+		}
 	}
 
 
 	public override void EnterState()
 	{
 		HandleWorking();
+		GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Studying);
 	}
 
 	public override void ExitState()

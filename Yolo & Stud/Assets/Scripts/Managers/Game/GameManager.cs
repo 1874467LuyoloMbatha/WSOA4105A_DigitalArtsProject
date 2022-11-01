@@ -39,6 +39,8 @@ public class GameManager : Singleton<GameManager>
 	[SerializeField] CinemachineVirtualCamera mainVirtualCam;
 	[Tooltip("Drag The Customising Virtual Camera Here!")]
 	[SerializeField] CinemachineVirtualCamera customisingVirtualCamera;
+	[Tooltip("Drag The Desk Virtual Camera Here!")]
+	[SerializeField] CinemachineVirtualCamera deskVirtualCamera;
 
 	[Header("Booleans")]
 	[Tooltip("This will determine if the tab parent will be on or off")]
@@ -62,6 +64,7 @@ public class GameManager : Singleton<GameManager>
 		//Set The Cameras
 		mainVirtualCam.Priority = 1;
 		customisingVirtualCamera.Priority = 0;
+		deskVirtualCamera.Priority = 0;
 	}
 
    
@@ -132,7 +135,7 @@ public class GameManager : Singleton<GameManager>
 			customisingVirtualCamera.Priority = 0;
 		}
 	}
-
+	
 	public void SetCustomising()
 	{
 		isCustomising = !isCustomising;
@@ -231,6 +234,17 @@ public class GameManager : Singleton<GameManager>
 		playerMode = PlayerMode.Resting;
 
 		player.SetDestination(bed.position);
+
+		mainVirtualCam.Priority = 1;
+		customisingVirtualCamera.Priority = 0;
+		deskVirtualCamera.Priority = 0;
+	}
+
+	public void ChangeToStudyCamera()
+	{
+		mainVirtualCam.Priority = 0;
+		customisingVirtualCamera.Priority = 0;
+		deskVirtualCamera.Priority = 20;
 	}
 	#endregion
 }

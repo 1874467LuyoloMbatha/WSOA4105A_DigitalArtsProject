@@ -499,6 +499,7 @@ MonoBehaviour:
   tabParent: {fileID: 0}
   mainVirtualCam: {fileID: 0}
   customisingVirtualCamera: {fileID: 0}
+  deskVirtualCamera: {fileID: 0}
   isTabParentOpen: 0
   isCustomising: 0
 --- !u!1 &1002505267737251763

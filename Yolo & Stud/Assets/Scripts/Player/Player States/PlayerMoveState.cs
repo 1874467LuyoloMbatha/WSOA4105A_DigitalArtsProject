@@ -14,12 +14,12 @@ public class PlayerMoveState : PlayerBaseState
 		//Debug.Log(Vector3.Distance(state.GetCurrentPos(), state.Destination()));
 		if (Vector3.Distance(state.GetCurrentPos(), state.Destination()) <= state.StoppingDistance)
 		{
-			Debug.Log("Reached Destination");
+			//Debug.Log("Reached Destination");
 			state.SetIsMoving(false);
 			
 			if(GameManager.Instance.GetPlayerMode() == GameManager.PlayerMode.IdleWalk)
 				SwitchState(factory.Idle());
-			else if(GameManager.Instance.GetPlayerMode() == GameManager.PlayerMode.Studying)
+			if(GameManager.Instance.GetPlayerMode() == GameManager.PlayerMode.Studying)
 				SwitchState(factory.Working());
 		}
 		else
