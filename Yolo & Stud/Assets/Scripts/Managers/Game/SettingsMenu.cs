@@ -128,7 +128,8 @@ public class SettingsMenu : Singleton<SettingsMenu>
         {
             if (masterVolume != null)
             {
-                PlayerPrefs.SetFloat(musicMixerMaster, masterVolume.value);
+                PlayerPrefs.SetFloat(musicMixerMaster, 1);
+                masterVolume.value = PlayerPrefs.GetFloat(musicMixerMaster);
             }
         }
 
@@ -151,7 +152,8 @@ public class SettingsMenu : Singleton<SettingsMenu>
                 foreach (var item in currMusicPlayerVolume)
                 {
                    // item.value = soundsManager.Instance.GetOfflineVolume();
-                    PlayerPrefs.SetFloat(musicMixerMainMusic, item.value);
+                    PlayerPrefs.SetFloat(musicMixerMainMusic,1);
+                    item.value = PlayerPrefs.GetFloat(musicMixerMainMusic);
                 }
             }
         }
@@ -176,7 +178,8 @@ public class SettingsMenu : Singleton<SettingsMenu>
                 foreach (var item in currFXVolume)
                 {
                     //item.value = soundsManager.Instance.GetOfflineVolume();
-                    PlayerPrefs.SetFloat(musicMixerSfx, item.value);
+                    PlayerPrefs.SetFloat(musicMixerSfx, 1);
+                    item.value = PlayerPrefs.GetFloat(musicMixerSfx);
                 }
             }
         }
@@ -193,8 +196,8 @@ public class SettingsMenu : Singleton<SettingsMenu>
         {
             if (currAmbienceVolume != null)
             {
-              PlayerPrefs.SetFloat(musicMixerAmbient, currAmbienceVolume.value);
-               
+              PlayerPrefs.SetFloat(musicMixerAmbient, 1);
+              currAmbienceVolume.value = PlayerPrefs.GetFloat(musicMixerAmbient);
             }
         }
         //Dark or Light Mode
@@ -213,7 +216,14 @@ public class SettingsMenu : Singleton<SettingsMenu>
             else if (PlayerPrefs.GetInt("TimeDisplay") == 0)
                 showTimeInWords = false;
         }
-        
+
+        if (PlayerPrefs.HasKey("AutoPlay"))
+        {
+            if (PlayerPrefs.GetInt("AutoPlay") == 1)
+                autoPlayChangingGenre = true;
+            else if (PlayerPrefs.GetInt("AutoPlay") == 0)
+                autoPlayChangingGenre = false;
+        }
     }
 
     public void UpdateSliderOutput()
@@ -401,6 +411,12 @@ public class SettingsMenu : Singleton<SettingsMenu>
     public void SetAutoPlayMode(bool v)
     {
         autoPlayChangingGenre = v;
+
+        if(autoPlayChangingGenre) 
+            PlayerPrefs.SetInt("AutoPlay", 1);
+        else
+            PlayerPrefs.SetInt("AutoPlay", 0);
+
     }
 
     public bool GetAutoPlayMode()
