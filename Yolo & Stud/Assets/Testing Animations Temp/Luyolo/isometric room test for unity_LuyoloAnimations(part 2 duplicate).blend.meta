@@ -38,8 +38,8 @@ ModelImporter:
       name: Scene
       takeName: Scene
       internalID: 0
-      firstFrame: 260
-      lastFrame: 320
+      firstFrame: 60
+      lastFrame: 103
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
