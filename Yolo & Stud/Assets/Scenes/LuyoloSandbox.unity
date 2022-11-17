@@ -1293,6 +1293,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 988894841783779641, guid: 2c327c05f4ec96c41a9b535a83b61239, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 988894842579502564, guid: 2c327c05f4ec96c41a9b535a83b61239, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9149518800034148161, guid: 2c327c05f4ec96c41a9b535a83b61239, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -2672,6 +2680,14 @@ PrefabInstance:
     - target: {fileID: 1807829252033741787, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: field of view
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807829252033741787, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
+      propertyPath: m_FocalLength
+      value: 20.78461
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807829252033741787, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
+      propertyPath: m_projectionMatrixMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1807829252033741788, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_LocalPosition.x
