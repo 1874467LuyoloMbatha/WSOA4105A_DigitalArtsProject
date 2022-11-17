@@ -104,10 +104,15 @@ public class DragWindow : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
 
 	private void Update()
 	{
-		if(Input.GetKeyDown(KeyCode.R))
+		if (Input.GetKey(KeyCode.LeftControl))
 		{
-			//Reset Pos
-			rectTransform.anchoredPosition = defaultPos;
+			Debug.Log("Control Button");
+			if (Input.GetKeyDown(KeyCode.R))
+			{
+				Debug.Log("Reset Drag Window: " + gameObject.name);
+				//Reset Pos
+				rectTransform.anchoredPosition = defaultPos;
+			}
 		}
 	}
 }
