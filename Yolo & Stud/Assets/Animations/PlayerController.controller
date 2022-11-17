@@ -42,7 +42,8 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 3206159318557831997}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -82,7 +83,7 @@ BlendTree:
     m_DirectBlendParameter: IdleBlend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 4ac2a3d5706c7144a8b8ffe1d6cb3b58, type: 2}
+    m_Motion: {fileID: 7400000, guid: 2046dc58e35ca1240b4e1d66122b6108, type: 2}
     m_Threshold: 2
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -90,7 +91,7 @@ BlendTree:
     m_DirectBlendParameter: IdleBlend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 2046dc58e35ca1240b4e1d66122b6108, type: 2}
+    m_Motion: {fileID: 7400000, guid: 4ac2a3d5706c7144a8b8ffe1d6cb3b58, type: 2}
     m_Threshold: 3
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -184,6 +185,25 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
+--- !u!114 &3206159318557831997
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0622afaf3a48ea44abecef20bf81e5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeUntilIdleChange: 1.5
+  idleTime: 0
+  transitionTime: 0.2
+  numberOfAnimations: 2
+  boredAnim: 0
+  canChange: 0
+  idleParameterName: IdleBlend
 --- !u!1102 &7285639516742487368
 AnimatorState:
   serializedVersion: 6

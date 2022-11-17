@@ -30,13 +30,16 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] string idlingAnimName;
     [SerializeField] string walkingAnimName;
     [SerializeField] string workingAnimName;
+    [SerializeField] string goingToWorkAnimName;
     [SerializeField] string restingAnimName;
     [SerializeField] string exerciseAnimName;
 
     [Header("Animation Integers")]
+    [SerializeField] int numberOfExercisingAnimations;
     int isIdlingHash;
     int isWalkingHash;
     int isWorkingHash;
+    int isGoingToWorkHash;
     int isRestingHash;
     int isExercisingHash;
     #endregion
@@ -53,9 +56,12 @@ public class PlayerManager : MonoBehaviour
    
     void Update()
     {
+       
         HandleRotation();
+        HandleMovingState();
         HandleMoving();
-        CheckStates();
+
+      //  CheckStates();
     }
 
     #region Set-Up
@@ -71,7 +77,9 @@ public class PlayerManager : MonoBehaviour
         isIdlingHash = Animator.StringToHash(idlingAnimName);
         isWalkingHash = Animator.StringToHash(walkingAnimName);
         isWorkingHash = Animator.StringToHash(workingAnimName);
+        isGoingToWorkHash = Animator.StringToHash(goingToWorkAnimName);
         isRestingHash = Animator.StringToHash(restingAnimName);
+        isExercisingHash = Animator.StringToHash(exerciseAnimName);
     }
 
     void GetAllComponents()
@@ -94,13 +102,42 @@ public class PlayerManager : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+               
                 //for the ground
                 if (Physics.Raycast(ray, out RaycastHit hit, distanceForRay, layerYouCanMoveTo))
                 {
                     //  destTrans.transform.position = hit.point;
+                    SetIsMoving(true);
                     destTrans.transform.position = new Vector3(hit.point.x, hit.point.y + yMousePos, hit.point.z);
+                    //GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Walking);
                 }
-                GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Walking);
+
+                //for the desk
+                if (Physics.Raycast(ray, out RaycastHit deskHit, distanceForRay, layerForDesk))
+                {
+                    SetIsMoving(true);
+                    //  destTrans.transform.position = hit.point;
+                    //  destTrans.transform.position = new Vector3(deskHit.point.x, hit.point.y + yMousePos, hit.point.z);
+                    GameManager.Instance.GoToWork();
+                }
+
+                //for the bed
+                if (Physics.Raycast(ray, out RaycastHit bedHit, distanceForRay, layerForBed))
+                {
+                    SetIsMoving(true);
+                    //  destTrans.transform.position = hit.point;
+                    //  destTrans.transform.position = new Vector3(deskHit.point.x, hit.point.y + yMousePos, hit.point.z);
+                    GameManager.Instance.GoRest();
+                }
+
+                //for the couch
+                if (Physics.Raycast(ray, out RaycastHit couchHit, distanceForRay, layerForCouch))
+                {
+                    SetIsMoving(true);
+                    //  destTrans.transform.position = hit.point;
+                    //  destTrans.transform.position = new Vector3(deskHit.point.x, hit.point.y + yMousePos, hit.point.z);
+                    GameManager.Instance.GoToCouch();
+                }
             }
         }
     }
@@ -136,6 +173,8 @@ public class PlayerManager : MonoBehaviour
             HandleSleepingState();
         if (GameManager.Instance.GetPlayerMode() == GameManager.PlayerMode.Exercising)
             HandleExercisingState();
+        if (GameManager.Instance.GetPlayerMode() == GameManager.PlayerMode.Couch)
+            HandleExercisingState();
 
     }
     //Handle Idle
@@ -149,56 +188,54 @@ public class PlayerManager : MonoBehaviour
     }
     void HandleIdle()
     {
+        SetIsInState(false);
         Anim().Play(isIdlingHash);
         Agent().SetDestination(Destination());
-        Agent().isStopped = false;
+        Agent().isStopped = true;
 
         GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.IdleWalk);
     }
     public void HandleMovingState()
     {
-        //distanee
-        //Debug.Log(Vector3.Distance(state.GetCurrentPos(), state.Destination()));
-        if (Vector3.Distance(GetCurrentPos(), Destination()) <= StoppingDistance)
+        if (isMoving)
         {
-            //Debug.Log("Reached Destination");
-            SetIsMoving(false);
 
-            if (GameManager.Instance.GetPlayerMode() == GameManager.PlayerMode.IdleWalk)
-               HandleIdleState();
-            if (GameManager.Instance.GetPlayerMode() == GameManager.PlayerMode.Studying)
-                HandleWorkingState();
-        }
-        else
-        {
-            SetIsMoving(true);
-            HandleMovement();
-        }
-
-        /*	if(GameManager.Instance.GetGameState() == GameManager.GameState.PlayerCustomiserMode)
+            //distanee
+            //Debug.Log(Vector3.Distance(state.GetCurrentPos(), state.Destination()));
+            if (Vector3.Distance(GetCurrentPos(), Destination()) <= StoppingDistance)
             {
-                state.SetIsMoving(false);
-                SwitchState(factory.Idle());
-            }*/
+                //Debug.Log("Reached Destination");
+                SetIsMoving(false);
+
+                CheckStates();
+            }
+            else
+            {
+                SetIsMoving(true);
+                HandleMovement();
+            }
+
+            /*	if(GameManager.Instance.GetGameState() == GameManager.GameState.PlayerCustomiserMode)
+                {
+                    state.SetIsMoving(false);
+                    SwitchState(factory.Idle());
+                }*/
+        }
 
         if (!IsMoving())
         {
             SetIsMoving(false);
-            if (GameManager.Instance.GetPlayerMode() == GameManager.PlayerMode.IdleWalk)
-                HandleIdleState();
-            else if (GameManager.Instance.GetPlayerMode() == GameManager.PlayerMode.Studying)
-                HandleWorkingState();
-            else if (GameManager.Instance.GetPlayerMode() == GameManager.PlayerMode.Resting)
-                HandleSleepingState();
+            CheckStates();
         }
     }
     void HandleMovement()
     {
+        SetIsInState(true);
         Anim().Play(IsWalkingHash);
         Agent().SetDestination(Destination());
         Agent().isStopped = false;
 
-        GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Walking);
+       // GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Walking);
     }
 
     public void HandleWorkingState()
@@ -207,17 +244,25 @@ public class PlayerManager : MonoBehaviour
         {
             //Debug.Log("Camera Change");
             HandleWorking();
-            GameManager.Instance.ChangeToStudyCamera();
+          
         }
     }
     void HandleWorking()
     {
         Debug.Log("Switch Camera + Sit down and work");
+        SetIsInState(true);
         Anim().Play(IsWorkingHash);
         Agent().SetDestination(Destination());
-        Agent().isStopped = false;
+        Agent().isStopped = true;
 
         GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Studying);
+    }
+
+    //Call through animation events
+    public void ChangeWorkingCamera()
+	{
+        Anim().Play(IsGoingToWorkHash);
+        GameManager.Instance.ChangeToStudyCamera();
     }
     public void HandleSleepingState()
 	{
@@ -225,10 +270,11 @@ public class PlayerManager : MonoBehaviour
 	}
     void HandleSleeping()
     {
+        SetIsInState(true);
         Debug.Log("Sleep/Rest now");
         Anim().Play(IsRestingHash);
         Agent().SetDestination(Destination());
-        Agent().isStopped = false;
+        Agent().isStopped = true;
 
         GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Resting);
     }
@@ -239,13 +285,31 @@ public class PlayerManager : MonoBehaviour
     }
     void HandleExercise()
     {
+        SetIsInState(true);
         Debug.Log("Sleep/Rest now");
-        Anim().Play(IsExercisingHash);
+        numberOfExercisingAnimations = Random.Range(0, numberOfExercisingAnimations + 1);
+        Anim().Play(IsExercisingHash + numberOfExercisingAnimations.ToString());
         Agent().SetDestination(Destination());
-        Agent().isStopped = false;
+        Agent().isStopped = true;
 
         GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Exercising);
     }
+
+    public void HandleCouchState()
+    {
+        HandleCouch();
+    }
+    void HandleCouch()
+    {
+        SetIsInState(true);
+        Debug.Log("Couch/Rest now");
+        Anim().Play(IsRestingHash);
+        Agent().SetDestination(Destination());
+        Agent().isStopped = false;
+
+        GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Resting);
+    }
+
     #region Referenced Outside Of Script
     public NavMeshAgent Agent()
     {
@@ -303,6 +367,7 @@ public class PlayerManager : MonoBehaviour
     public string IsIdleHash { get { return idlingAnimName; } }
     public string IsWalkingHash { get { return walkingAnimName; } }
     public string IsWorkingHash { get { return workingAnimName; } }
+    public string IsGoingToWorkHash { get { return goingToWorkAnimName; } }
 
     public string IsRestingHash { get { return restingAnimName; } }
 

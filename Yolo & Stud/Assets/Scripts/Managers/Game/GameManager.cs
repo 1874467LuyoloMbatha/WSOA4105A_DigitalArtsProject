@@ -9,7 +9,7 @@ public class GameManager : Singleton<GameManager>
 {
 	#region Enums
 	public enum GameState { PlayMode, BuildMode, PlayerCustomiserMode}
-    public enum PlayerMode { IdleWalk, Walking, Studying, Resting, Exercising}
+    public enum PlayerMode { IdleWalk, Studying, Resting, Exercising, Couch}
 
 	public enum Weather { idle, rain, snow, lightning }
 	#endregion
@@ -30,7 +30,7 @@ public class GameManager : Singleton<GameManager>
 	[SerializeField] PlayerStateManager player;
 	[SerializeField] Image controlImage;
 	[SerializeField] Sprite canControlSprite, cannotControlSprite;
-	[SerializeField] Transform desk, bed;
+	[SerializeField] Transform desk, bed, couch;
 
 	[Header("Unity Handles")]
 	[Tooltip("Drag The Tab Parent here")]
@@ -224,13 +224,22 @@ public class GameManager : Singleton<GameManager>
 
 	public void GoToWork()
 	{
+		player.SetIsMoving(true);
 		playerMode = PlayerMode.Studying;
 
 		player.SetDestination(desk.position);
 	}
 
+	public void GoToCouch()
+	{
+		player.SetIsMoving(true);
+		playerMode = PlayerMode.Couch;
+
+		player.SetDestination(couch.position);
+	}
 	public void GoRest()
 	{
+		player.SetIsMoving(true);
 		playerMode = PlayerMode.Resting;
 
 		player.SetDestination(bed.position);
