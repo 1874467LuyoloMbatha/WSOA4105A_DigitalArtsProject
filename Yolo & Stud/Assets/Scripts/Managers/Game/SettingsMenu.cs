@@ -60,13 +60,23 @@ public class SettingsMenu : Singleton<SettingsMenu>
     [Tooltip("These two colours are for the themes")]
     [SerializeField] Color lightTheme, darkTheme;
 
+    [Header("Display Settings")]
+    [Tooltip("This dropdown holdsal the available resolutions")]
+    [SerializeField] Dropdown resolutionDropdown;
+    [Tooltip("This is to save the player's options")]
+    [SerializeField] string resolutionPref = "Resolution";
+    [Tooltip("This is to save the player's options")]
+    [SerializeField] string qualityLevelPref = "QualityLevel";
+    [Tooltip("Find current resolution")]
+    [SerializeField] int currentResolution = 0;
+    [Tooltip("This array holds all the available resolutions the player has")]
+    Resolution[] resolutions;
+    /// <summary>
+    /// allows player to change volume of music in settings menu through slider
+    /// </summary>
+    /// 
 
-	/// <summary>
-	/// allows player to change volume of music in settings menu through slider
-	/// </summary>
-	/// 
-
-	 void Awake()
+    void Awake()
 	{
         SetUpPrefs();
         SetUpSliders();
@@ -74,6 +84,8 @@ public class SettingsMenu : Singleton<SettingsMenu>
 	 void Start()
 	{
         SetUpPrefs();
+        FindDisplayResolutions();
+        SetUpDisplayPrefs();
         UpdateSliderOutput();
 
         Screen.fullScreen = fullScreen;
@@ -384,6 +396,17 @@ public class SettingsMenu : Singleton<SettingsMenu>
 
 	#region Public & Private Screen Related Settings
 
+    public void SetScreenModeBool(bool v)
+	{
+        fullScreen = v;
+
+        if (fullScreen)
+            fullScreenImg.sprite = maximiseSpr;
+        else
+            fullScreenImg.sprite = minimiseSpr;
+
+        Screen.fullScreen = fullScreen;
+    }
     public void SetScreenMode()
 	{
         fullScreen = !fullScreen;
@@ -479,7 +502,62 @@ public class SettingsMenu : Singleton<SettingsMenu>
         if(!themes.Contains(obj))
             themes.Add(obj);
     }
-    #endregion
+	#endregion
 
+	#region Public & Private Display Settings
+   
+    void FindDisplayResolutions()
+	{
+        //Add all available resolutions to array
+        resolutions = Screen.resolutions;
+
+        //Clear Dropdown First
+        resolutionDropdown.ClearOptions();
+
+       //To store our resolutions
+        List<string> displayResolutions = new List<string>();
+
+		for (int i = 0; i < resolutions.Length; i++)
+		{
+            string option = resolutions[i].width + " x " + resolutions[i].height + " @ " + resolutions[i].refreshRate + "hz";
+            displayResolutions.Add(option);
+
+			//Set Current resolutioon by checking whthere they are equal
+			if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height && resolutions[i].refreshRate == Screen.currentResolution.refreshRate)
+			{
+                if (PlayerPrefs.HasKey(resolutionPref))
+                    currentResolution = PlayerPrefs.GetInt(resolutionPref);
+                else
+                    currentResolution = i;
+			}
+        }
+
+        //Add resolutions we need
+        resolutionDropdown.AddOptions(displayResolutions);
+        resolutionDropdown.value = currentResolution;
+        resolutionDropdown.RefreshShownValue();
+        SetResolution(currentResolution);
+	}
+    void SetUpDisplayPrefs()
+	{
+        //Set Quality Level 
+        if(PlayerPrefs.HasKey(qualityLevelPref))
+		{
+            SetGraphicsQuality(PlayerPrefs.GetInt(qualityLevelPref));
+		}
+	}
+    public void SetGraphicsQuality(int index)
+	{
+        QualitySettings.SetQualityLevel(index);
+        PlayerPrefs.SetInt(qualityLevelPref, index);
+	}
+    public void SetResolution(int index)
+    {
+        Resolution res = resolutions[index];
+        Screen.SetResolution(res.width, res.height, Screen.fullScreen);
+        PlayerPrefs.SetInt(resolutionPref, index);
+        currentResolution = index;
+    }
+    #endregion
 }
 
