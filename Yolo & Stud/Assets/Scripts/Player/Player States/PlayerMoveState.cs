@@ -50,7 +50,7 @@ public class PlayerMoveState : PlayerBaseState
 	{
 		//logic for the player moving
 		HandleMovement();
-		GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Walking);
+	//	GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Walking);
 	}
 
 	public override void ExitState()

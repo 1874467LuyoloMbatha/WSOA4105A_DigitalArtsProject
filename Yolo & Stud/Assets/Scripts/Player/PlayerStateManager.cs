@@ -116,7 +116,7 @@ public class PlayerStateManager : MonoBehaviour
                   //  destTrans.transform.position = hit.point;
                     destTrans.transform.position = new Vector3(hit.point.x, hit.point.y + yMousePos, hit.point.z);
                 }
-                GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Walking);
+               // GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Walking);
             }
         }
 	}

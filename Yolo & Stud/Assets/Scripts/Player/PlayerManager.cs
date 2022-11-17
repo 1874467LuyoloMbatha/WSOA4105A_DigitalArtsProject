@@ -106,6 +106,7 @@ public class PlayerManager : MonoBehaviour
                 //for the ground
                 if (Physics.Raycast(ray, out RaycastHit hit, distanceForRay, layerYouCanMoveTo))
                 {
+                    Debug.Log("Ground");
                     //  destTrans.transform.position = hit.point;
                     SetIsMoving(true);
                     destTrans.transform.position = new Vector3(hit.point.x, hit.point.y + yMousePos, hit.point.z);
@@ -115,6 +116,7 @@ public class PlayerManager : MonoBehaviour
                 //for the desk
                 if (Physics.Raycast(ray, out RaycastHit deskHit, distanceForRay, layerForDesk))
                 {
+                    Debug.Log("Desk");
                     SetIsMoving(true);
                     //  destTrans.transform.position = hit.point;
                     //  destTrans.transform.position = new Vector3(deskHit.point.x, hit.point.y + yMousePos, hit.point.z);
@@ -124,6 +126,7 @@ public class PlayerManager : MonoBehaviour
                 //for the bed
                 if (Physics.Raycast(ray, out RaycastHit bedHit, distanceForRay, layerForBed))
                 {
+                    Debug.Log("Bed");
                     SetIsMoving(true);
                     //  destTrans.transform.position = hit.point;
                     //  destTrans.transform.position = new Vector3(deskHit.point.x, hit.point.y + yMousePos, hit.point.z);
@@ -133,6 +136,7 @@ public class PlayerManager : MonoBehaviour
                 //for the couch
                 if (Physics.Raycast(ray, out RaycastHit couchHit, distanceForRay, layerForCouch))
                 {
+                    Debug.Log("Couch");
                     SetIsMoving(true);
                     //  destTrans.transform.position = hit.point;
                     //  destTrans.transform.position = new Vector3(deskHit.point.x, hit.point.y + yMousePos, hit.point.z);
@@ -174,7 +178,11 @@ public class PlayerManager : MonoBehaviour
         if (GameManager.Instance.GetPlayerMode() == GameManager.PlayerMode.Exercising)
             HandleExercisingState();
         if (GameManager.Instance.GetPlayerMode() == GameManager.PlayerMode.Couch)
-            HandleExercisingState();
+            HandleCouchState();
+        if (GameManager.Instance.GetPlayerMode() == GameManager.PlayerMode.Walking)
+            HandleIdleState();
+
+        DebugText(GameManager.Instance.GetPlayerMode().ToString());
 
     }
     //Handle Idle
@@ -206,6 +214,7 @@ public class PlayerManager : MonoBehaviour
             {
                 //Debug.Log("Reached Destination");
                 SetIsMoving(false);
+                SetIsInState(false);
 
                 CheckStates();
             }
@@ -235,7 +244,7 @@ public class PlayerManager : MonoBehaviour
         Agent().SetDestination(Destination());
         Agent().isStopped = false;
 
-       // GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Walking);
+       GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Walking);
     }
 
     public void HandleWorkingState()
@@ -307,7 +316,7 @@ public class PlayerManager : MonoBehaviour
         Agent().SetDestination(Destination());
         Agent().isStopped = false;
 
-        GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Resting);
+        GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Couch);
     }
 
     #region Referenced Outside Of Script

@@ -44,7 +44,6 @@ public class ColourPickerTrigger : MonoBehaviour, IPointerEnterHandler, IPointer
 
 		canEscape = true;
 		temp.GetComponent<InteractableObject>().StopHighlight();
-
 	}
 
 	private void OnMouseOver()
