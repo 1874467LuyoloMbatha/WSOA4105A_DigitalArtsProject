@@ -807,6 +807,7 @@ MonoBehaviour:
   genreIndex: 0
   artistName: 
   songName: 
+  genreStoragePrefs: GenreIndex
   offlineMusicMode: Playing Music Offline
   onlineMusicMode: Playing Music On Spotify
   musicModeText: {fileID: 0}
