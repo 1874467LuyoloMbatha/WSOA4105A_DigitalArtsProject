@@ -57,6 +57,7 @@ SpriteAtlas:
     - {fileID: 102900000, guid: 628aa1a5fced97c478a71f3d7ff0e0f3, type: 3}
     - {fileID: 102900000, guid: a1d435960a8d81640b01bf6ca98c09dd, type: 3}
     - {fileID: 102900000, guid: c26a52db87bbbd148992d6498ff692b7, type: 3}
+    - {fileID: 102900000, guid: 41ec33e1f0f5f0946ac40cc249a43a06, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -73,6 +74,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d2b12eb0d28c6a7489b1b2ab3ab4fe32, type: 3}
   - {fileID: 21300000, guid: 972467113143f584f95b9c2b86bb0bae, type: 3}
   - {fileID: 21300000, guid: 88103b3199defcb458dc9444611f7020, type: 3}
+  - {fileID: 21300000, guid: efa44871ddaa57f41804ba59db05b210, type: 3}
   - {fileID: 21300000, guid: 3b2948a196349ce4699e7a94b81d96de, type: 3}
   - {fileID: 21300000, guid: 20c16cb15d8b0f449bd5f3db640c8baa, type: 3}
   - {fileID: 21300000, guid: 4516c6c1ac0f4014ab6e416d501ec950, type: 3}
@@ -95,6 +97,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 9370f3e225969f74cafe006c6767fcca, type: 3}
   - {fileID: 21300000, guid: 9df7a5f2cfbcd4e419baf86a619a4bf0, type: 3}
   - {fileID: 21300000, guid: e854910307af37946841eee7c405542f, type: 3}
+  - {fileID: 21300000, guid: c85dd303b79c5864ba32553d0c0352a3, type: 3}
   - {fileID: 21300000, guid: b712d453f140350499691be054004bfa, type: 3}
   - {fileID: 21300000, guid: 26f0bd53b24a89246bf2264888ffbc3f, type: 3}
   - {fileID: 21300000, guid: e77c90836ce392c439561bdd55b39a58, type: 3}
@@ -149,6 +152,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 3aeb8a2a71a76b940a5d7a16e6ce600a, type: 3}
   - {fileID: 21300000, guid: b0e96c2abc72b7c4fbabf0427586b84e, type: 3}
   - {fileID: 21300000, guid: 5c9f323aa4c8a8047bb1002c7d8f6660, type: 3}
+  - {fileID: 21300000, guid: c854f53a38971594098e326c8dad28ee, type: 3}
   - {fileID: 21300000, guid: 47dbd04a95bece9439c72331b7d89d62, type: 3}
   - {fileID: 21300000, guid: 32f4ce4a33512fd4aa5f4fdde4c73508, type: 3}
   - {fileID: 21300000, guid: d2e98b6a1a3dd574794ac4df7b4fb9af, type: 3}
@@ -203,6 +207,7 @@ SpriteAtlas:
   - setting-4
   - InputField
   - more
+  - message-question
   - Minimise
   - candle-2
   - TopRightPanelBG
@@ -225,6 +230,7 @@ SpriteAtlas:
   - wind-2
   - Red close-circle
   - tick-circle
+  - folder-open
   - volume-cross
   - LongInputField
   - Control Player
@@ -279,6 +285,7 @@ SpriteAtlas:
   - rotate-right
   - moon-2
   - Go Work
+  - book
   - Snow
   - settings
   - more-square
