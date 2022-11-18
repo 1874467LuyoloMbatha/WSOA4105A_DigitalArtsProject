@@ -26,34 +26,6 @@ public class ImportManager : Singleton<ImportManager>
 			LoadFiles();
 		}
 	}
-
-	void LoadFiles()
-	{
-		if (Directory.Exists(filePath))
-		{
-			//AudioClip[] temp =
-			foreach (var item in Directory.GetFiles(filePath))
-			{
-				if (item.Contains(".wav"))
-				{
-					UnityEngine.Debug.Log(item);
-					StartCoroutine(LoadWav(item));
-				}
-
-				if (item.Contains(".mp3"))
-				{
-					UnityEngine.Debug.Log(item);
-					StartCoroutine(LoadMPEG(item));
-				}
-
-				if (item.Contains(".ogg"))
-				{
-					UnityEngine.Debug.Log(item);
-					StartCoroutine(LoadOGG(item));
-				}
-			}
-		}
-	}
 	#region IENumerators to load the differemt audio files
 	IEnumerator LoadWav(string url)
 	{
@@ -126,6 +98,33 @@ public class ImportManager : Singleton<ImportManager>
 	#endregion
 
 	#region Public Functions To Reference
+	public void LoadFiles()
+	{
+		if (Directory.Exists(filePath))
+		{
+			//AudioClip[] temp =
+			foreach (var item in Directory.GetFiles(filePath))
+			{
+				if (item.Contains(".wav"))
+				{
+					UnityEngine.Debug.Log(item);
+					StartCoroutine(LoadWav(item));
+				}
+
+				if (item.Contains(".mp3"))
+				{
+					UnityEngine.Debug.Log(item);
+					StartCoroutine(LoadMPEG(item));
+				}
+
+				if (item.Contains(".ogg"))
+				{
+					UnityEngine.Debug.Log(item);
+					StartCoroutine(LoadOGG(item));
+				}
+			}
+		}
+	}
 	public void PlayAudio()
 	{
 		int tempClip = UnityEngine.Random.Range(0, toPopulate.Count - 1);
