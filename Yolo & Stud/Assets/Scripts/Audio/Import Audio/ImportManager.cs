@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using AnotherFileBrowser.Windows;
 using UnityEngine;
 
 public class ImportManager : MonoBehaviour
@@ -22,8 +23,17 @@ public class ImportManager : MonoBehaviour
 
     public void OpenExplorer()
     {
-        Application.OpenURL(filePath);
-    }
+		var bp = new BrowserProperties();
+		bp.filter = "txt files (*.txt)|*.txt|All Files (*.*)|*.*";
+		bp.filterIndex = 0;
+
+		new FileBrowser().OpenFolderBrowser(bp, path =>
+		{
+			//Do something with path(string)
+			Debug.Log(path);
+		});
+		//Application.OpenURL(filePath);
+	}
 }
 
 /*
