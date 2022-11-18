@@ -648,6 +648,9 @@ public class soundsManager : Singleton<soundsManager>
         }
 		if (musicGenre == MusicGenre.Custom)
 		{
+            if (ImportManager.Instance.toPopulate.Count <= 0)
+                return;
+
 			songToSkip = ImportManager.Instance.toPopulate[trackIndex];
 
 			//trackIndex++;
@@ -736,6 +739,9 @@ public class soundsManager : Singleton<soundsManager>
       
         if(musicGenre == MusicGenre.Custom)
 		{
+			if (ImportManager.Instance.toPopulate.Count <= 0)
+				return;
+
 			songToPlay = ImportManager.Instance.toPopulate[trackIndex];
 
 			trackIndex--;
@@ -966,6 +972,9 @@ public class soundsManager : Singleton<soundsManager>
                 }
                 break;
             case MusicGenre.Custom:
+				if (ImportManager.Instance.toPopulate.Count <= 0)
+					return;
+
 				for (int i = 0; i < ImportManager.Instance.toPopulate.Count; i++)
 				{
 					int random = UnityEngine.Random.Range(0, ImportManager.Instance.toPopulate.Count - 1);
