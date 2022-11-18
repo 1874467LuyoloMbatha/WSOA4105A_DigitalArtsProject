@@ -59,8 +59,10 @@ public class SettingsMenu : Singleton<SettingsMenu>
     [SerializeField] bool darkMode = false;
     [Tooltip("These two colours are for the themes")]
     [SerializeField] Color lightTheme, darkTheme;
+	[Tooltip("Specific to the intro screen")]
+	[SerializeField] string greetingPlayerPrefs = "PlayerName";
 
-    [Header("Display Settings")]
+	[Header("Display Settings")]
     [Tooltip("This dropdown holdsal the available resolutions")]
     [SerializeField] Dropdown resolutionDropdown;
     [Tooltip("This is to save the player's options")]
@@ -421,6 +423,10 @@ public class SettingsMenu : Singleton<SettingsMenu>
 	#endregion
 
 	#region Public & Private General Settings
+   public void SetPlayerName(string v)
+    {
+        PlayerPrefs.SetString(greetingPlayerPrefs, v);
+    }
     public void SetTaskMode(bool v)
 	{
         checkMarkDestroys = v;

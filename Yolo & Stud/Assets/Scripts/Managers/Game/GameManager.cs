@@ -48,7 +48,8 @@ public class GameManager : Singleton<GameManager>
 	[Tooltip("This will determine if the player is Customising themeselves or not")]
 	[SerializeField] bool isCustomising;
 
-	[Header("Generic Elements")]
+	[Header("Intro Handles")]
+	[SerializeField] InputField playerNameInputField;
 	[SerializeField] string greetingPlayerPrefs = "PlayerName";
 	#endregion
 
@@ -59,6 +60,12 @@ public class GameManager : Singleton<GameManager>
 
 		if (player == null)
 			player = FindObjectOfType<PlayerManager>();
+
+		if(playerNameInputField != null)
+		{
+			if(PlayerPrefs.HasKey(greetingPlayerPrefs))
+				playerNameInputField.text = PlayerPrefs.GetString(greetingPlayerPrefs);
+		}
 	}
 	void Start()
     {
