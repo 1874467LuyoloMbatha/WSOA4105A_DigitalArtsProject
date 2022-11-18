@@ -15,6 +15,8 @@ public class ImportManager : Singleton<ImportManager>
     [Header("Generic Strings")]
     [SerializeField] string filePath = @"file://C:\";
 	[SerializeField] string filePathPrefs = "CustomMusicPrefs";
+
+	[Header("For The Music")]
 	public List<AudioClip> toPopulate;
 	void Start()
     {
