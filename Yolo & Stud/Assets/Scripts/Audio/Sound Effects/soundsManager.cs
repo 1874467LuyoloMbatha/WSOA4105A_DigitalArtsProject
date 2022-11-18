@@ -20,7 +20,6 @@ public class soundsManager : Singleton<soundsManager>
     public OfflineMusic[] electroMusic;
     public OfflineMusic[] relaxationMusic;
     public OfflineMusic[] rockMusic;
-    public OfflineMusic[] customMusic;
 
     [Header("Audio Sources")]
     [SerializeField] AudioSource offlineAudioSource;
@@ -348,6 +347,7 @@ public class soundsManager : Singleton<soundsManager>
                 }
                 break;
             case MusicGenre.Custom:
+                ImportManager.Instance.LoadFiles();
                 break;
             default:
                 break;
@@ -509,6 +509,7 @@ public class soundsManager : Singleton<soundsManager>
                 }
                 break;
 			case MusicGenre.Custom:
+					trackIndex = 0;
 				break;
 			default:
 				break;
@@ -645,7 +646,16 @@ public class soundsManager : Singleton<soundsManager>
             if (trackIndex > rockMusic.Length - 1)
                 trackIndex = 0;
         }
+		if (musicGenre == MusicGenre.Custom)
+		{
+			songToSkip = ImportManager.Instance.toPopulate[trackIndex];
 
+			//trackIndex++;
+			trackIndex++;
+
+			if (trackIndex > ImportManager.Instance.toPopulate.Count - 1)
+				trackIndex = 0;
+		}
 		offlineAudioSource.clip = songToSkip;
         offlineAudioSource.Play();
         Details(songToSkip);
@@ -723,9 +733,15 @@ public class soundsManager : Singleton<soundsManager>
             if (trackIndex < 0)
                 trackIndex = rockMusic.Length - 1;
         }
-      if(musicGenre == MusicGenre.Custom)
+      
+        if(musicGenre == MusicGenre.Custom)
 		{
+			songToPlay = ImportManager.Instance.toPopulate[trackIndex];
 
+			trackIndex--;
+
+			if (trackIndex < 0)
+				trackIndex = ImportManager.Instance.toPopulate.Count - 1;
 		}
 
         offlineAudioSource.clip = songToPlay;
@@ -770,8 +786,16 @@ public class soundsManager : Singleton<soundsManager>
 		//OfflineMusic song = Array.Find(lofiMusic, sound => sound.clip == clip);
         Debug.Log(song.songName);
 
-        artistName = song.artistName;
-        songName = song.songName;
+        if (musicGenre != MusicGenre.Custom)
+        {
+            artistName = song.artistName;
+            songName = song.songName;
+        }
+        else
+        {
+            artistName = "Unknown";
+            songName = "Unknown";
+        }
 
         UpdateAudioUi();
 
@@ -942,7 +966,27 @@ public class soundsManager : Singleton<soundsManager>
                 }
                 break;
             case MusicGenre.Custom:
-                break;
+				for (int i = 0; i < ImportManager.Instance.toPopulate.Count; i++)
+				{
+					int random = UnityEngine.Random.Range(0, ImportManager.Instance.toPopulate.Count - 1);
+
+					AudioClip temp = ImportManager.Instance.toPopulate[i];
+
+					ImportManager.Instance.toPopulate[i] = ImportManager.Instance.toPopulate[random];
+					ImportManager.Instance.toPopulate[random] = temp;
+
+					if (temp == offlineAudioSource.clip)
+					{
+						Debug.Log("Song is already playing");
+						NextSong();
+					}
+					else
+					{
+						offlineAudioSource.clip = temp;
+						offlineAudioSource.Play();
+					}
+				}
+				break;
             default:
                 break;
         }
