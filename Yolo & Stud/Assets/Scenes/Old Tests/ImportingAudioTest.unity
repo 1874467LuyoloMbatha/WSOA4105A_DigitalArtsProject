@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e000c99a817e4284c9790bd148b5085d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path: D:\Projects\Personal\Music\Pre-Final\Lay Me To Rest.mp3
+  path: Mischief.wav
 --- !u!82 &405702879
 AudioSource:
   m_ObjectHideFlags: 0

@@ -23,13 +23,14 @@ public class SongNAudio : MonoBehaviour
 		yield return www.SendWebRequest();
 
 
-        if (www == UnityWebRequestMultimedia.GetAudioClip(url, AudioType.MPEG))
+        if (url.Contains(".mp3"))
         {
             aud.clip = NAudioPlayer.FromMp3Data(www.downloadHandler.data);
         }
         else
         {
-            aud.clip = DownloadHandlerAudioClip.GetContent(www);
+           // aud.clip = UnityWebRequestMultimedia(url, AudioType.WAV);
+          //  aud.clip = DownloadHandlerAudioClip.GetContent(www);
         }
 
 		UnityEngine.Debug.Log(www.downloadHandler.data);
