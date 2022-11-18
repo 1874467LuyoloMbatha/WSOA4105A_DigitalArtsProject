@@ -54,8 +54,10 @@ public class soundsManager : Singleton<soundsManager>
     [SerializeField] string artistName;
     [Tooltip("Will be replaced with the song's name")]
     [SerializeField] string songName;
+	[Tooltip("Stores the current genre")]
+	[SerializeField] string genreStoragePrefs = "GenreIndex";
 
-    [Header("Music Mode Details")]
+	[Header("Music Mode Details")]
     [Tooltip("This string will appear if the player is using the music controller offline")]
     [SerializeField] string offlineMusicMode = "Playing Music Offline";
     [Tooltip("This string will appear if the player is using the music controller online")]
@@ -354,6 +356,7 @@ public class soundsManager : Singleton<soundsManager>
         }
         //Offline Music
 
+        SetUpGenreInAwake();
         songToSkip = offlineAudioSource.clip;
 
     }
@@ -364,7 +367,8 @@ public class soundsManager : Singleton<soundsManager>
     }
     private void Start()
     {
-        SetUpDropDownGenre();
+		SetUpGenreInAwake();
+		SetUpDropDownGenre();
         CheckMusicMode();
         UpdateAudioUi();
         PlayPauseAudio();
@@ -648,6 +652,9 @@ public class soundsManager : Singleton<soundsManager>
         }
 		if (musicGenre == MusicGenre.Custom)
 		{
+            if (ImportManager.Instance.toPopulate.Count <= 0)
+                return;
+
 			songToSkip = ImportManager.Instance.toPopulate[trackIndex];
 
 			//trackIndex++;
@@ -736,6 +743,9 @@ public class soundsManager : Singleton<soundsManager>
       
         if(musicGenre == MusicGenre.Custom)
 		{
+			if (ImportManager.Instance.toPopulate.Count <= 0)
+				return;
+
 			songToPlay = ImportManager.Instance.toPopulate[trackIndex];
 
 			trackIndex--;
@@ -966,6 +976,9 @@ public class soundsManager : Singleton<soundsManager>
                 }
                 break;
             case MusicGenre.Custom:
+				if (ImportManager.Instance.toPopulate.Count <= 0)
+					return;
+
 				for (int i = 0; i < ImportManager.Instance.toPopulate.Count; i++)
 				{
 					int random = UnityEngine.Random.Range(0, ImportManager.Instance.toPopulate.Count - 1);
@@ -1046,6 +1059,14 @@ public class soundsManager : Singleton<soundsManager>
 
 	#region Offline Music Genre Logic
 
+    void SetUpGenreInAwake()
+    {
+        if(PlayerPrefs.HasKey(genreStoragePrefs))
+        {
+            genreIndex = PlayerPrefs.GetInt(genreStoragePrefs);
+			musicGenre = (MusicGenre)genreIndex;
+		}
+    }
     void SetUpDropDownGenre()
 	{
         genreIndex = ((int)musicGenre);
@@ -1070,6 +1091,13 @@ public class soundsManager : Singleton<soundsManager>
         genreIndex = v;
 
         musicGenre = (MusicGenre)genreIndex;
+
+		PlayerPrefs.SetInt(genreStoragePrefs, genreIndex);
+
+		if (musicGenre == MusicGenre.Custom)
+            trackIndex = 0;
+
+
 
         SortThroughGenre();
         

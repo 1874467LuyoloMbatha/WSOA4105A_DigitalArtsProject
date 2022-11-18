@@ -12,7 +12,10 @@ using UnityEngine;
 
 public class ImportManager : Singleton<ImportManager>
 {
-    [Header("Generic Strings")]
+	[Header("Unity Handles")]
+	[SerializeField] InputField filePathInputField;
+
+	[Header("Generic Strings")]
     [SerializeField] string filePath = @"file://C:\";
 	[SerializeField] string filePathPrefs = "CustomMusicPrefs";
 
@@ -151,7 +154,14 @@ public class ImportManager : Singleton<ImportManager>
 	public void SetFilePath(string v)
 	{
 		filePath = v;
+		UpdateInputField();
 		PlayerPrefs.SetString(filePathPrefs, filePath);
+	}
+
+	void UpdateInputField()
+	{
+		if(filePathInputField != null)
+			filePathInputField.text = filePath;
 	}
 	public string GetFilePath()
     {
