@@ -9,7 +9,7 @@ public class GameManager : Singleton<GameManager>
 {
 	#region Enums
 	public enum GameState { PlayMode, BuildMode, PlayerCustomiserMode}
-    public enum PlayerMode { IdleWalk, Walking, Studying, Resting, Exercising}
+    public enum PlayerMode { IdleWalk, Walking, Studying, Resting, Exercising, Couch}
 
 	public enum Weather { idle, rain, snow, lightning }
 	#endregion
@@ -27,10 +27,10 @@ public class GameManager : Singleton<GameManager>
 	[SerializeField] float duration;
 
 	[Header("Player Variables")]
-	[SerializeField] PlayerStateManager player;
+	[SerializeField] PlayerManager player;
 	[SerializeField] Image controlImage;
 	[SerializeField] Sprite canControlSprite, cannotControlSprite;
-	[SerializeField] Transform desk, bed;
+	[SerializeField] Transform desk, bed, couch;
 
 	[Header("Unity Handles")]
 	[Tooltip("Drag The Tab Parent here")]
@@ -55,7 +55,7 @@ public class GameManager : Singleton<GameManager>
 		defaultSky = RenderSettings.skybox;
 
 		if (player == null)
-			player = FindObjectOfType<PlayerStateManager>();
+			player = FindObjectOfType<PlayerManager>();
 	}
 	void Start()
     {
@@ -147,6 +147,10 @@ public class GameManager : Singleton<GameManager>
 
 	}
 
+	public PlayerManager ReturnPlayerManager()
+	{
+		return player;
+	}
 	//Assign To Buttons you want to open links
 	public void OpenUrl(string link)
 	{
@@ -224,13 +228,24 @@ public class GameManager : Singleton<GameManager>
 
 	public void GoToWork()
 	{
+		player.SetIsMoving(true);
 		playerMode = PlayerMode.Studying;
 
 		player.SetDestination(desk.position);
+		EnableDisablePlayerControl();
 	}
 
+	public void GoToCouch()
+	{
+		player.SetIsMoving(true);
+		playerMode = PlayerMode.Couch;
+
+		player.SetDestination(couch.position);
+		EnableDisablePlayerControl();
+	}
 	public void GoRest()
 	{
+		player.SetIsMoving(true);
 		playerMode = PlayerMode.Resting;
 
 		player.SetDestination(bed.position);
@@ -238,6 +253,8 @@ public class GameManager : Singleton<GameManager>
 		mainVirtualCam.Priority = 1;
 		customisingVirtualCamera.Priority = 0;
 		deskVirtualCamera.Priority = 0;
+
+		EnableDisablePlayerControl();
 	}
 
 	public void ChangeToStudyCamera()

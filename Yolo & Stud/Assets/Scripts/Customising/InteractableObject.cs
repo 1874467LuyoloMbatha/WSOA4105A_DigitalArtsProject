@@ -55,6 +55,7 @@ public class InteractableObject : MonoBehaviour
 	{
 		if(canBeMoved)
 			transform.position = Vector3.Lerp(transform.position, currentPos, Time.deltaTime * moveSpeed);
+		
 	}
 
 	public Vector3 positionCurrent()
@@ -88,10 +89,13 @@ public class InteractableObject : MonoBehaviour
 	{
 		if (chooseType == TypeOfInteractble.InteractableObject)
 		{
+			if(GameManager.Instance.ReturnPlayerManager().GetPlayerControl())
+				GameManager.Instance.EnableDisablePlayerControl();
+
 			if (isColourPicker && isSelected)
 				defaultMat.color = ColourPicker.Instance.GetColour();
 
-		gameObject.GetComponent<Renderer>().sharedMaterial = defaultMat;
+			gameObject.GetComponent<Renderer>().sharedMaterial = defaultMat;
 		}
 		if(chooseType == TypeOfInteractble.UI && hoverObj != null)
 		{

@@ -8,7 +8,7 @@ using System;
 
 public class soundsManager : Singleton<soundsManager>
 {
-    public enum MusicGenre { African, Classical, Jazz, Lofi, Electro, Relaxation, Rock, Custom }
+    public enum MusicGenre { Afrobeats, Classical, Jazz, Lofi, Electro, Relaxation, Rock, Custom }
 
     [Header("Genre References")]
     public MusicGenre musicGenre;
@@ -109,7 +109,7 @@ public class soundsManager : Singleton<soundsManager>
 
         switch (musicGenre)
         {
-            case MusicGenre.African:
+            case MusicGenre.Afrobeats:
                 foreach (OfflineMusic soundCurrentlyLookingAt in africanMusic) //The current sound being checked in "sounds" array 
                 {
                     if (offlineAudioSource == null)
@@ -445,7 +445,7 @@ public class soundsManager : Singleton<soundsManager>
     {
 		switch (musicGenre)
 		{
-			case MusicGenre.African:
+			case MusicGenre.Afrobeats:
                 for (int i = 0; i < africanMusic.Length; i++)
                 {
                     if (africanMusic[i].AudioSource.isPlaying)
@@ -575,7 +575,7 @@ public class soundsManager : Singleton<soundsManager>
             return;
 
 
-        if (musicGenre == MusicGenre.African)
+        if (musicGenre == MusicGenre.Afrobeats)
         {
             songToSkip = africanMusic[trackIndex].clip;
 
@@ -658,7 +658,7 @@ public class soundsManager : Singleton<soundsManager>
             return;
 
         // = lofiMusic[trackIndex].clip;
-        if (musicGenre == MusicGenre.African)
+        if (musicGenre == MusicGenre.Afrobeats)
         {
             songToPlay = africanMusic[trackIndex].clip;
 
@@ -740,7 +740,7 @@ public class soundsManager : Singleton<soundsManager>
         //Check genres
         switch (musicGenre)
 		{
-			case MusicGenre.African:
+			case MusicGenre.Afrobeats:
                song = Array.Find(africanMusic, sound => sound.clip == clip);
                 break;
 			case MusicGenre.Classical:
@@ -787,7 +787,7 @@ public class soundsManager : Singleton<soundsManager>
 
         switch (musicGenre)
         {
-            case MusicGenre.African:
+            case MusicGenre.Afrobeats:
                 for (int i = 0; i < africanMusic.Length; i++)
                 {
                     int random = UnityEngine.Random.Range(0, africanMusic.Length - 1);
