@@ -47,6 +47,9 @@ public class GameManager : Singleton<GameManager>
 	[SerializeField] bool isTabParentOpen;
 	[Tooltip("This will determine if the player is Customising themeselves or not")]
 	[SerializeField] bool isCustomising;
+
+	[Header("Generic Elements")]
+	[SerializeField] string greetingPlayerPrefs = "PlayerName";
 	#endregion
 
 	private void Awake()
