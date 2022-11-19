@@ -4690,36 +4690,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1547231421
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1547231422}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1547231422
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1547231421}
-  m_LocalRotation: {x: -0.034992192, y: 0.96494615, z: -0.18939319, w: -0.17828253}
-  m_LocalPosition: {x: 0.0044862186, y: 0.01016853, z: 0.011700759}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1855972475
 GameObject:
   m_ObjectHideFlags: 0
@@ -4772,7 +4742,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 90
+  field of view: 14
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -4797,13 +4767,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1855972475}
-  m_LocalRotation: {x: -0.03912285, y: 0.9602879, z: -0.21174803, w: -0.17742409}
-  m_LocalPosition: {x: 1.11, y: 5.4, z: 0.011700905}
+  m_LocalRotation: {x: -0.13630888, y: 0.8077773, z: -0.20566715, w: -0.53536606}
+  m_LocalPosition: {x: 0.011093378, y: 0.011527061, z: 0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 24.87, y: 200.936, z: 0}
+  m_LocalEulerAnglesHint: {x: 28.569, y: 247.07, z: 0}
 --- !u!114 &1855972479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4817,7 +4787,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clearColorMode: 0
-  backgroundColorHDR: {r: 0.011764706, g: 0.03529412, b: 0.09411765, a: 0}
+  backgroundColorHDR: {r: 0.025, g: 0.07, b: 0.19, a: 0}
   clearDepth: 1
   volumeLayerMask:
     serializedVersion: 2
