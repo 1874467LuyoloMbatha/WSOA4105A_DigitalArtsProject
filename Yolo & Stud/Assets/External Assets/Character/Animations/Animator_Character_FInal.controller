@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeUntilIdleChange: 10
   idleTime: 0
-  transitionTime: 0.2
+  transitionTime: 0.35
   numberOfAnimations: 3
   boredAnim: 0
   canChange: 0
