@@ -97,9 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0622afaf3a48ea44abecef20bf81e5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeUntilIdleChange: 10
+  timeUntilIdleChange: 1.5
   idleTime: 0
-  transitionTime: 0.35
+  transitionTime: 0.2
   numberOfAnimations: 3
   boredAnim: 0
   canChange: 0
