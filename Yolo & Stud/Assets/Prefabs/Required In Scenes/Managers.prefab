@@ -793,7 +793,7 @@ MonoBehaviour:
   rainAmbience: {fileID: 8300000, guid: 0056acbcd08766743ba02a6b3fc418b4, type: 3}
   rainThunderAmbience: {fileID: 8300000, guid: 76b9ec41b4329ae42be57ed37ac45ca0, type: 3}
   snowAmbience: {fileID: 8300000, guid: 7d445bc5eaa2cb347af8f12f430c9bd0, type: 3}
-  sunnyAmbience: {fileID: 0}
+  sunnyAmbience: {fileID: 8300000, guid: f456096583cf0304aa136fe4f5d8d1f1, type: 3}
   playAndPauseBtn: {fileID: 0}
   playBtnImg: {fileID: 21300000, guid: b8881db604fe3924dbb3dc56596366c7, type: 3}
   pauseBtnImg: {fileID: 21300000, guid: df577c1d60e7e6f45994b395654e6152, type: 3}
@@ -895,6 +895,8 @@ MonoBehaviour:
   deskVirtualCamera: {fileID: 0}
   isTabParentOpen: 0
   isCustomising: 0
+  playerNameInputField: {fileID: 0}
+  greetingPlayerPrefs: PlayerName
 --- !u!1 &1002505267737251763
 GameObject:
   m_ObjectHideFlags: 0
@@ -1435,6 +1437,7 @@ MonoBehaviour:
   darkMode: 0
   lightTheme: {r: 0.8509804, g: 0.8509804, b: 0.8509804, a: 1}
   darkTheme: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
+  greetingPlayerPrefs: PlayerName
   resolutionDropdown: {fileID: 0}
   resolutionPref: Resolution
   qualityLevelPref: QualityLevel
