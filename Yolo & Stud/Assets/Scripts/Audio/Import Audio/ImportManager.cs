@@ -34,8 +34,7 @@ public class ImportManager : Singleton<ImportManager>
 	{
 		//UnityEngine.Debug.Log("HAO?");
 		url = string.Format("file://{0}", url);
-	//	UnityEngine.Debug.Log("Debugging:" + url);
-
+		//	UnityEngine.Debug.Log("Debugging:" + url);
 		using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.WAV))
 		{
 			yield return www.SendWebRequest();
@@ -68,7 +67,8 @@ public class ImportManager : Singleton<ImportManager>
 			}
 			else
 			{
-				toPopulate.Add(DownloadHandlerAudioClip.GetContent(www));
+				AudioClip temp = DownloadHandlerAudioClip.GetContent(www);
+				toPopulate.Add(temp);
 				UnityEngine.Debug.Log("added mp3 files");
 				//aud.clip = DownloadHandlerAudioClip.GetContent(www);
 			}

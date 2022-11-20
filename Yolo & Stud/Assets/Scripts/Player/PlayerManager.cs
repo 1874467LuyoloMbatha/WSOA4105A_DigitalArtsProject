@@ -22,8 +22,9 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] float rotationTime;
     [SerializeField] float distanceBeforeStopping;
     [SerializeField] float yMousePos = 0.12f, distanceForRay;
+    [SerializeField] float baseOffsetDefault, baseOffsetDeskValue = 0.0018f;
 
-    [Header("Player Booleans")]
+	[Header("Player Booleans")]
     [SerializeField] bool isMoving;
     [SerializeField] bool canControlPlayer, isInAState, comesFromAnimation;
 
@@ -37,6 +38,8 @@ public class PlayerManager : MonoBehaviour
 	[SerializeField] Vector3 standToSitOnCouchRotation;
 	[SerializeField] Vector3 standToSitOnCouchPosition;
 	[SerializeField] Vector3 sitOnCouchPosition;
+	[SerializeField] Vector3 SitAtDeskhRotation;
+	[SerializeField] Vector3 SitAtDeskhPosition;
 
 	[Header("Animation Strings")]
     [SerializeField] string idlingAnimName;
@@ -61,7 +64,7 @@ public class PlayerManager : MonoBehaviour
 
     [Header("Animation Booleans")]
     [SerializeField] bool sitOnBedAnimHasPlayed;
-	[SerializeField] bool sitOnCouchAnimHasPlayed, isExercising;
+	[SerializeField] bool sitOnCouchAnimHasPlayed, sitAtDeskAnimHasPlayed, isExercising;
 	#endregion
 
 	private void Awake()
@@ -294,6 +297,7 @@ public class PlayerManager : MonoBehaviour
       
 
         Agent().SetDestination(Destination());
+        Agent().baseOffset = baseOffsetDefault;
         Agent().isStopped = false;
 
      //  GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Walking);
@@ -301,28 +305,42 @@ public class PlayerManager : MonoBehaviour
 
     public void HandleWorkingState()
     {
-        if (Vector3.Distance(GetCurrentPos(), Destination()) <= StoppingDistance)
-        {
+
             //Debug.Log("Camera Change");
             HandleWorking();
-          
-        }
     }
     void HandleWorking()
     {
-        Debug.Log("Switch Camera + Sit down and work");
-        SetIsInState(true);
-        Anim().Play(IsWorkingHash);
-        Agent().SetDestination(Destination());
-        Agent().isStopped = true;
+        if (!sitAtDeskAnimHasPlayed)
+        {
+            Debug.Log("Switch Camera + Sit down and work");
+            SetIsInState(true);
+            comesFromAnimation = true;
 
-        GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Studying);
+            ForceSleepPosition(SitAtDeskhPosition);
+            ForceSleepRotation(SitAtDeskhRotation);
+
+            Agent().isStopped = true;
+            Agent().baseOffset = baseOffsetDeskValue;
+
+            Anim().Play(IsGoingToWorkHash);
+
+            GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Studying);
+			StartCoroutine(TypingAnimationEventHandler());
+		}
     }
-
-    //Call through animation events
-    public void ChangeWorkingCamera()
+	public IEnumerator TypingAnimationEventHandler()
 	{
-        Anim().Play(IsGoingToWorkHash);
+		sitAtDeskAnimHasPlayed = !sitAtDeskAnimHasPlayed;
+
+		yield return new WaitForSeconds(1.2f);
+		ForceSleepPosition(SitAtDeskhPosition);
+        ChangeWorkingCamera();
+	}
+	//Call through animation events
+	public void ChangeWorkingCamera()
+	{
+      //  Anim().Play(IsGoingToWorkHash);
         GameManager.Instance.ChangeToStudyCamera();
     }
     public void HandleSleepingState()
