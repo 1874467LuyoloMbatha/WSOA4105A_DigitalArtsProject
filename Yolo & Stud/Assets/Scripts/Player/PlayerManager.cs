@@ -25,7 +25,10 @@ public class PlayerManager : MonoBehaviour
 
     [Header("Player Booleans")]
     [SerializeField] bool isMoving;
-    [SerializeField] bool canControlPlayer, isInAState;
+    [SerializeField] bool canControlPlayer, isInAState, comesFromAnimation;
+
+    [Header("Aniamtion Unity Variables")]
+    [SerializeField] AnimationClip[] exercisingAnimClips;
 
 	[Header("Animation Vectors/Floats")]
 	[SerializeField] Vector3 standToSitOnBedRotation;
@@ -37,7 +40,8 @@ public class PlayerManager : MonoBehaviour
 
 	[Header("Animation Strings")]
     [SerializeField] string idlingAnimName;
-    [SerializeField] string walkingAnimName;
+	[SerializeField] string sitToStandCouchAnimName;
+	[SerializeField] string walkingAnimName;
     [SerializeField] string workingAnimName;
     [SerializeField] string goingToWorkAnimName;
 	[SerializeField] string goingToCouchAnimName;
@@ -47,6 +51,7 @@ public class PlayerManager : MonoBehaviour
     [Header("Animation Integers")]
     [SerializeField] int numberOfExercisingAnimations;
     int isIdlingHash;
+    int isSittingToStandCouchHash;
     int isWalkingHash;
     int isWorkingHash;
     int isGoingToWorkHash;
@@ -56,7 +61,7 @@ public class PlayerManager : MonoBehaviour
 
     [Header("Animation Booleans")]
     [SerializeField] bool sitOnBedAnimHasPlayed;
-	[SerializeField] bool sitOnCouchAnimHasPlayed;
+	[SerializeField] bool sitOnCouchAnimHasPlayed, isExercising;
 	#endregion
 
 	private void Awake()
@@ -90,6 +95,7 @@ public class PlayerManager : MonoBehaviour
     {
         //ill reduce performance issues
         isIdlingHash = Animator.StringToHash(idlingAnimName);
+        isSittingToStandCouchHash = Animator.StringToHash(sitToStandCouchAnimName);
         isWalkingHash = Animator.StringToHash(walkingAnimName);
         isWorkingHash = Animator.StringToHash(workingAnimName);
         isGoingToWorkHash = Animator.StringToHash(goingToWorkAnimName);
@@ -269,7 +275,17 @@ public class PlayerManager : MonoBehaviour
     void HandleMovement()
     {
         SetIsInState(true);
-        Anim().Play(IsWalkingHash);
+        if (comesFromAnimation)
+        {
+          //  Anim().SetTrigger("StandUp");
+            Anim().Play(IsSittingToStandCouchHash);
+			comesFromAnimation = false;
+		}
+        else
+            Anim().Play(IsWalkingHash);
+
+      
+
         Agent().SetDestination(Destination());
         Agent().isStopped = false;
 
@@ -311,12 +327,14 @@ public class PlayerManager : MonoBehaviour
         if (!sitOnBedAnimHasPlayed)
 		{
 			SetIsInState(true);
+			comesFromAnimation = true;
 			Debug.Log("Sleep/Rest now");
 
 			//Agent().SetDestination(Destination());
 			Agent().isStopped = true;
 
-            Anim().Play(IsRestingHash);
+            Anim().SetTrigger(restingAnimName);
+            //Anim().Play(IsRestingHash);
 
             ForceSleepPosition(standToSitOnBedPosition);
             ForceSleepRotation(standToSitOnBedRotation);
@@ -332,13 +350,14 @@ public class PlayerManager : MonoBehaviour
     }
     void HandleExercise()
     {
+        if (GetExercising())
+            return;
+
         SetIsInState(true);
         Debug.Log("Sleep/Rest now");
-        numberOfExercisingAnimations = Random.Range(0, numberOfExercisingAnimations + 1);
-        Anim().Play(IsExercisingHash + numberOfExercisingAnimations.ToString());
-        Agent().SetDestination(Destination());
+        numberOfExercisingAnimations = Random.Range(0, exercisingAnimClips.Length - 1);
+        Anim().Play(exercisingAnimClips[numberOfExercisingAnimations].name);
         Agent().isStopped = true;
-
         GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Exercising);
     }
 
@@ -351,11 +370,13 @@ public class PlayerManager : MonoBehaviour
 		if (!sitOnCouchAnimHasPlayed)
 		{
 			SetIsInState(true);
+            comesFromAnimation= true;
 			Debug.Log("Couch/Rest now");
 
 			//Agent().SetDestination(Destination());
 			Agent().isStopped = true;
 
+			//Anim().SetTrigger(restingAnimName);
 			Anim().Play(IsGoingToCouchHash);
 
 			ForceSleepPosition(standToSitOnCouchPosition);
@@ -460,9 +481,20 @@ public class PlayerManager : MonoBehaviour
         return canControlPlayer;
     }
 
+    public bool SetExercisingMode(bool v)
+    {
+        isExercising = v;
+        return isExercising;
+    }
+
+    public bool GetExercising()
+    {
+        return isExercising;
+    }
     //Stringsss
     public string IsIdleHash { get { return idlingAnimName; } }
-    public string IsWalkingHash { get { return walkingAnimName; } }
+	public string IsSittingToStandCouchHash { get { return sitToStandCouchAnimName; } }
+	public string IsWalkingHash { get { return walkingAnimName; } }
     public string IsWorkingHash { get { return workingAnimName; } }
     public string IsGoingToWorkHash { get { return goingToWorkAnimName; } }
 	public string IsGoingToCouchHash { get { return goingToCouchAnimName; } }

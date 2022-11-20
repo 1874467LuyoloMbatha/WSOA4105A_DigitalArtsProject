@@ -30,7 +30,7 @@ public class GameManager : Singleton<GameManager>
 	[SerializeField] PlayerManager player;
 	[SerializeField] Image controlImage;
 	[SerializeField] Sprite canControlSprite, cannotControlSprite;
-	[SerializeField] Transform desk, bed, couch;
+	[SerializeField] Transform desk, bed, couch, exerciseSpot;
 
 	[Header("Unity Handles")]
 	[Tooltip("Drag The Tab Parent here")]
@@ -253,6 +253,17 @@ public class GameManager : Singleton<GameManager>
 		player.SetDestination(couch.position);
 		EnableDisablePlayerControl();
 	}
+
+	public void GoExercise()
+	{
+		player.SetIsMoving(true);
+		player.HandleExercisingState();
+		player.SetExercisingMode(true);
+		playerMode = PlayerMode.Exercising;
+
+		player.SetDestination(exerciseSpot.position);
+	}
+
 	public void GoRest()
 	{
 		playerMode = PlayerMode.Resting;
