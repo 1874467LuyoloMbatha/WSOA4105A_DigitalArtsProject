@@ -119,7 +119,7 @@ MonoBehaviour:
   walkingAnimName: Walk
   workingAnimName: Sitting
   goingToWorkAnimName: Sitting
-  restingAnimName: Laying Nodding
+  restingAnimName: BedStandToSit
   exerciseAnimName: Exercise
   numberOfExercisingAnimations: 1
 --- !u!195 &3928949691983293479
@@ -131,7 +131,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 4199333133151523186}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.003
+  m_Radius: 0.0035
   m_Speed: 0.89
   m_Acceleration: 8
   avoidancePriority: 50
