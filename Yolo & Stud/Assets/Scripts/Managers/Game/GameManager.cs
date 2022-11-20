@@ -24,6 +24,7 @@ public class GameManager : Singleton<GameManager>
 	[SerializeField] Material defaultSky;
 	[SerializeField] Material currentSky, nightSky, daySky;
 	[SerializeField] GameObject raining, snowing, lightning, monitorScreen;
+	[SerializeField] Button personalisationButton;
 	[SerializeField] float duration;
 
 	[Header("Player Variables")]
@@ -306,6 +307,12 @@ public class GameManager : Singleton<GameManager>
 	{
 		if(monitorScreen != null)
 			monitorScreen.SetActive(v);
+	}
+
+	public void SetPersonaliseButton(bool v)
+	{
+		if (personalisationButton != null)
+			personalisationButton.interactable = v;
 	}
 	#endregion
 }
