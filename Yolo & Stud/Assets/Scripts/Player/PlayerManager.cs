@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.AI;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI.Table;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Vector3 destination, currentPos, mousePosition;
     [SerializeField] LayerMask layerYouCanMoveTo, layerForBed, layerForDesk, layerForCouch;
-    [SerializeField] Transform destTrans;
+    [SerializeField] Transform playerParent, destTrans;
     [SerializeField] Text debugText;
 
     [Header("Player Floats")]
@@ -26,7 +27,12 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] bool isMoving;
     [SerializeField] bool canControlPlayer, isInAState;
 
-    [Header("Animation Strings")]
+	[Header("Animation Vectors/Floats")]
+	[SerializeField] Vector3 standToSitOnBedRotation;
+	[SerializeField] Vector3 standToSitOnBedPosition;
+    [SerializeField] Vector3 layOnBedPosition;
+
+	[Header("Animation Strings")]
     [SerializeField] string idlingAnimName;
     [SerializeField] string walkingAnimName;
     [SerializeField] string workingAnimName;
@@ -42,9 +48,12 @@ public class PlayerManager : MonoBehaviour
     int isGoingToWorkHash;
     int isRestingHash;
     int isExercisingHash;
-    #endregion
 
-    private void Awake()
+    [Header("Animation Booleans")]
+    [SerializeField] bool sitOnBedAnimHasPlayed;
+	#endregion
+
+	private void Awake()
     {
         SettingUp();
     }
@@ -56,10 +65,10 @@ public class PlayerManager : MonoBehaviour
    
     void Update()
     {
-       
-        HandleRotation();
+		HandleMoving();
+
+		HandleRotation();
         HandleMovingState();
-        HandleMoving();
 
       //  CheckStates();
     }
@@ -87,6 +96,9 @@ public class PlayerManager : MonoBehaviour
         if (agent == null)
             agent = GetComponent<NavMeshAgent>();
 
+        if (playerParent == null)
+            playerParent = GetComponentInParent<Transform>();
+
     }
     #endregion
 
@@ -110,7 +122,7 @@ public class PlayerManager : MonoBehaviour
                     //  destTrans.transform.position = hit.point;
                     SetIsMoving(true);
                     destTrans.transform.position = new Vector3(hit.point.x, hit.point.y + yMousePos, hit.point.z);
-                    //GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Walking);
+                    GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Walking);
                 }
 
                 //for the desk
@@ -147,7 +159,7 @@ public class PlayerManager : MonoBehaviour
     }
     void HandleRotation()
     {
-        if (isMoving)
+        if (isMoving && GameManager.Instance.GetPlayerMode() != GameManager.PlayerMode.Resting)
         {
             Vector3 posToLookAt;
 
@@ -169,8 +181,6 @@ public class PlayerManager : MonoBehaviour
 
     void CheckStates()
 	{
-        if (GameManager.Instance.GetPlayerMode() == GameManager.PlayerMode.IdleWalk)
-            HandleIdleState();
         if (GameManager.Instance.GetPlayerMode() == GameManager.PlayerMode.Studying)
             HandleWorkingState();
         if (GameManager.Instance.GetPlayerMode() == GameManager.PlayerMode.Resting)
@@ -180,9 +190,14 @@ public class PlayerManager : MonoBehaviour
         if (GameManager.Instance.GetPlayerMode() == GameManager.PlayerMode.Couch)
             HandleCouchState();
         if (GameManager.Instance.GetPlayerMode() == GameManager.PlayerMode.Walking)
-            HandleIdleState();
+        {
+			SetIsInState(false);
+			HandleIdleState();
+        }
+		if (GameManager.Instance.GetPlayerMode() == GameManager.PlayerMode.IdleWalk)
+			HandleIdleState();
 
-        DebugText(GameManager.Instance.GetPlayerMode().ToString());
+		DebugText(GameManager.Instance.GetPlayerMode().ToString());
 
     }
     //Handle Idle
@@ -205,19 +220,26 @@ public class PlayerManager : MonoBehaviour
     }
     public void HandleMovingState()
     {
-        if (isMoving)
-        {
+		if (!isMoving)
+		{
+			SetIsMoving(false);
+			CheckStates();
+            return;
+		}
 
-            //distanee
-            //Debug.Log(Vector3.Distance(state.GetCurrentPos(), state.Destination()));
-            if (Vector3.Distance(GetCurrentPos(), Destination()) <= StoppingDistance)
+		if (isMoving)
+        {
+			//GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Walking);
+			//distanee
+			//Debug.Log(Vector3.Distance(state.GetCurrentPos(), state.Destination()));
+			if (Vector3.Distance(GetCurrentPos(), Destination()) <= StoppingDistance)
             {
                 //Debug.Log("Reached Destination");
                 SetIsMoving(false);
-                SetIsInState(false);
 
                 CheckStates();
-            }
+
+			}
             else
             {
                 SetIsMoving(true);
@@ -230,12 +252,12 @@ public class PlayerManager : MonoBehaviour
                     SwitchState(factory.Idle());
                 }*/
         }
+        //      if(!isMoving)
+        //{
+        //	SetIsMoving(false);
+        //	CheckStates();
+        //}
 
-        if (!IsMoving())
-        {
-            SetIsMoving(false);
-            CheckStates();
-        }
     }
     void HandleMovement()
     {
@@ -244,7 +266,7 @@ public class PlayerManager : MonoBehaviour
         Agent().SetDestination(Destination());
         Agent().isStopped = false;
 
-       GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Walking);
+     //  GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Walking);
     }
 
     public void HandleWorkingState()
@@ -279,13 +301,22 @@ public class PlayerManager : MonoBehaviour
 	}
     void HandleSleeping()
     {
-        SetIsInState(true);
-        Debug.Log("Sleep/Rest now");
-        Anim().Play(IsRestingHash);
-        Agent().SetDestination(Destination());
-        Agent().isStopped = true;
+        if (!sitOnBedAnimHasPlayed)
+		{
+			SetIsInState(true);
+			Debug.Log("Sleep/Rest now");
 
-        GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Resting);
+			//Agent().SetDestination(Destination());
+			Agent().isStopped = true;
+
+            Anim().Play(IsRestingHash);
+
+            ForceSleepPosition(standToSitOnBedPosition);
+            ForceSleepRotation(standToSitOnBedRotation);
+
+            GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Resting);
+            StartCoroutine(SleepingAnimationEventHandler());
+        }
     }
 
     public void HandleExercisingState()
@@ -319,8 +350,43 @@ public class PlayerManager : MonoBehaviour
         GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Couch);
     }
 
-    #region Referenced Outside Of Script
-    public NavMeshAgent Agent()
+    public IEnumerator SleepingAnimationEventHandler()
+    {
+        sitOnBedAnimHasPlayed = !sitOnBedAnimHasPlayed;
+
+        yield return new WaitForSeconds(4f);
+        ForceSleepPosition(layOnBedPosition);
+    }
+    void ForceSleepPosition(Vector3 pos)
+    {
+        Debug.Log("Position Set");
+       playerParent.transform.position = pos;
+   //  playerParent.transform.position = Vector3.Lerp(playerParent.transform.position, pos, rotationTime * Time.deltaTime);
+    }
+    void ForceSleepRotation(Vector3 pos)
+    {
+		Debug.Log("Rotation Set");
+        Vector3 posToLookAt;
+
+        ////Change the position the player should look at
+        posToLookAt.x = pos.x;
+        posToLookAt.y = pos.z;
+        posToLookAt.z = pos.y;
+
+        ////Get here the player is currently facing
+        // Quaternion currentRot =new Vector3(posToLookAt;
+
+        ////create prefered rotation based on here the player is going
+        //	Quaternion targetRotation = Quaternion.LookRotation(pos);
+        //transform.Rotate(pos);
+		transform.rotation = new Quaternion(pos.x, pos.y, pos.z, Time.deltaTime);
+		//   transform.rotation = posToLookAt;
+		//Rotate the player
+		//transform.rotation = Quaternion.Slerp(currentRot, targetRotation, rotationTime * Time.deltaTime);
+
+	}
+	#region Referenced Outside Of Script
+	public NavMeshAgent Agent()
     {
         return agent;
     }

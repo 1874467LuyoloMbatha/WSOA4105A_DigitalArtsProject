@@ -255,14 +255,14 @@ public class GameManager : Singleton<GameManager>
 	}
 	public void GoRest()
 	{
-		player.SetIsMoving(true);
 		playerMode = PlayerMode.Resting;
+		player.SetIsMoving(true);
 
 		player.SetDestination(bed.position);
 
-		mainVirtualCam.Priority = 1;
+		/*mainVirtualCam.Priority = 1;
 		customisingVirtualCamera.Priority = 0;
-		deskVirtualCamera.Priority = 0;
+		deskVirtualCamera.Priority = 0;*/
 
 		EnableDisablePlayerControl();
 	}
