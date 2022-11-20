@@ -238,8 +238,11 @@ public class TimerManager : MonoBehaviour
         //FLash Red & Animation Logic
         if (mins <= flashMinCap && secs <= flashSecCap && timeDisplay != null)
         {
-            timeDisplay.gameObject.GetComponent<Animator>().Play("DisplayFlash");
-            timeDisplay.color = timesUpColor;
+            if (timeDisplay.gameObject.activeSelf)
+            {
+                timeDisplay.gameObject.GetComponent<Animator>().Play("DisplayFlash");
+                timeDisplay.color = timesUpColor;
+            }
         }
         
 	}

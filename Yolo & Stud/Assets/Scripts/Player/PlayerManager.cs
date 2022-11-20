@@ -201,7 +201,11 @@ public class PlayerManager : MonoBehaviour
 
     void CheckStates()
 	{
-        if (GameManager.Instance.GetPlayerMode() == GameManager.PlayerMode.Studying)
+        if(GameManager.Instance.GetPlayerMode() != GameManager.PlayerMode.Studying)
+			GameManager.Instance.SetMonitorScreen(false);
+
+
+		if (GameManager.Instance.GetPlayerMode() == GameManager.PlayerMode.Studying)
             HandleWorkingState();
         if (GameManager.Instance.GetPlayerMode() == GameManager.PlayerMode.Resting)
             HandleSleepingState();
