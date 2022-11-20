@@ -558,7 +558,7 @@ PrefabInstance:
       objectReference: {fileID: 1303108886}
     - target: {fileID: 3928949691983293478, guid: 91ffc842870a64841b053f1395b7ace4, type: 3}
       propertyPath: canControlPlayer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3928949691983293478, guid: 91ffc842870a64841b053f1395b7ace4, type: 3}
       propertyPath: layOnBedPosition.x
@@ -631,7 +631,7 @@ PrefabInstance:
     - target: {fileID: 3928949691983293478, guid: 91ffc842870a64841b053f1395b7ace4, type: 3}
       propertyPath: exercisingAnimClips.Array.data[2]
       value: 
-      objectReference: {fileID: 7400000, guid: ce15107eb58bc6e4ab0a3cce09c2a6fd, type: 2}
+      objectReference: {fileID: 7400000, guid: 366101bc5d60d4e44be1ff78d708cb9d, type: 2}
     - target: {fileID: 3928949691983293478, guid: 91ffc842870a64841b053f1395b7ace4, type: 3}
       propertyPath: exercisingAnimClips.Array.data[3]
       value: 
@@ -1507,7 +1507,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1587588354}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0.943, y: 0.122, z: 0.944}
+  m_LocalPosition: {x: 0.943, y: 0.228, z: -0.404}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1944,6 +1944,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 188477070, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1871694010}
     - target: {fileID: 194619962, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -4373,7 +4377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 42666016, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_Lens.FieldOfView
-      value: 23.92002
+      value: 29.72099
       objectReference: {fileID: 0}
     - target: {fileID: 42666016, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_Lens.m_SensorSize.x

@@ -256,12 +256,20 @@ public class GameManager : Singleton<GameManager>
 
 	public void GoExercise()
 	{
-		player.SetIsMoving(true);
-		player.HandleExercisingState();
-		player.SetExercisingMode(true);
-		playerMode = PlayerMode.Exercising;
+		if (!player.GetExercising())
+		{
+			player.SetIsMoving(true);
+			player.HandleExercisingState();
+			//player.SetExercisingMode(true);
+			playerMode = PlayerMode.Exercising;
 
-		player.SetDestination(exerciseSpot.position);
+			player.SetDestination(exerciseSpot.position);
+		}
+		else
+		{
+			player.SetExercisingMode(false);
+			playerMode = PlayerMode.IdleWalk;
+		}
 	}
 
 	public void GoRest()

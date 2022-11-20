@@ -51,6 +51,32 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1102 &-7986633664086602906
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AnimClip_Speedbag
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 366101bc5d60d4e44be1ff78d708cb9d, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!114 &-7885477394840006029
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -356,16 +382,16 @@ AnimatorStateMachine:
     m_Position: {x: 786.3502, y: -293.74725, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -9068156772677643163}
-    m_Position: {x: 780, y: -220, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 3525103245428105026}
-    m_Position: {x: 800, y: -130, z: 0}
+    m_Position: {x: 790, y: -220, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7840392093145172190}
-    m_Position: {x: 800, y: -50, z: 0}
+    m_Position: {x: 790, y: -50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6390808805778823600}
-    m_Position: {x: 810, y: 20, z: 0}
+    m_Position: {x: 790, y: 20, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -7986633664086602906}
+    m_Position: {x: 800, y: -130, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -373,7 +399,7 @@ AnimatorStateMachine:
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: -30, z: 0}
   m_EntryPosition: {x: 50, y: 70, z: 0}
-  m_ExitPosition: {x: 690, y: 120, z: 0}
+  m_ExitPosition: {x: 730, y: 180, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 8467530857750520508}
 --- !u!1102 &1813909585210607659
@@ -398,32 +424,6 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 81f3d8f222a54894b9d982e2ee3b4a7f, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &3525103245428105026
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: AnimClip_BicycleCrunch
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ce15107eb58bc6e4ab0a3cce09c2a6fd, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

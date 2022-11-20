@@ -134,6 +134,7 @@ public class PlayerManager : MonoBehaviour
                     Debug.Log("Ground");
                     //  destTrans.transform.position = hit.point;
                     SetIsMoving(true);
+                    isExercising = false;
                     destTrans.transform.position = new Vector3(hit.point.x, hit.point.y + yMousePos, hit.point.z);
                     GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Walking);
                 }
@@ -143,9 +144,10 @@ public class PlayerManager : MonoBehaviour
                 {
                     Debug.Log("Desk");
                     SetIsMoving(true);
-                    //  destTrans.transform.position = hit.point;
-                    //  destTrans.transform.position = new Vector3(deskHit.point.x, hit.point.y + yMousePos, hit.point.z);
-                    GameManager.Instance.GoToWork();
+					isExercising = false;
+					//  destTrans.transform.position = hit.point;
+					//  destTrans.transform.position = new Vector3(deskHit.point.x, hit.point.y + yMousePos, hit.point.z);
+					GameManager.Instance.GoToWork();
                 }
 
                 //for the bed
@@ -153,9 +155,10 @@ public class PlayerManager : MonoBehaviour
                 {
                     Debug.Log("Bed");
                     SetIsMoving(true);
-                    //  destTrans.transform.position = hit.point;
-                    //  destTrans.transform.position = new Vector3(deskHit.point.x, hit.point.y + yMousePos, hit.point.z);
-                    GameManager.Instance.GoRest();
+					isExercising = false;
+					//  destTrans.transform.position = hit.point;
+					//  destTrans.transform.position = new Vector3(deskHit.point.x, hit.point.y + yMousePos, hit.point.z);
+					GameManager.Instance.GoRest();
                 }
 
                 //for the couch
@@ -163,9 +166,10 @@ public class PlayerManager : MonoBehaviour
                 {
                     Debug.Log("Couch");
                     SetIsMoving(true);
-                    //  destTrans.transform.position = hit.point;
-                    //  destTrans.transform.position = new Vector3(deskHit.point.x, hit.point.y + yMousePos, hit.point.z);
-                    GameManager.Instance.GoToCouch();
+					isExercising = false;
+					//  destTrans.transform.position = hit.point;
+					//  destTrans.transform.position = new Vector3(deskHit.point.x, hit.point.y + yMousePos, hit.point.z);
+					GameManager.Instance.GoToCouch();
                 }
             }
         }
@@ -250,7 +254,10 @@ public class PlayerManager : MonoBehaviour
                 //Debug.Log("Reached Destination");
                 SetIsMoving(false);
 
-                CheckStates();
+                if(isExercising)
+                    HandleExercisingState();
+                else
+                    CheckStates();
 
 			}
             else
@@ -350,15 +357,23 @@ public class PlayerManager : MonoBehaviour
     }
     void HandleExercise()
     {
-        if (GetExercising())
-            return;
+            /*if (GetExercising())
+                return;*/
 
-        SetIsInState(true);
-        Debug.Log("Sleep/Rest now");
-        numberOfExercisingAnimations = Random.Range(0, exercisingAnimClips.Length - 1);
-        Anim().Play(exercisingAnimClips[numberOfExercisingAnimations].name);
-        Agent().isStopped = true;
-        GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Exercising);
+            SetIsInState(true);
+            Debug.Log("Exercising");
+       
+        if (!isExercising)
+        {
+            numberOfExercisingAnimations = Random.Range(0, exercisingAnimClips.Length - 1);
+            Debug.Log(exercisingAnimClips[numberOfExercisingAnimations].name);
+            Agent().isStopped = true;
+            isExercising = true;
+        }
+		Anim().Play(exercisingAnimClips[numberOfExercisingAnimations].name);
+		//SetIsMoving(false);
+		GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Exercising);
+        
     }
 
     public void HandleCouchState()
