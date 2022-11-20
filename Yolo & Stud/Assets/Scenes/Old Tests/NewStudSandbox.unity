@@ -9259,6 +9259,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1506774950069593036, guid: bda544f10f76a104da5bf95ba57cbfbb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2058626268331610118, guid: bda544f10f76a104da5bf95ba57cbfbb, type: 3}
       propertyPath: m_Name
       value: CharContainer
@@ -9315,6 +9319,10 @@ PrefabInstance:
       propertyPath: destTrans
       value: 
       objectReference: {fileID: 1620686615}
+    - target: {fileID: 3034016985471571038, guid: bda544f10f76a104da5bf95ba57cbfbb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bda544f10f76a104da5bf95ba57cbfbb, type: 3}
 --- !u!33 &3045119277200098796
