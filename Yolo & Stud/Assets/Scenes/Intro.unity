@@ -225,7 +225,7 @@ MonoBehaviour:
   greetingText: {fileID: 1381490958}
   playerName: {fileID: 1330074132}
   waitTime: 12.5
-  secondWaitTime: 2.3
+  secondWaitTime: 5
   greetingPlayerPrefs: PlayerName
   greetingProperties:
   - Good Day,
