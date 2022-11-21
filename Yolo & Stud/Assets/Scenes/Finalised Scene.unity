@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.45021868, g: 0.3799894, b: 0.3270707, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -870,7 +870,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9149518800034148161, guid: 2c327c05f4ec96c41a9b535a83b61239, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.98
       objectReference: {fileID: 0}
     - target: {fileID: 9149518800034148161, guid: 2c327c05f4ec96c41a9b535a83b61239, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1624,7 +1624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 10
+  m_Intensity: 5
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -1747,7 +1747,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.5754717, g: 0.09989318, b: 0.5506645, a: 1}
-  m_Intensity: 0.7957747
+  m_Intensity: 0.39788735
   m_Range: 1.61
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1791,7 +1791,7 @@ Light:
   m_AreaSize: {x: 0.5, y: 0.5}
   m_BounceIntensity: 1
   m_ColorTemperature: 6487
-  m_UseColorTemperature: 1
+  m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
@@ -2169,7 +2169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 1.1
+  m_Intensity: 5
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -2292,7 +2292,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.7389879
+  m_Intensity: 7.9044905
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -2619,7 +2619,7 @@ PrefabInstance:
       objectReference: {fileID: 376781086}
     - target: {fileID: 2728872243812281431, guid: a6a2693dd4abe914e974cee42150c3e6, type: 3}
       propertyPath: canControlPlayer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2728872243812281431, guid: a6a2693dd4abe914e974cee42150c3e6, type: 3}
       propertyPath: layOnBedPosition.x
@@ -3231,7 +3231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 1.1
+  m_Intensity: 5
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -3354,7 +3354,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 3.0522914
+  m_Intensity: 13.874051
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -3580,11 +3580,19 @@ PrefabInstance:
     - target: {fileID: 1199223139, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
       propertyPath: monitorScreen
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1052205590}
+    - target: {fileID: 1199223139, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: dayLightVolume
+      value: 
+      objectReference: {fileID: 1313016796}
     - target: {fileID: 1199223139, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
       propertyPath: mainVirtualCam
       value: 
       objectReference: {fileID: 1560225528}
+    - target: {fileID: 1199223139, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: nightLightVolume
+      value: 
+      objectReference: {fileID: 890454925}
     - target: {fileID: 1199223139, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
       propertyPath: deskVirtualCamera
       value: 
@@ -6061,7 +6069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 1.1
+  m_Intensity: 5
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -6184,7 +6192,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2.5408165
+  m_Intensity: 11.549166
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -6557,7 +6565,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 0.412
-  sharedProfile: {fileID: 11400000, guid: fc699d895112970439e51628b2579d21, type: 2}
+  sharedProfile: {fileID: 11400000, guid: d628a578546e3314885e1fff5582b091, type: 2}
 --- !u!1 &1363071101
 GameObject:
   m_ObjectHideFlags: 0
@@ -7149,7 +7157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 1.1
+  m_Intensity: 5
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -7272,7 +7280,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 3.0522914
+  m_Intensity: 13.874051
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -7607,6 +7615,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -397
       objectReference: {fileID: 0}
+    - target: {fileID: 69507176, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
+      propertyPath: m_MaxValue
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 76443573, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
       propertyPath: m_SizeDelta.y
       value: 723.635
@@ -7911,6 +7923,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 616456802}
+    - target: {fileID: 552167756, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
+      propertyPath: m_MaxValue
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 567221054, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -8295,6 +8311,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 934719563, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
+      propertyPath: m_MaxValue
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 954113367, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
       propertyPath: m_Colors.m_NormalColor.b
       value: 0.46550375
@@ -8475,6 +8495,10 @@ PrefabInstance:
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 616456800}
+    - target: {fileID: 1152279060, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
+      propertyPath: m_MaxValue
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1168507603, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -8980,9 +9004,37 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1813889404, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
+      propertyPath: Lights.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1813889404, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
       propertyPath: Lights.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1474656973}
+    - target: {fileID: 1813889404, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
+      propertyPath: Lights.Array.data[1]
+      value: 
+      objectReference: {fileID: 513357820}
+    - target: {fileID: 1813889404, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
+      propertyPath: Lights.Array.data[2]
+      value: 
+      objectReference: {fileID: 1252775246}
+    - target: {fileID: 1813889404, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
+      propertyPath: Lights.Array.data[3]
+      value: 
+      objectReference: {fileID: 1807472311}
+    - target: {fileID: 1813889404, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
+      propertyPath: Lights.Array.data[4]
+      value: 
+      objectReference: {fileID: 310737479}
+    - target: {fileID: 1813889404, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
+      propertyPath: Lights.Array.data[5]
+      value: 
+      objectReference: {fileID: 256929634}
+    - target: {fileID: 1813889404, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
+      propertyPath: Lights.Array.data[6]
+      value: 
+      objectReference: {fileID: 256929634}
     - target: {fileID: 1833813985, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -11104,7 +11156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 42666016, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_Lens.FieldOfView
-      value: 12.73623
+      value: 5.312611
       objectReference: {fileID: 0}
     - target: {fileID: 42666016, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
@@ -12024,7 +12076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 1.1
+  m_Intensity: 5
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -12147,7 +12199,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2.5408165
+  m_Intensity: 11.549166
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208

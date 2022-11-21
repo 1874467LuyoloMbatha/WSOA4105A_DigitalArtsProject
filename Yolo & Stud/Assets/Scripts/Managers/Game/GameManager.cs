@@ -23,6 +23,7 @@ public class GameManager : Singleton<GameManager>
 	[Header("Mood Variables")]
 	[SerializeField] Material defaultSky;
 	[SerializeField] Material currentSky, nightSky, daySky;
+	[SerializeField] GameObject dayLightVolume, nightLightVolume;
 	[SerializeField] GameObject raining, snowing, lightning, monitorScreen;
 	[SerializeField] Button personalisationButton;
 	[SerializeField] float duration;
@@ -83,7 +84,7 @@ public class GameManager : Singleton<GameManager>
    
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab))
+       /* if(Input.GetKeyDown(KeyCode.Tab))
 		{
 			isTabParentOpen = !isTabParentOpen;
 
@@ -95,7 +96,7 @@ public class GameManager : Singleton<GameManager>
 
 			tabParent.SetActive(isTabParentOpen);
 			//Debug.Log(gameState);
-		}
+		}*/
 
 		
     }
@@ -213,12 +214,24 @@ public class GameManager : Singleton<GameManager>
 
 	public void ChangeSky(int v)
 	{
-		if (v == 0)
+		/*if (v == 0)
 			RenderSettings.skybox = defaultSky;
 		if (v == 1)
 			RenderSettings.skybox = daySky;
 		if (v == 2)
-			RenderSettings.skybox = nightSky;
+			RenderSettings.skybox = nightSky;*/
+		if (v == 0)
+			dayLightVolume.SetActive(true);
+		if (v == 1)
+		{
+			dayLightVolume.SetActive(true);
+			nightLightVolume.SetActive(false);
+		}
+		if (v == 2)
+		{
+			nightLightVolume.SetActive(true);
+			dayLightVolume.SetActive(false);
+		}
 
 		soundsManager.Instance.PlayMainAmbience(v);
 	}
