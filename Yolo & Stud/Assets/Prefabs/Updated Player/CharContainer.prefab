@@ -1818,20 +1818,34 @@ MonoBehaviour:
   distanceBeforeStopping: 0
   yMousePos: -0.15
   distanceForRay: 100
+  baseOffsetDefault: 0
+  baseOffsetDeskValue: 0.0018
   isMoving: 0
   canControlPlayer: 0
   isInAState: 0
+  comesFromAnimation: 0
+  exercisingAnimClips: []
   standToSitOnBedRotation: {x: 0, y: 0, z: 0}
   standToSitOnBedPosition: {x: 0, y: 0, z: 0}
   layOnBedPosition: {x: 0, y: 0, z: 0}
+  standToSitOnCouchRotation: {x: 0, y: 0, z: 0}
+  standToSitOnCouchPosition: {x: 0, y: 0, z: 0}
+  sitOnCouchPosition: {x: 0, y: 0, z: 0}
+  SitAtDeskhRotation: {x: 0, y: 0, z: 0}
+  SitAtDeskhPosition: {x: 0, y: 0, z: 0}
   idlingAnimName: Idle
+  sitToStandCouchAnimName: 
   walkingAnimName: Walk
   workingAnimName: Sitting
   goingToWorkAnimName: Sitting
+  goingToCouchAnimName: 
   restingAnimName: BedStandToSit
   exerciseAnimName: Exercise
   numberOfExercisingAnimations: 1
   sitOnBedAnimHasPlayed: 0
+  sitOnCouchAnimHasPlayed: 0
+  sitAtDeskAnimHasPlayed: 0
+  isExercising: 0
 --- !u!195 &3928949691983293479
 NavMeshAgent:
   m_ObjectHideFlags: 0
