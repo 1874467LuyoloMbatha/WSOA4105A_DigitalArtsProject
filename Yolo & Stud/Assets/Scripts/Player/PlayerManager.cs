@@ -395,7 +395,11 @@ public class PlayerManager : MonoBehaviour
             StartCoroutine(SleepingAnimationEventHandler());
         }
     }
+    public Vector3 BedPos()
+    {
+        return standToSitOnBedPosition;
 
+	}
     public void HandleExercisingState()
     {
         HandleExercise();
