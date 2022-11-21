@@ -238,8 +238,11 @@ public class TimerManager : MonoBehaviour
         //FLash Red & Animation Logic
         if (mins <= flashMinCap && secs <= flashSecCap && timeDisplay != null)
         {
-            timeDisplay.gameObject.GetComponent<Animator>().Play("DisplayFlash");
-            timeDisplay.color = timesUpColor;
+            if (timeDisplay.gameObject.activeSelf)
+            {
+                timeDisplay.gameObject.GetComponent<Animator>().Play("DisplayFlash");
+                timeDisplay.color = timesUpColor;
+            }
         }
         
 	}
@@ -262,9 +265,9 @@ public class TimerManager : MonoBehaviour
 
         if (PomodoroSteps == PomodoroStages.Pomodoro)
         {
-            //duration = timer.secondsLeft;
-
-            if (duration != 0)
+			//duration = timer.secondsLeft;
+			GameManager.Instance.SetPersonaliseButton(false);
+			if (duration != 0)
             {
                 TimerSetUp(duration);
                // return;
@@ -289,6 +292,7 @@ public class TimerManager : MonoBehaviour
 
        else if(PomodoroSteps == PomodoroStages.shortBreak)
 		{
+            GameManager.Instance.SetPersonaliseButton(true);
             if(!SettingsMenu.Instance.GetRestarted() && checkIfTimerRan <= 0)
 			{
                 PomodoroSteps = PomodoroStages.Pomodoro;
@@ -308,8 +312,8 @@ public class TimerManager : MonoBehaviour
         else if (PomodoroSteps == PomodoroStages.longBreak)
         {
             longBreakDuration = timer.secondsLeft;
-
-            if (longBreakDuration == 0)
+			GameManager.Instance.SetPersonaliseButton(true);
+			if (longBreakDuration == 0)
             {
                 PomodoroSteps = PomodoroStages.Pomodoro;
                 checkIfTimerRan = 3;

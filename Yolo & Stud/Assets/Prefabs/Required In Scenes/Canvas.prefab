@@ -11798,7 +11798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: Personalise yourself or surroundings
-  header: 
+  header: Personalise
   xOffset: -0.15
   yOffset: 0.1
 --- !u!114 &475180932252998116

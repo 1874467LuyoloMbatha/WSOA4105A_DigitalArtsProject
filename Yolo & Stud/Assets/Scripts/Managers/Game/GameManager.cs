@@ -23,7 +23,8 @@ public class GameManager : Singleton<GameManager>
 	[Header("Mood Variables")]
 	[SerializeField] Material defaultSky;
 	[SerializeField] Material currentSky, nightSky, daySky;
-	[SerializeField] GameObject raining, snowing, lightning;
+	[SerializeField] GameObject raining, snowing, lightning, monitorScreen;
+	[SerializeField] Button personalisationButton;
 	[SerializeField] float duration;
 
 	[Header("Player Variables")]
@@ -66,6 +67,8 @@ public class GameManager : Singleton<GameManager>
 			if(PlayerPrefs.HasKey(greetingPlayerPrefs))
 				playerNameInputField.text = PlayerPrefs.GetString(greetingPlayerPrefs);
 		}
+
+		SetMonitorScreen(false);
 	}
 	void Start()
     {
@@ -243,6 +246,7 @@ public class GameManager : Singleton<GameManager>
 
 		player.SetDestination(desk.position);
 		EnableDisablePlayerControl();
+		SetMonitorScreen(false);
 	}
 
 	public void GoToCouch()
@@ -252,6 +256,7 @@ public class GameManager : Singleton<GameManager>
 
 		player.SetDestination(couch.position);
 		EnableDisablePlayerControl();
+		SetMonitorScreen(false);
 	}
 
 	public void GoExercise()
@@ -270,6 +275,8 @@ public class GameManager : Singleton<GameManager>
 			player.SetExercisingMode(false);
 			playerMode = PlayerMode.IdleWalk;
 		}
+
+		SetMonitorScreen(false);
 	}
 
 	public void GoRest()
@@ -284,6 +291,7 @@ public class GameManager : Singleton<GameManager>
 		deskVirtualCamera.Priority = 0;*/
 
 		EnableDisablePlayerControl();
+		SetMonitorScreen(false);
 	}
 
 	public void ChangeToStudyCamera()
@@ -291,6 +299,20 @@ public class GameManager : Singleton<GameManager>
 		mainVirtualCam.Priority = 0;
 		customisingVirtualCamera.Priority = 0;
 		deskVirtualCamera.Priority = 20;
+
+		SetMonitorScreen(true);
+	}
+
+	public void SetMonitorScreen(bool v)
+	{
+		if(monitorScreen != null)
+			monitorScreen.SetActive(v);
+	}
+
+	public void SetPersonaliseButton(bool v)
+	{
+		if (personalisationButton != null)
+			personalisationButton.interactable = v;
 	}
 	#endregion
 }
