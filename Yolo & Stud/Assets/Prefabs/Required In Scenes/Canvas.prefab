@@ -12264,6 +12264,8 @@ GameObject:
   - component: {fileID: 720551483}
   - component: {fileID: 5505569833732780986}
   - component: {fileID: 3821796477410901181}
+  - component: {fileID: 3163160790959608900}
+  - component: {fileID: 8880140443557364260}
   m_Layer: 5
   m_Name: Task
   m_TagString: Untagged
@@ -12423,6 +12425,36 @@ MonoBehaviour:
   isColourPicker: 0
   isSelected: 0
   canBeMoved: 0
+--- !u!114 &3163160790959608900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720551481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.56078434}
+  m_EffectDistance: {x: 1, y: -3.16}
+  m_UseGraphicAlpha: 1
+--- !u!114 &8880140443557364260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720551481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 0}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &728307368
 GameObject:
   m_ObjectHideFlags: 0
@@ -25595,6 +25627,8 @@ GameObject:
   - component: {fileID: 1523537536}
   - component: {fileID: 1523537539}
   - component: {fileID: 1523537540}
+  - component: {fileID: 2287769976353467521}
+  - component: {fileID: 7628530519693110096}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -25754,6 +25788,36 @@ MonoBehaviour:
   isColourPicker: 0
   isSelected: 0
   canBeMoved: 0
+--- !u!114 &2287769976353467521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523537534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.56078434}
+  m_EffectDistance: {x: 1, y: -3.16}
+  m_UseGraphicAlpha: 1
+--- !u!114 &7628530519693110096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523537534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.047058824}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1531352809
 GameObject:
   m_ObjectHideFlags: 0
@@ -38535,7 +38599,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 1920, y: 720}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3

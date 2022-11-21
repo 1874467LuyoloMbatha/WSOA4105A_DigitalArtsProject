@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.2068448, g: 0.28025484, b: 0.2997117, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3506,7 +3506,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1668074674, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1670856740, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3994,7 +3994,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2270357367108155565, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -772
       objectReference: {fileID: 0}
     - target: {fileID: 2424223979011093435, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4088,6 +4088,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: ResolutionDropdown
       objectReference: {fileID: 0}
+    - target: {fileID: 3163160790959608900, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
+      propertyPath: m_EffectColor.b
+      value: 0.019722305
+      objectReference: {fileID: 0}
+    - target: {fileID: 3163160790959608900, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
+      propertyPath: m_EffectColor.g
+      value: 0.019722305
+      objectReference: {fileID: 0}
+    - target: {fileID: 3163160790959608900, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
+      propertyPath: m_EffectColor.r
+      value: 0.03773582
+      objectReference: {fileID: 0}
     - target: {fileID: 3208555210814322540, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
       propertyPath: m_Text
       value: Graphics
@@ -4174,6 +4186,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3222411196669150882, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3222411196669150908, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
+      propertyPath: m_MatchWidthOrHeight
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3222411196669150910, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
@@ -4694,7 +4710,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8210063617120002326, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -647
       objectReference: {fileID: 0}
     - target: {fileID: 8308199711863890804, guid: eb1b1615355dec04892a7df6f612003a, type: 3}
       propertyPath: m_Name
