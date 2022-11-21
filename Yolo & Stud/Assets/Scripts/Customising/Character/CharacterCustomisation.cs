@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 namespace StudYolo.Blendshapes
 {
@@ -42,16 +43,19 @@ namespace StudYolo.Blendshapes
                 skmr.SetBlendShapeWeight(blendshape.positiveIndex, value);
                 if (blendshape.negativeIndex == -1) return;
                 skmr.SetBlendShapeWeight(blendshape.negativeIndex, 0);
-            }
+				SetPlayerPrefs(blendshapeName, value);
+			}
 
             else
             {
-                if (blendshape.negativeIndex == -1) return;
+				SetPlayerPrefs(blendshapeName, value);
+				if (blendshape.negativeIndex == -1) return;
                 skmr.SetBlendShapeWeight(blendshape.negativeIndex, -value);
                 if (blendshape.positiveIndex == -1) return;
                 skmr.SetBlendShapeWeight(blendshape.positiveIndex, 0);
             }
 
+            
         }
 
         #endregion
@@ -70,7 +74,40 @@ namespace StudYolo.Blendshapes
             //print("I HAVE BEEN PARSED! I HAVE " + blendShapeDatabase.Count + " entries!");
         }
 
-        private SkinnedMeshRenderer GetSkinnedMeshRenderer()
+        public void GetPlayerPrefs(string blendShapeName)
+        {
+			if (!blendShapeDatabase.ContainsKey(blendShapeName)) { Debug.LogError("Blendshape " + blendShapeName + " does not exist!"); return; }
+			
+            if (PlayerPrefs.HasKey(blendShapeName))
+            {
+
+				BlendShapeWrapper blendshape = blendShapeDatabase[blendShapeName];
+
+				if (PlayerPrefs.GetFloat(blendShapeName) >= 0)
+                {
+                    if (blendshape.positiveIndex == -1) return;
+					skmr.SetBlendShapeWeight(blendshape.positiveIndex, PlayerPrefs.GetFloat(blendShapeName));
+					if (blendshape.negativeIndex == -1) return;
+					skmr.SetBlendShapeWeight(blendshape.negativeIndex, 0);
+				}
+
+				else
+				{
+					if (blendshape.negativeIndex == -1) return;
+					skmr.SetBlendShapeWeight(blendshape.negativeIndex, -PlayerPrefs.GetFloat(blendShapeName));
+					if (blendshape.positiveIndex == -1) return;
+					skmr.SetBlendShapeWeight(blendshape.positiveIndex, 0);
+				}
+            }
+        }
+
+		public void SetPlayerPrefs(string blendshapeName, float value)
+		{
+			//if (!blendShapeDatabase.ContainsKey(blendshapeName)) { Debug.LogError("Blendshape " + blendshapeName + " does not exist!"); return; }
+            PlayerPrefs.SetFloat(blendshapeName, value);
+            Debug.Log(blendshapeName + PlayerPrefs.GetFloat(blendshapeName).ToString());
+		}
+		private SkinnedMeshRenderer GetSkinnedMeshRenderer()
         {
             SkinnedMeshRenderer _skmr = target.GetComponentInChildren<SkinnedMeshRenderer>();
 

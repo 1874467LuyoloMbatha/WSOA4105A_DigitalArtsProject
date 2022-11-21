@@ -22,8 +22,9 @@ namespace StudYolo.Blendshapes
             blendShapeName = blendShapeName.Trim();
             blendShapeSlider = GetComponent<Slider>();
 
-
-            blendShapeSlider.onValueChanged.AddListener(value => CharacterCustomisation.Instance.ChangeBlendshapeValue(blendShapeName, value));
+            CharacterCustomisation.Instance.GetPlayerPrefs(blendShapeName);
+            blendShapeSlider.value = PlayerPrefs.GetFloat(blendShapeName);
+			blendShapeSlider.onValueChanged.AddListener(value => CharacterCustomisation.Instance.ChangeBlendshapeValue(blendShapeName, value));
         }
 
 
