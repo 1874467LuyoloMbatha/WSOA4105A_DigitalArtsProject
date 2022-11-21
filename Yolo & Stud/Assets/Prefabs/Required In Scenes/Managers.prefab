@@ -878,9 +878,13 @@ MonoBehaviour:
   currentSky: {fileID: 0}
   nightSky: {fileID: 2100000, guid: ed1387202b1349540a5d6464f0f27488, type: 2}
   daySky: {fileID: 2100000, guid: 5464c15ff9c6ca04cb5790c1773e76fa, type: 2}
+  dayLightVolume: {fileID: 0}
+  nightLightVolume: {fileID: 0}
   raining: {fileID: 0}
   snowing: {fileID: 0}
   lightning: {fileID: 0}
+  monitorScreen: {fileID: 0}
+  personalisationButton: {fileID: 0}
   duration: 0
   player: {fileID: 0}
   controlImage: {fileID: 0}
@@ -889,6 +893,7 @@ MonoBehaviour:
   desk: {fileID: 0}
   bed: {fileID: 0}
   couch: {fileID: 0}
+  exerciseSpot: {fileID: 0}
   tabParent: {fileID: 0}
   mainVirtualCam: {fileID: 0}
   customisingVirtualCamera: {fileID: 0}
@@ -897,6 +902,36 @@ MonoBehaviour:
   isCustomising: 0
   playerNameInputField: {fileID: 0}
   greetingPlayerPrefs: PlayerName
+--- !u!1 &515958368095212386
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3956349042406845327}
+  m_Layer: 0
+  m_Name: Material Change Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3956349042406845327
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515958368095212386}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4487620104775278912}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1002505267737251763
 GameObject:
   m_ObjectHideFlags: 0
@@ -1313,6 +1348,7 @@ Transform:
   - {fileID: 5737715436115467789}
   - {fileID: 679130484078273107}
   - {fileID: 6583505105763870738}
+  - {fileID: 3956349042406845327}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
