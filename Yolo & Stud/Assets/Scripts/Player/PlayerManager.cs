@@ -382,12 +382,16 @@ public class PlayerManager : MonoBehaviour
 			Agent().isStopped = true;
 
             Anim().SetTrigger(restingAnimName);
-            //Anim().Play(IsRestingHash);
-
-            ForceSleepPosition(standToSitOnBedPosition);
+			//Anim().Play(IsRestingHash);
+			
+          
+			ForceSleepPosition(standToSitOnBedPosition);
             ForceSleepRotation(standToSitOnBedRotation);
 
-            GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Resting);
+			toRotate.transform.rotation = new Quaternion(standToSitOnBedRotation.x, standToSitOnBedRotation.y, standToSitOnBedRotation.z, 1);
+			//playerParent.transform.SetParent(bedParent);
+
+			GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Resting);
             StartCoroutine(SleepingAnimationEventHandler());
         }
     }
@@ -460,6 +464,7 @@ public class PlayerManager : MonoBehaviour
         sitOnBedAnimHasPlayed = !sitOnBedAnimHasPlayed;
 
         yield return new WaitForSeconds(4f);
+        Agent().baseOffset = -2f;
         ForceSleepPosition(layOnBedPosition);
 		
 	}
