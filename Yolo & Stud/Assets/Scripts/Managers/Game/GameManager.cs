@@ -241,6 +241,7 @@ public class GameManager : Singleton<GameManager>
 
 	public void GoToWork()
 	{
+		player.ResetTransformParent();
 		player.SetIsMoving(true);
 		playerMode = PlayerMode.Studying;
 
@@ -251,6 +252,7 @@ public class GameManager : Singleton<GameManager>
 
 	public void GoToCouch()
 	{
+		player.ResetTransformParent();
 		player.SetIsMoving(true);
 		playerMode = PlayerMode.Couch;
 
@@ -263,6 +265,7 @@ public class GameManager : Singleton<GameManager>
 	{
 		if (!player.GetExercising())
 		{
+			player.ResetTransformParent();
 			player.SetIsMoving(true);
 			player.HandleExercisingState();
 			//player.SetExercisingMode(true);
@@ -272,6 +275,7 @@ public class GameManager : Singleton<GameManager>
 		}
 		else
 		{
+			player.ResetTransformParent();
 			player.SetExercisingMode(false);
 			playerMode = PlayerMode.IdleWalk;
 		}
@@ -282,6 +286,7 @@ public class GameManager : Singleton<GameManager>
 	public void GoRest()
 	{
 		playerMode = PlayerMode.Resting;
+		player.ResetTransformParent();
 		player.SetIsMoving(true);
 
 		player.SetDestination(bed.position);

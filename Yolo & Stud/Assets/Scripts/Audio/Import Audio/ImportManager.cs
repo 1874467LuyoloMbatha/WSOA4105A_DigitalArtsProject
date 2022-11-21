@@ -23,7 +23,7 @@ public class ImportManager : Singleton<ImportManager>
 	public List<AudioClip> toPopulate;
 	void Start()
     {
-		if (PlayerPrefs.HasKey(filePathPrefs))
+		if (PlayerPrefs.HasKey(filePathPrefs) && soundsManager.Instance.musicGenre == soundsManager.MusicGenre.Custom)
 		{
 			SetFilePath(PlayerPrefs.GetString(filePathPrefs));
 			LoadFiles();

@@ -14,7 +14,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Vector3 destination, currentPos, mousePosition;
     [SerializeField] LayerMask layerYouCanMoveTo, layerForBed, layerForDesk, layerForCouch;
-    [SerializeField] Transform playerParent, destTrans;
+    [SerializeField] Transform playerParent, destTrans, toRotate, couchParent, bedParent, deskParent, normalParent;
     [SerializeField] Text debugText;
 
     [Header("Player Floats")]
@@ -135,8 +135,9 @@ public class PlayerManager : MonoBehaviour
                 if (Physics.Raycast(ray, out RaycastHit hit, distanceForRay, layerYouCanMoveTo))
                 {
                     Debug.Log("Ground");
-                    //  destTrans.transform.position = hit.point;
-                    SetIsMoving(true);
+					//  destTrans.transform.position = hit.point;
+					ResetTransformParent();
+					SetIsMoving(true);
                     isExercising = false;
                     destTrans.transform.position = new Vector3(hit.point.x, hit.point.y + yMousePos, hit.point.z);
                     GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Walking);
@@ -150,6 +151,7 @@ public class PlayerManager : MonoBehaviour
 					isExercising = false;
 					//  destTrans.transform.position = hit.point;
 					//  destTrans.transform.position = new Vector3(deskHit.point.x, hit.point.y + yMousePos, hit.point.z);
+					ResetTransformParent();
 					GameManager.Instance.GoToWork();
                 }
 
@@ -161,7 +163,8 @@ public class PlayerManager : MonoBehaviour
 					isExercising = false;
 					//  destTrans.transform.position = hit.point;
 					//  destTrans.transform.position = new Vector3(deskHit.point.x, hit.point.y + yMousePos, hit.point.z);
-					GameManager.Instance.GoRest();
+					ResetTransformParent();
+                    GameManager.Instance.GoRest();
                 }
 
                 //for the couch
@@ -172,14 +175,29 @@ public class PlayerManager : MonoBehaviour
 					isExercising = false;
 					//  destTrans.transform.position = hit.point;
 					//  destTrans.transform.position = new Vector3(deskHit.point.x, hit.point.y + yMousePos, hit.point.z);
+					ResetTransformParent();
 					GameManager.Instance.GoToCouch();
                 }
             }
         }
-    }
+
+		//HandleRotation();
+	}
+
+    public void ResetTransformParent()
+    {
+        if(playerParent.parent == couchParent)
+            playerParent.SetParent(normalParent);
+
+		if (playerParent.parent == bedParent)
+			playerParent.SetParent(normalParent);
+
+		if (playerParent.parent == deskParent)
+			playerParent.SetParent(normalParent);
+	}
     void HandleRotation()
     {
-        if (isMoving && GameManager.Instance.GetPlayerMode() != GameManager.PlayerMode.Resting)
+        if (isMoving)
         {
             Vector3 posToLookAt;
 
@@ -303,9 +321,10 @@ public class PlayerManager : MonoBehaviour
         Agent().SetDestination(Destination());
         Agent().baseOffset = baseOffsetDefault;
         Agent().isStopped = false;
+		Agent().updateRotation = true;
 
-     //  GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Walking);
-    }
+		//  GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Walking);
+	}
 
     public void HandleWorkingState()
     {
@@ -412,23 +431,29 @@ public class PlayerManager : MonoBehaviour
 
 			//Agent().SetDestination(Destination());
 			Agent().isStopped = true;
-
+           
 			//Anim().SetTrigger(restingAnimName);
 			Anim().Play(IsGoingToCouchHash);
 
+            playerParent.transform.SetParent(couchParent);
 			ForceSleepPosition(standToSitOnCouchPosition);
-			ForceSleepRotation(standToSitOnCouchRotation);
+			toRotate.transform.rotation = new Quaternion(standToSitOnCouchRotation.x, standToSitOnCouchRotation.y, standToSitOnCouchRotation.z, 1);
+			//ForceSleepRotation(standToSitOnCouchRotation);
 
 			GameManager.Instance.SetPlayerMode(GameManager.PlayerMode.Couch);
 			StartCoroutine(CouchLayingAnimationEventHandler());
 		}
-    }
+		//ForceSleepRotation(standToSitOnCouchRotation);
+	}
 	public IEnumerator CouchLayingAnimationEventHandler()
 	{
 		sitOnCouchAnimHasPlayed = !sitOnCouchAnimHasPlayed;
 
-		yield return new WaitForSeconds(2.2f);
+		yield return new WaitForSeconds(5f);
 		ForceSleepPosition(sitOnCouchPosition);
+		Agent().baseOffset = -0.25f;
+        Agent().updateRotation= false;
+		//ForceSleepRotation(standToSitOnCouchRotation);
 	}
 	public IEnumerator SleepingAnimationEventHandler()
     {
@@ -436,7 +461,8 @@ public class PlayerManager : MonoBehaviour
 
         yield return new WaitForSeconds(4f);
         ForceSleepPosition(layOnBedPosition);
-    }
+		
+	}
     void ForceSleepPosition(Vector3 pos)
     {
         Debug.Log("Position Set");
