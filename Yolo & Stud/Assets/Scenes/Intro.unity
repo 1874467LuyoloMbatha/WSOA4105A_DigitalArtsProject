@@ -224,7 +224,7 @@ MonoBehaviour:
   greetingCard: {fileID: 229345847}
   greetingText: {fileID: 1381490958}
   playerName: {fileID: 1330074132}
-  waitTime: 15.5
+  waitTime: 12.5
   secondWaitTime: 2.3
   greetingPlayerPrefs: PlayerName
   greetingProperties:
@@ -711,7 +711,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 743475659}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 441ecca465c24e848a27a2fd81332273, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: d9fe5beafe8e99e4bb02743f239b2b07, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 156796761}

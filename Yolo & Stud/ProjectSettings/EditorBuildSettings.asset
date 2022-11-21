@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Intro.unity
     guid: 93d65ef3d6305a84b8b7dc241b7b8ec0
   - enabled: 1
-    path: Assets/Scenes/Old Tests/Crit 3.unity
-    guid: b97604ab7ad82714097fb79ccdc534fa
-  - enabled: 0
-    path: Assets/Scenes/Old Tests/ImportingAudioTest.unity
-    guid: 65241c49a5e33344db9ecbea02ea4113
+    path: Assets/Scenes/Finalised Scene.unity
+    guid: 363466a03df18514488b7162c0669d69
   m_configObjects: {}
