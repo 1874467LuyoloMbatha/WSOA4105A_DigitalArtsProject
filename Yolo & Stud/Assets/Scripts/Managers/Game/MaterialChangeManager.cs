@@ -5,22 +5,39 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using StudYolo.Blendshapes;
 
-public class MaterialChangeManager : MonoBehaviour
+public class MaterialChangeManager : Singleton<MaterialChangeManager>
 {
-    [Header("External Handles")]
-    [SerializeField] matChange wall;
-	[SerializeField] matChange bed, couch, sibuClothing, carpet;
+	[Header("Tootip")]
+	[Tooltip("Drag The Main Parent Here!")]
+	[SerializeField] GameObject colourPickerParent;
+	[SerializeField] GameObject skinHolder, colourHolder, tempButton;
 
-	[Header("Unity Handles")]
+	[Header("External Handles")]
+    [SerializeField] matChange wall;
+	[SerializeField] matChange bed, couch, carpet;
+
+	[Header("Sibu's Materials")]
+	[SerializeField] SibuMatChange skin;
+	[SerializeField] SibuMatChange eyes, mainHair, sideHair;
+	[SerializeField] SibuMatChange hoodie, hoodiePatch, shorts, socks, shoes;
+
+	[Header("Unity Mat Changing Slider")]
     [Tooltip("Drag the wall's slider here")]
     [SerializeField] Slider wallMatChangeSlider;
-	[SerializeField] Slider bedMatChangeSlider, couchMatChangeSlider, sibuClothingMatChangeSlider;
+	[SerializeField] Slider bedMatChangeSlider, couchMatChangeSlider;
 	[SerializeField] Slider carpetMatChangeSlider;
 
+	[Header("Colour Picker")]
+	[SerializeField] Text colourPickerHeader;
+	[SerializeField] int skinIndex, eyesIndex, mainhairIndex, sideHairIndex;
+	[SerializeField] int hoodieIndex, hoodiePatchIndex, shortsIndex, socksIndex, shoesIndex;
+	[SerializeField] string header;
 	void Start()
     {
 		SetPlayerPrefs();
 		SetUpSliders();
+
+		SetUpSibuPrefs();
     }
 
 	#region Setting Up
@@ -40,11 +57,6 @@ public class MaterialChangeManager : MonoBehaviour
 		{
 			couchMatChangeSlider.maxValue = couch.materialsNeeded.Length - 1;
 			couchMatChangeSlider.onValueChanged.AddListener(value => UpdateCouchSlider((int)value));
-		}
-		if (sibuClothingMatChangeSlider != null)
-		{
-			sibuClothingMatChangeSlider.maxValue = sibuClothing.materialsNeeded.Length - 1;
-			sibuClothingMatChangeSlider.onValueChanged.AddListener(value => UpdateClothingSlider((int)value));
 		}
 		if (carpetMatChangeSlider != null)
 		{
@@ -97,20 +109,6 @@ public class MaterialChangeManager : MonoBehaviour
 			}
 		}
 
-		if (PlayerPrefs.HasKey(sibuClothing.objectName))
-		{
-			if (sibuClothingMatChangeSlider != null)
-			{
-				sibuClothingMatChangeSlider.value = PlayerPrefs.GetInt(sibuClothing.objectName);
-				sibuClothingMatChangeSlider.maxValue = sibuClothing.materialsNeeded.Length - 1;
-
-				foreach (var item in sibuClothing.objectType)
-				{
-					item.material = sibuClothing.materialsNeeded[PlayerPrefs.GetInt(sibuClothing.objectName)];
-				}
-			}
-		}
-
 		if (PlayerPrefs.HasKey(carpet.objectName))
 		{
 			if (carpetMatChangeSlider != null)
@@ -125,9 +123,15 @@ public class MaterialChangeManager : MonoBehaviour
 			}
 		}
 	}
+
+	public void SetUpSibuPrefs()
+	{
+
+	}
+
 	#endregion
 
-	#region Public functions
+	#region Public Slider functions
 	public void UpdateWallSlider(int v)
     {
 		foreach (var item in wall.objectType)
@@ -167,18 +171,150 @@ public class MaterialChangeManager : MonoBehaviour
 
 		PlayerPrefs.SetInt(carpet.objectName, v);
 	}
+	#endregion
 
-	public void UpdateClothingSlider(int v)
+	#region Public Button Functions
+	public void SkinButtonLogic()
 	{
-		foreach (var item in sibuClothing.objectType)
-		{
-			item.material = sibuClothing.materialsNeeded[v];
-		}
+		header = "Skin Tone";
+		colourPickerHeader.text = header;
+		colourPickerParent.SetActive(true);
+		skinHolder.SetActive(true);	
+		colourHolder.SetActive(false);
+	}
 
-		PlayerPrefs.SetInt(sibuClothing.objectName, v);
+	public void SibuMatButtonLogic(string v)
+	{
+		header = v;
+		colourPickerHeader.text = header;
+		colourPickerParent.SetActive(true);
+		skinHolder.SetActive(false);
+		colourHolder.SetActive(true);
+	}
+	public void SetSkinColour(int v)
+	{
+		skinIndex = v;
+
+		foreach (var item in skin.materialsToChange)
+		{
+			item.color = skin.colorsToChange[skinIndex];
+		}
+		PlayerPrefs.SetInt(skin.bodyType, skinIndex);
+	}
+
+	public void SetEyesColour(int v)
+	{
+		eyesIndex = v;
+
+		foreach (var item in eyes.materialsToChange)
+		{
+			item.color = eyes.colorsToChange[eyesIndex];
+		}
+		PlayerPrefs.SetInt(eyes.bodyType, eyesIndex);
+	}
+
+	public void SetMainHairColour(int v)
+	{
+		mainhairIndex = v;
+
+		foreach (var item in mainHair.materialsToChange)
+		{
+			item.color = mainHair.colorsToChange[mainhairIndex];
+		}
+		PlayerPrefs.SetInt(mainHair.bodyType, mainhairIndex);
+	}
+
+	public void SetSideHairColour(int v)
+	{
+		sideHairIndex = v;
+
+		foreach (var item in sideHair.materialsToChange)
+		{
+			item.color = sideHair.colorsToChange[sideHairIndex];
+		}
+		PlayerPrefs.SetInt(sideHair.bodyType, sideHairIndex);
+	}
+
+	public void SetHoodieColour(int v)
+	{
+		hoodieIndex = v;
+
+		foreach (var item in hoodie.materialsToChange)
+		{
+			item.color = hoodie.colorsToChange[hoodieIndex];
+		}
+		PlayerPrefs.SetInt(hoodie.bodyType, hoodieIndex);
+	}
+
+	public void SetHoodiePatchColour(int v)
+	{
+		hoodiePatchIndex = v;
+
+		foreach (var item in hoodiePatch.materialsToChange)
+		{
+			item.color = hoodiePatch.colorsToChange[hoodiePatchIndex];
+		}
+		PlayerPrefs.SetInt(hoodiePatch.bodyType, hoodiePatchIndex);
+	}
+
+	public void SetShortColour(int v)
+	{
+		shortsIndex = v;
+
+		foreach (var item in shorts.materialsToChange)
+		{
+			item.color = shorts.colorsToChange[shortsIndex];
+		}
+		PlayerPrefs.SetInt(shorts.bodyType, shortsIndex);
+	}
+
+	public void SetSocksColour(int v)
+	{
+		socksIndex = v;
+
+		foreach (var item in socks.materialsToChange)
+		{
+			item.color = socks.colorsToChange[socksIndex];
+		}
+		PlayerPrefs.SetInt(socks.bodyType, socksIndex);
+	}
+
+	public void SetShoesColour(int v)
+	{
+		shoesIndex = v;
+
+		foreach (var item in shoes.materialsToChange)
+		{
+			item.color = shoes.colorsToChange[shoesIndex];
+		}
+		PlayerPrefs.SetInt(shoes.bodyType, shoesIndex);
+	}
+
+	public void SetColour(int v)
+	{
+		if(tempButton.GetComponent<RenameObject>().index == 1)
+			SetEyesColour(v);
+		if (tempButton.GetComponent<RenameObject>().index == 2)
+			SetMainHairColour(v);
+		if (tempButton.GetComponent<RenameObject>().index == 3)
+			SetSideHairColour(v);
+		if (tempButton.GetComponent<RenameObject>().index == 4)
+			SetHoodieColour(v);
+		if (tempButton.GetComponent<RenameObject>().index == 5)
+			SetHoodiePatchColour(v);
+		if (tempButton.GetComponent<RenameObject>().index == 6)
+			SetShoesColour(v);
+		if (tempButton.GetComponent<RenameObject>().index == 7)
+			SetSocksColour(v);
+		if (tempButton.GetComponent<RenameObject>().index == 8)
+			SetShoesColour(v);
 	}
 	#endregion
 
+	public void SetTempButton(GameObject v)
+	{
+		tempButton = v;
+	}
 }
 
 /*

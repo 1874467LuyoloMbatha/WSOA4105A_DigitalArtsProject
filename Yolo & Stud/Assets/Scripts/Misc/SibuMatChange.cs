@@ -8,7 +8,8 @@ using UnityEngine;
 public class SibuMatChange 
 {
 	public string bodyType;
-	public Material materialsToChange;
+	public Material[] materialsToChange;
+	public Color[] colorsToChange;
 }
 
 /*

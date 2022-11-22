@@ -12,9 +12,11 @@ public class ColourPickerTrigger : MonoBehaviour, IPointerEnterHandler, IPointer
 	[Header("Booleans")]
 	[Tooltip("This will allow the player to disable the colour picker window")]
 	public bool canEscape = false;
+
+
 	void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
 	{
-		TooltipSystem.ShowColourPicker(header);
+			TooltipSystem.ShowColourPicker(header);
 	}
 
 	void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
@@ -71,4 +73,5 @@ public class ColourPickerTrigger : MonoBehaviour, IPointerEnterHandler, IPointer
 			temp = null;
 		}
 	}
+
 }

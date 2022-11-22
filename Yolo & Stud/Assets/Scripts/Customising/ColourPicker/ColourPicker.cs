@@ -11,6 +11,7 @@ public class ColourPicker : Singleton<ColourPicker>
 	[SerializeField] RectTransform textureRect;
 	[SerializeField] GameObject objectToChange;
 	[SerializeField] Texture2D refSprite;
+	
 
 	[Header("Colour")]
 	[SerializeField] Color storedColour;
@@ -37,10 +38,14 @@ public class ColourPicker : Singleton<ColourPicker>
 
 	void SetTheColour(Color c)
 	{
-		objectToChange.GetComponent<Renderer>().material.color = c;
+		//objectToChange.GetComponent<Renderer>().material.color = c;
 		storedColour = c;
 	}
 
+	public void SetTheColourForSibu(Material mat)
+	{
+		mat.color = storedColour;
+	}
 	public void SetObjectToChange(GameObject obj)
 	{
 		objectToChange = obj;
