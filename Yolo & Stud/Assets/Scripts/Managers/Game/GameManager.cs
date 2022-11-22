@@ -273,15 +273,23 @@ public class GameManager : Singleton<GameManager>
 
 	public void GoToWork()
 	{
-		player.ResetTransformParent();
-		player.SetIsMoving(true);
-		playerMode = PlayerMode.Studying;
+		if (playerMode != PlayerMode.Studying)
+		{
+			player.ResetTransformParent();
+			player.SetIsMoving(true);
+			playerMode = PlayerMode.Studying;
 
-		//player.transform.position = desk.position;
-		player.SetDestination(desk.position);
-		EnableDisablePlayerControl();
-		SetMonitorScreen(false);
-		clearShotParent.SetActive(true);
+			//player.transform.position = desk.position;
+			player.SetDestination(desk.position);
+			EnableDisablePlayerControl();
+			SetMonitorScreen(false);
+			clearShotParent.SetActive(true);
+		}
+		else
+		{
+			clearShotParent.SetActive(true);
+			deskVirtualCamera.Priority = 0;
+		}
 	}
 
 	public void GoToCouch()
