@@ -30,6 +30,7 @@ public class GameManager : Singleton<GameManager>
 
 	[Header("Player Variables")]
 	[SerializeField] PlayerManager player;
+	[SerializeField] TimerManager timer;
 	[SerializeField] Image controlImage;
 	[SerializeField] Sprite canControlSprite, cannotControlSprite;
 	[SerializeField] Transform desk, bed, couch, exerciseSpot;
@@ -37,6 +38,8 @@ public class GameManager : Singleton<GameManager>
 	[Header("Unity Handles")]
 	[Tooltip("Drag The Tab Parent here")]
 	[SerializeField] GameObject tabParent;
+	[Tooltip("Drag clearshot parent here")]
+	[SerializeField] GameObject clearShotParent;
 	[Tooltip("Drag The Main Virtual Camera Here!")]
 	[SerializeField] CinemachineVirtualCamera mainVirtualCam;
 	[Tooltip("Drag The Customising Virtual Camera Here!")]
@@ -63,7 +66,10 @@ public class GameManager : Singleton<GameManager>
 		if (player == null)
 			player = FindObjectOfType<PlayerManager>();
 
-		if(playerNameInputField != null)
+		if (timer == null)
+			timer = FindObjectOfType<TimerManager>();
+
+		if (playerNameInputField != null)
 		{
 			if(PlayerPrefs.HasKey(greetingPlayerPrefs))
 				playerNameInputField.text = PlayerPrefs.GetString(greetingPlayerPrefs);
@@ -84,19 +90,20 @@ public class GameManager : Singleton<GameManager>
    
     void Update()
     {
-       /* if(Input.GetKeyDown(KeyCode.Tab))
+       if(Input.GetKeyDown(KeyCode.Tab) && timer.PomodoroSteps != TimerManager.PomodoroStages.Pomodoro)
 		{
-			isTabParentOpen = !isTabParentOpen;
+			SwitchToCustomisingMode();
+			//isTabParentOpen = !isTabParentOpen;
 
-			//Change the game states
-			if (isTabParentOpen)
-				gameState = GameState.BuildMode;
-			else
-				gameState = GameState.PlayMode;
+			////Change the game states
+			//if (isTabParentOpen)
+			//	gameState = GameState.BuildMode;
+			//else
+			//	gameState = GameState.PlayMode;
 
-			tabParent.SetActive(isTabParentOpen);
+			//tabParent.SetActive(isTabParentOpen);
 			//Debug.Log(gameState);
-		}*/
+		}
 
 		
     }
@@ -123,13 +130,15 @@ public class GameManager : Singleton<GameManager>
 
 		if(gameState == GameState.PlayerCustomiserMode)
 		{
-			mainVirtualCam.Priority = 0;
+			//mainVirtualCam.Priority = 0;
 			customisingVirtualCamera.Priority = 1;
+			clearShotParent.SetActive(false);
 		}
 		else
 		{
-			mainVirtualCam.Priority = 1;
+			//mainVirtualCam.Priority = 1;
 			customisingVirtualCamera.Priority = 0;
+			clearShotParent.SetActive(true);
 		}
 	}
 
@@ -140,13 +149,15 @@ public class GameManager : Singleton<GameManager>
 
 		if (gameState == GameState.PlayerCustomiserMode)
 		{
-			mainVirtualCam.Priority = 0;
+			//mainVirtualCam.Priority = 0;
 			customisingVirtualCamera.Priority = 1;
+			clearShotParent.SetActive(false);
 		}
 		else
 		{
-			mainVirtualCam.Priority = 1;
+		//	mainVirtualCam.Priority = 1;
 			customisingVirtualCamera.Priority = 0;
+			clearShotParent.SetActive(true);
 		}
 	}
 	
@@ -272,6 +283,7 @@ public class GameManager : Singleton<GameManager>
 		player.SetDestination(couch.position);
 		EnableDisablePlayerControl();
 		SetMonitorScreen(false);
+		clearShotParent.SetActive(true);
 	}
 
 	public void GoExercise()
@@ -294,6 +306,7 @@ public class GameManager : Singleton<GameManager>
 		}
 
 		SetMonitorScreen(false);
+		clearShotParent.SetActive(true);
 	}
 
 	public void GoRest()
@@ -310,12 +323,12 @@ public class GameManager : Singleton<GameManager>
 
 		EnableDisablePlayerControl();
 		SetMonitorScreen(false);
+		clearShotParent.SetActive(true);
 	}
 
 	public void ChangeToStudyCamera()
 	{
-		mainVirtualCam.Priority = 0;
-		customisingVirtualCamera.Priority = 0;
+		clearShotParent.SetActive(false);
 		deskVirtualCamera.Priority = 20;
 
 		SetMonitorScreen(true);
