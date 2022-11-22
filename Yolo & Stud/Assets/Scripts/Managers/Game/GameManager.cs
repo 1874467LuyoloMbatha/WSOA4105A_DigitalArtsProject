@@ -267,6 +267,8 @@ public class GameManager : Singleton<GameManager>
 		else
 			if (controlImage != null)
 				controlImage.sprite = cannotControlSprite;
+
+		clearShotParent.SetActive(true);
 	}
 
 	public void GoToWork()
@@ -279,6 +281,7 @@ public class GameManager : Singleton<GameManager>
 		player.SetDestination(desk.position);
 		EnableDisablePlayerControl();
 		SetMonitorScreen(false);
+		clearShotParent.SetActive(true);
 	}
 
 	public void GoToCouch()
