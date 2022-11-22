@@ -3,7 +3,97 @@ guid: 00a4e08735b4a2240a206b96ae533529
 ModelImporter:
   serializedVersion: 21100
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CC_Base_BodySG10
+    second: {fileID: 2100000, guid: d481abd9251239546a183b6ee8eea3ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CC_Base_BodySG11
+    second: {fileID: 2100000, guid: 7ca1ecf415acda94baa7a4a306faf40d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CC_Base_BodySG6
+    second: {fileID: 2100000, guid: 7c99aa9a228a75c40aa370e153be9377, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CC_Base_BodySG8
+    second: {fileID: 2100000, guid: fe351908343556e45ae9f4693c3a1559, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CC_Base_BodySG9
+    second: {fileID: 2100000, guid: 1f0739ff9502bd5468053f108f0c45a7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CC_Base_TeethSG2
+    second: {fileID: 2100000, guid: c8ed581cfe55b4b4fb727336662cd963, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CC_Base_TeethSG3
+    second: {fileID: 2100000, guid: df85f16ed33e9484abeef73348f491f8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CC_Base_TongueSG1
+    second: {fileID: 2100000, guid: aaba759d179782b4482c4a106d232372, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FBXASC051SG
+    second: {fileID: 2100000, guid: 3bf44f3d527857d4ca9cc0f8d35c3d16, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: H1_pilot_medium_bangalore_season_04_assimilation_legendary_01_F
+    second: {fileID: 2100000, guid: 49c0a6c1039b7504a89053643dd8bfdf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Legs_U_01FBXASC046mo_1SG
+    second: {fileID: 2100000, guid: 738b9731bf444e1448d0c23ba690a466, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert12SG
+    second: {fileID: 2100000, guid: eb833a01aeba47d4b82ae161d6aeccfb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert17SG
+    second: {fileID: 2100000, guid: 6e2ab34b81d4ccf41bf9100474801a1f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert20SG
+    second: {fileID: 2100000, guid: 51569325c7ffb024693dc3ff2a1e0fa8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert22SG
+    second: {fileID: 2100000, guid: 003c1a733d2cd284ab3430084893b0f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert8SG
+    second: {fileID: 2100000, guid: 40a3c0df71f991a4689feb39260eb3b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong8SG
+    second: {fileID: 2100000, guid: 2059e8767be1cd844b1b988255514e6a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: shoes_3SG
+    second: {fileID: 2100000, guid: 5b08bb3c4a86b8b43a8949bc8fa49f15, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -15,7 +105,8 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Copied Avatar Rig Configuration mis-match. Transform hierarchy
+      does not match:\n\tTransform 'Armature' not found in HumanDescription.\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
