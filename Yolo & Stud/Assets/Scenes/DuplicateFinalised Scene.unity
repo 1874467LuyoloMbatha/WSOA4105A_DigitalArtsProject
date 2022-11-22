@@ -2492,6 +2492,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 8646096881436268680, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: bedMatChangeSlider
+      value: 
+      objectReference: {fileID: 1495645040}
+    - target: {fileID: 8646096881436268680, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: wallMatChangeSlider
+      value: 
+      objectReference: {fileID: 1495645041}
+    - target: {fileID: 8646096881436268680, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: couchMatChangeSlider
+      value: 
+      objectReference: {fileID: 1495645039}
+    - target: {fileID: 8646096881436268680, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: carpetMatChangeSlider
+      value: 
+      objectReference: {fileID: 146880507}
+    - target: {fileID: 8646096881436268680, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: bed.objectType.Array.data[0]
+      value: 
+      objectReference: {fileID: 4174822282393919998}
+    - target: {fileID: 8646096881436268680, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: wall.objectType.Array.data[0]
+      value: 
+      objectReference: {fileID: 7562988005204178251}
+    - target: {fileID: 8646096881436268680, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: wall.objectType.Array.data[1]
+      value: 
+      objectReference: {fileID: 1853465080015835557}
+    - target: {fileID: 8646096881436268680, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: carpet.objectType.Array.data[0]
+      value: 
+      objectReference: {fileID: 1297890979}
+    - target: {fileID: 8646096881436268680, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
+      propertyPath: carpet.objectType.Array.data[1]
+      value: 
+      objectReference: {fileID: 848890548}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
 --- !u!114 &616456800 stripped
@@ -2565,97 +2601,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4487620104775278912, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
   m_PrefabInstance: {fileID: 616456799}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &616456807 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 515958368095212386, guid: d738a0cccde57e94ba4694163b88acd3, type: 3}
-  m_PrefabInstance: {fileID: 616456799}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &616456808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 616456807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4fc6996ba067db4f9b269101c1b8b13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wall:
-    objectName: Wall Mats
-    objectType:
-    - {fileID: 7562988005204178251}
-    - {fileID: 1853465080015835557}
-    materialsNeeded:
-    - {fileID: 2100000, guid: 114e68fe974608f4d8ac494b2ee73f09, type: 2}
-    - {fileID: 2100000, guid: 895f3b66e046be44e81b234088778f00, type: 2}
-    - {fileID: 2100000, guid: 6c7017b04079deb45b82125eb54490bf, type: 2}
-    - {fileID: 2100000, guid: 74420821f44227a4ab14b445c0836d54, type: 2}
-    - {fileID: 2100000, guid: 16580bef26ed9c04cb16d182493748de, type: 2}
-    - {fileID: 2100000, guid: aa5a1872b83ba424f98f27c3ce0b90e8, type: 2}
-    - {fileID: 2100000, guid: ff38c3bb762278e4faa43a4c178bd00a, type: 2}
-    - {fileID: 2100000, guid: fb3b6f62b3f72f24492d07bc97425df5, type: 2}
-    - {fileID: 2100000, guid: 184fe6d6108488344a40573efa076123, type: 2}
-    - {fileID: 2100000, guid: e0887473ce2cd3b458501f96fd25d17f, type: 2}
-    - {fileID: 2100000, guid: 295ef040d377300498bf7f579889da59, type: 2}
-    - {fileID: 2100000, guid: b1de09410448a104e98e20c08179b9b6, type: 2}
-    - {fileID: 2100000, guid: 586ad296d78b75c47b7a200e5c647c4f, type: 2}
-    - {fileID: 2100000, guid: 626ce7f081a4c534db21ed7abdbae862, type: 2}
-  bed:
-    objectName: 'Bed  Sheet '
-    objectType:
-    - {fileID: 4174822282393919998}
-    materialsNeeded:
-    - {fileID: 2100000, guid: 512eb1fff8694da46abf86d3b5355046, type: 2}
-    - {fileID: 2100000, guid: f9cef70ed006bf34ebade5aecc7d5cb5, type: 2}
-    - {fileID: 2100000, guid: 48caad6b2da3eff4d8d0829d9c1ac921, type: 2}
-    - {fileID: 2100000, guid: 5f04350965f340943a75ecddcac2b899, type: 2}
-    - {fileID: 2100000, guid: ddc9d2a735b08f847945c4519e0effed, type: 2}
-    - {fileID: 2100000, guid: cfb40733ebdbb0247b11fa90cfbbc0b3, type: 2}
-  couch:
-    objectName: 'Couch '
-    objectType: []
-    materialsNeeded: []
-  sibuClothing:
-    objectName: Sibu Top
-    objectType: []
-    materialsNeeded:
-    - {fileID: 2100000, guid: f7788e8c43bf9554d9e9bf6dfbae0dc4, type: 2}
-    - {fileID: 2100000, guid: f0353990774e3a3489541f37f1203b61, type: 2}
-    - {fileID: 2100000, guid: 5f0ddac051f449141a67b825bc2feeca, type: 2}
-    - {fileID: 2100000, guid: 8d648ae5583a179479f29cabbf6f3142, type: 2}
-    - {fileID: 2100000, guid: 1eb2c9e0085169b4a93cb58567b6f95d, type: 2}
-    - {fileID: 2100000, guid: 266ed0d6de1c0324281900d6506d2adf, type: 2}
-    - {fileID: 2100000, guid: 859ac4dc239fb1548a5a2afd9e454d22, type: 2}
-    - {fileID: 2100000, guid: ddc9d2a735b08f847945c4519e0effed, type: 2}
-    - {fileID: 2100000, guid: 668e8b324bf78384c98af9259a607db1, type: 2}
-    - {fileID: 2100000, guid: 3f166b5916adf31459155f9d5faaf386, type: 2}
-    - {fileID: 2100000, guid: d822fe2e9d1af4c4fa50bac825ad0240, type: 2}
-    - {fileID: 2100000, guid: 4eacbfb8ea2c3d84ead228fcaa18ec14, type: 2}
-    - {fileID: 2100000, guid: e5a78ca65d73d3849a1237760c6851c2, type: 2}
-    - {fileID: 2100000, guid: f1b45551ed559814f84ff03465e8d4e8, type: 2}
-    - {fileID: 2100000, guid: 782853ecced9ad448948236aff712ebf, type: 2}
-    - {fileID: 2100000, guid: cfb40733ebdbb0247b11fa90cfbbc0b3, type: 2}
-    - {fileID: 2100000, guid: 5f04350965f340943a75ecddcac2b899, type: 2}
-    - {fileID: 2100000, guid: f3b223fbd146c5e46897f6b9fa797689, type: 2}
-  carpet:
-    objectName: Carpet Floor
-    objectType:
-    - {fileID: 1297890979}
-    - {fileID: 848890548}
-    materialsNeeded:
-    - {fileID: 2100000, guid: 782853ecced9ad448948236aff712ebf, type: 2}
-    - {fileID: 2100000, guid: d822fe2e9d1af4c4fa50bac825ad0240, type: 2}
-    - {fileID: 2100000, guid: 1eb2c9e0085169b4a93cb58567b6f95d, type: 2}
-    - {fileID: 2100000, guid: 266ed0d6de1c0324281900d6506d2adf, type: 2}
-    - {fileID: 2100000, guid: 859ac4dc239fb1548a5a2afd9e454d22, type: 2}
-    - {fileID: 2100000, guid: 512eb1fff8694da46abf86d3b5355046, type: 2}
-  wallMatChangeSlider: {fileID: 1495645041}
-  bedMatChangeSlider: {fileID: 1495645040}
-  couchMatChangeSlider: {fileID: 1495645039}
-  sibuClothingMatChangeSlider: {fileID: 0}
-  carpetMatChangeSlider: {fileID: 146880507}
 --- !u!1 &726062957
 GameObject:
   m_ObjectHideFlags: 0

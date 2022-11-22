@@ -887,6 +887,7 @@ MonoBehaviour:
   personalisationButton: {fileID: 0}
   duration: 0
   player: {fileID: 0}
+  timer: {fileID: 0}
   controlImage: {fileID: 0}
   canControlSprite: {fileID: 21300000, guid: 2a8a9fd2af83bd24fa1ab8f520b4475d, type: 3}
   cannotControlSprite: {fileID: 21300000, guid: 49c24472886c2b941a37dcee34e2a81d, type: 3}
@@ -895,6 +896,7 @@ MonoBehaviour:
   couch: {fileID: 0}
   exerciseSpot: {fileID: 0}
   tabParent: {fileID: 0}
+  clearShotParent: {fileID: 0}
   mainVirtualCam: {fileID: 0}
   customisingVirtualCamera: {fileID: 0}
   deskVirtualCamera: {fileID: 0}
@@ -911,6 +913,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3956349042406845327}
+  - component: {fileID: 8646096881436268680}
   m_Layer: 0
   m_Name: Material Change Manager
   m_TagString: Untagged
@@ -932,6 +935,120 @@ Transform:
   m_Father: {fileID: 4487620104775278912}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8646096881436268680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515958368095212386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4fc6996ba067db4f9b269101c1b8b13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colourPickerParent: {fileID: 0}
+  skinHolder: {fileID: 0}
+  colourHolder: {fileID: 0}
+  tempButton: {fileID: 0}
+  wall:
+    objectName: Wall Mats
+    objectType:
+    - {fileID: 0}
+    - {fileID: 0}
+    materialsNeeded:
+    - {fileID: 2100000, guid: 114e68fe974608f4d8ac494b2ee73f09, type: 2}
+    - {fileID: 2100000, guid: 895f3b66e046be44e81b234088778f00, type: 2}
+    - {fileID: 2100000, guid: 6c7017b04079deb45b82125eb54490bf, type: 2}
+    - {fileID: 2100000, guid: 74420821f44227a4ab14b445c0836d54, type: 2}
+    - {fileID: 2100000, guid: 16580bef26ed9c04cb16d182493748de, type: 2}
+    - {fileID: 2100000, guid: aa5a1872b83ba424f98f27c3ce0b90e8, type: 2}
+    - {fileID: 2100000, guid: ff38c3bb762278e4faa43a4c178bd00a, type: 2}
+    - {fileID: 2100000, guid: fb3b6f62b3f72f24492d07bc97425df5, type: 2}
+    - {fileID: 2100000, guid: 184fe6d6108488344a40573efa076123, type: 2}
+    - {fileID: 2100000, guid: e0887473ce2cd3b458501f96fd25d17f, type: 2}
+    - {fileID: 2100000, guid: 295ef040d377300498bf7f579889da59, type: 2}
+    - {fileID: 2100000, guid: b1de09410448a104e98e20c08179b9b6, type: 2}
+    - {fileID: 2100000, guid: 586ad296d78b75c47b7a200e5c647c4f, type: 2}
+    - {fileID: 2100000, guid: 626ce7f081a4c534db21ed7abdbae862, type: 2}
+  bed:
+    objectName: 'Bed  Sheet '
+    objectType:
+    - {fileID: 0}
+    materialsNeeded:
+    - {fileID: 2100000, guid: 512eb1fff8694da46abf86d3b5355046, type: 2}
+    - {fileID: 2100000, guid: f9cef70ed006bf34ebade5aecc7d5cb5, type: 2}
+    - {fileID: 2100000, guid: 48caad6b2da3eff4d8d0829d9c1ac921, type: 2}
+    - {fileID: 2100000, guid: 5f04350965f340943a75ecddcac2b899, type: 2}
+    - {fileID: 2100000, guid: ddc9d2a735b08f847945c4519e0effed, type: 2}
+    - {fileID: 2100000, guid: cfb40733ebdbb0247b11fa90cfbbc0b3, type: 2}
+  couch:
+    objectName: 'Couch '
+    objectType: []
+    materialsNeeded: []
+  carpet:
+    objectName: Carpet Floor
+    objectType:
+    - {fileID: 0}
+    - {fileID: 0}
+    materialsNeeded:
+    - {fileID: 2100000, guid: 782853ecced9ad448948236aff712ebf, type: 2}
+    - {fileID: 2100000, guid: d822fe2e9d1af4c4fa50bac825ad0240, type: 2}
+    - {fileID: 2100000, guid: 1eb2c9e0085169b4a93cb58567b6f95d, type: 2}
+    - {fileID: 2100000, guid: 266ed0d6de1c0324281900d6506d2adf, type: 2}
+    - {fileID: 2100000, guid: 859ac4dc239fb1548a5a2afd9e454d22, type: 2}
+    - {fileID: 2100000, guid: 512eb1fff8694da46abf86d3b5355046, type: 2}
+  skin:
+    bodyType: 
+    materialsToChange: []
+    colorsToChange: []
+  eyes:
+    bodyType: 
+    materialsToChange: []
+    colorsToChange: []
+  mainHair:
+    bodyType: 
+    materialsToChange: []
+    colorsToChange: []
+  sideHair:
+    bodyType: 
+    materialsToChange: []
+    colorsToChange: []
+  hoodie:
+    bodyType: 
+    materialsToChange: []
+    colorsToChange: []
+  hoodiePatch:
+    bodyType: 
+    materialsToChange: []
+    colorsToChange: []
+  shorts:
+    bodyType: 
+    materialsToChange: []
+    colorsToChange: []
+  socks:
+    bodyType: 
+    materialsToChange: []
+    colorsToChange: []
+  shoes:
+    bodyType: 
+    materialsToChange: []
+    colorsToChange: []
+  wallMatChangeSlider: {fileID: 0}
+  bedMatChangeSlider: {fileID: 0}
+  couchMatChangeSlider: {fileID: 0}
+  carpetMatChangeSlider: {fileID: 0}
+  colourPickerHeader: {fileID: 0}
+  skinIndex: 0
+  eyesIndex: 0
+  mainhairIndex: 0
+  sideHairIndex: 0
+  hoodieIndex: 0
+  hoodiePatchIndex: 0
+  shortsIndex: 0
+  socksIndex: 0
+  shoesIndex: 0
+  header: 
 --- !u!1 &1002505267737251763
 GameObject:
   m_ObjectHideFlags: 0
@@ -1443,6 +1560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   themes: []
+  customisingScript: {fileID: 0}
   masterVolume: {fileID: 0}
   currMusicPlayerVolume:
   - {fileID: 0}
