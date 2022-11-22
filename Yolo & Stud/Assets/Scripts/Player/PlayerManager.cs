@@ -472,7 +472,7 @@ public class PlayerManager : MonoBehaviour
         ForceSleepPosition(layOnBedPosition);
 		
 	}
-    void ForceSleepPosition(Vector3 pos)
+    public void ForceSleepPosition(Vector3 pos)
     {
         Debug.Log("Position Set");
        playerParent.transform.position = pos;

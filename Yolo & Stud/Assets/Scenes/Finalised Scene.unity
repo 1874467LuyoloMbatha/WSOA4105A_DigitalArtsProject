@@ -5320,6 +5320,67 @@ MonoBehaviour:
   objectName: HoodiePatchControllers Btn
   isForButton: 1
   index: 5
+--- !u!1001 &1215679597
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4341607721124463489, guid: 6e6a9da21fc61fb4dbf14319c6301fe4, type: 3}
+      propertyPath: m_Name
+      value: FailSafe
+      objectReference: {fileID: 0}
+    - target: {fileID: 4341607721124463489, guid: 6e6a9da21fc61fb4dbf14319c6301fe4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4341607721124463491, guid: 6e6a9da21fc61fb4dbf14319c6301fe4, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4341607721124463491, guid: 6e6a9da21fc61fb4dbf14319c6301fe4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.42222363
+      objectReference: {fileID: 0}
+    - target: {fileID: 4341607721124463491, guid: 6e6a9da21fc61fb4dbf14319c6301fe4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4341607721124463491, guid: 6e6a9da21fc61fb4dbf14319c6301fe4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.5335043
+      objectReference: {fileID: 0}
+    - target: {fileID: 4341607721124463491, guid: 6e6a9da21fc61fb4dbf14319c6301fe4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4341607721124463491, guid: 6e6a9da21fc61fb4dbf14319c6301fe4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4341607721124463491, guid: 6e6a9da21fc61fb4dbf14319c6301fe4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4341607721124463491, guid: 6e6a9da21fc61fb4dbf14319c6301fe4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4341607721124463491, guid: 6e6a9da21fc61fb4dbf14319c6301fe4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4341607721124463491, guid: 6e6a9da21fc61fb4dbf14319c6301fe4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4341607721124463491, guid: 6e6a9da21fc61fb4dbf14319c6301fe4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6e6a9da21fc61fb4dbf14319c6301fe4, type: 3}
 --- !u!1 &1243764000
 GameObject:
   m_ObjectHideFlags: 0

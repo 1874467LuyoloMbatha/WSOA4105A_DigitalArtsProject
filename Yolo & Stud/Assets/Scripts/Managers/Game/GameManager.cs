@@ -92,10 +92,10 @@ public class GameManager : Singleton<GameManager>
 		deskVirtualCamera.Priority = 0;
 	}
 
-   
-    void Update()
-    {
-       if(Input.GetKey(KeyCode.Tab) && timer.PomodoroSteps != TimerManager.PomodoroStages.Pomodoro)
+
+	void Update()
+	{
+		if (Input.GetKey(KeyCode.Tab) && timer.PomodoroSteps != TimerManager.PomodoroStages.Pomodoro)
 		{
 			SwitchToCustomisingMode();
 			//isTabParentOpen = !isTabParentOpen;
@@ -110,9 +110,15 @@ public class GameManager : Singleton<GameManager>
 			//Debug.Log(gameState);
 		}
 
-		
-    }
+		if (Input.GetKey(KeyCode.LeftShift))
+		{
 
+			if (Input.GetKey(KeyCode.R))
+			{
+				ResetPlayer();
+			}
+		}
+	}
 	#region Public Functions Referenced
 	public GameState GetGameState()
 	{
@@ -129,6 +135,12 @@ public class GameManager : Singleton<GameManager>
 		playerMode = m;
 		return playerMode;
 	}
+
+	public void ResetPlayer()
+	{
+		player.ForceSleepPosition(Vector3.zero);
+		player.transform.position = Vector3.zero;
+	}
 	public void SwitchToCustomisingMode()
 	{
 		SetCustomising();
@@ -136,9 +148,12 @@ public class GameManager : Singleton<GameManager>
 		if(gameState == GameState.PlayerCustomiserMode)
 		{
 			player.gameObject.transform.position = exerciseSpot.position;
-			//mainVirtualCam.Priority = 0;
+			player.ForceSleepPosition(exerciseSpot.position);
+			//mainirtualCam.Priority = 0;
 			customisingVirtualCamera.Priority = 1;
+			deskVirtualCamera.Priority = 0;
 			clearShotParent.SetActive(false);
+			playerMode = PlayerMode.IdleWalk;
 		}
 		else
 		{
@@ -157,7 +172,9 @@ public class GameManager : Singleton<GameManager>
 		{
 			//mainVirtualCam.Priority = 0;
 			customisingVirtualCamera.Priority = 1;
+			deskVirtualCamera.Priority = 0;
 			clearShotParent.SetActive(false);
+			playerMode = PlayerMode.IdleWalk;
 		}
 		else
 		{
@@ -271,6 +288,7 @@ public class GameManager : Singleton<GameManager>
 		clearShotParent.SetActive(true);
 	}
 
+	bool switchedCam = false;
 	public void GoToWork()
 	{
 		if (playerMode != PlayerMode.Studying)
@@ -288,8 +306,19 @@ public class GameManager : Singleton<GameManager>
 		else
 		{
 			clearShotParent.SetActive(true);
-			deskVirtualCamera.Priority = 0;
+			if (switchedCam)
+			{
+				switchedCam = false;
+				deskVirtualCamera.Priority = 0;
+			}
+			else
+			{
+				switchedCam = true;
+				deskVirtualCamera.Priority = 20;
+			}
 		}
+
+
 	}
 
 	public void GoToCouch()
