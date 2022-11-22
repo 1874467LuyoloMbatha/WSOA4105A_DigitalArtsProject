@@ -11320,7 +11320,7 @@ PrefabInstance:
       objectReference: {fileID: 1434506490}
     - target: {fileID: 42666016, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_Lens.FieldOfView
-      value: 17.55676
+      value: 20.64804
       objectReference: {fileID: 0}
     - target: {fileID: 42666016, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
@@ -11338,6 +11338,10 @@ PrefabInstance:
       propertyPath: rotationTarget
       value: 
       objectReference: {fileID: 1434506490}
+    - target: {fileID: 2017129336, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
+      propertyPath: disableMovement
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 293998215700420108, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_Lens.FieldOfView
       value: 77.31962

@@ -21,6 +21,7 @@ public class CharacterCustomise : MonoBehaviour
 
     [Header("Booleans")]
     [SerializeField] bool shiftKey;
+    [SerializeField] bool disableMovement = true;
     void Start()
     {
         if (customisingVCam == null)
@@ -58,90 +59,91 @@ public class CharacterCustomise : MonoBehaviour
         {
             dragStartPos = Input.mousePosition;
             rotationTarget.rotation *= Quaternion.Euler(Vector3.up * rotationAmount);
-			Debug.Log("Angle: " + Vector3.Angle(rotationTarget.forward, Vector3.forward));
-		}
+            Debug.Log("Angle: " + Vector3.Angle(rotationTarget.forward, Vector3.forward));
+        }
         if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.Q))
         {
             dragStartPos = Input.mousePosition;
             rotationTarget.rotation *= Quaternion.Euler(Vector3.up * -rotationAmount);
-			Debug.Log("Angle: " + Vector3.Angle(rotationTarget.forward, Vector3.forward));
-		}
-
-        //Panning
-        if (!shiftKey)
-        {
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-            {
-                rotationTarget.localPosition += new Vector3(0, 1, 0) * speed;
-            }
-            if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-            {
-                rotationTarget.localPosition += new Vector3(0, 1, 0) * -speed;
-            }
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-            {
-                ////transform.eulerAngles.y >= 0 && transform.eulerAngles <= 180
-                //if (rotationTarget.eulerAngles.y >= 0 && rotationTarget.eulerAngles.y <= 90 ||
-                //	rotationTarget.eulerAngles.y >= 90 && rotationTarget.eulerAngles.y <= 180)
-                //	rotationTarget.position += new Vector3(1, 0, 0) * -speed;
-                //else
-                //	rotationTarget.position += new Vector3(0, 0, 1) * -speed;
-
-                if (Vector3.Angle(rotationTarget.forward, Vector3.forward) <= 90.0 ||
-		            Vector3.Angle(rotationTarget.forward, Vector3.forward) >= 160)
-					rotationTarget.position += new Vector3(1, 0, 0) * -speed;
-                else
-					rotationTarget.position += Vector3.forward * speed;
-			}
-            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-            {
-                if (Vector3.Angle(rotationTarget.forward, Vector3.forward) <= 90.0 ||
-					Vector3.Angle(rotationTarget.forward, Vector3.forward) >= 160)
-					rotationTarget.position += new Vector3(1, 0, 0) * speed;
-                else
-					rotationTarget.position += Vector3.forward * -speed;
-			}
+            Debug.Log("Angle: " + Vector3.Angle(rotationTarget.forward, Vector3.forward));
         }
-        //Move back and forward
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            shiftKey = true;
-            if (Input.GetKey(KeyCode.W))
+
+        if (!disableMovement)
+        {  //Panning
+            if (!shiftKey)
             {
-				if (Vector3.Angle(rotationTarget.forward, Vector3.forward) <= 90.0 ||
-					Vector3.Angle(rotationTarget.forward, Vector3.forward) >= 160)
-					rotationTarget.position += Vector3.forward * forwardBackwardSpeed;
-                else
-					rotationTarget.position += Vector3.back * -forwardBackwardSpeed;
-			}
-            if (Input.GetKey(KeyCode.S))
+                if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+                {
+                    rotationTarget.localPosition += new Vector3(0, 1, 0) * speed;
+                }
+                if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+                {
+                    rotationTarget.localPosition += new Vector3(0, 1, 0) * -speed;
+                }
+                if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+                {
+                    ////transform.eulerAngles.y >= 0 && transform.eulerAngles <= 180
+                    //if (rotationTarget.eulerAngles.y >= 0 && rotationTarget.eulerAngles.y <= 90 ||
+                    //	rotationTarget.eulerAngles.y >= 90 && rotationTarget.eulerAngles.y <= 180)
+                    //	rotationTarget.position += new Vector3(1, 0, 0) * -speed;
+                    //else
+                    //	rotationTarget.position += new Vector3(0, 0, 1) * -speed;
+
+                    if (Vector3.Angle(rotationTarget.forward, Vector3.forward) <= 90.0 ||
+                        Vector3.Angle(rotationTarget.forward, Vector3.forward) >= 160)
+                        rotationTarget.position += new Vector3(1, 0, 0) * -speed;
+                    else
+                        rotationTarget.position += Vector3.forward * speed;
+                }
+                if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+                {
+                    if (Vector3.Angle(rotationTarget.forward, Vector3.forward) <= 90.0 ||
+                        Vector3.Angle(rotationTarget.forward, Vector3.forward) >= 160)
+                        rotationTarget.position += new Vector3(1, 0, 0) * speed;
+                    else
+                        rotationTarget.position += Vector3.forward * -speed;
+                }
+            }
+            //Move back and forward
+            if (Input.GetKey(KeyCode.LeftShift))
             {
-				if (Vector3.Angle(rotationTarget.forward, Vector3.forward) <= 90.0 ||
-						Vector3.Angle(rotationTarget.forward, Vector3.forward) >= 160)
-					rotationTarget.position += Vector3.back * forwardBackwardSpeed;
-                else
-					rotationTarget.position += Vector3.forward * -forwardBackwardSpeed;
-			}
-		}
-        else
-            shiftKey = false;
-         
-		/*  if (Input.GetMouseButton(0))
-          {
-              dragCurrentPos = Input.mousePosition;
-              Vector3 diff = dragStartPos - dragCurrentPos;
+                shiftKey = true;
+                if (Input.GetKey(KeyCode.W))
+                {
+                    if (Vector3.Angle(rotationTarget.forward, Vector3.forward) <= 90.0 ||
+                        Vector3.Angle(rotationTarget.forward, Vector3.forward) >= 160)
+                        rotationTarget.position += Vector3.forward * forwardBackwardSpeed;
+                    else
+                        rotationTarget.position += Vector3.back * -forwardBackwardSpeed;
+                }
+                if (Input.GetKey(KeyCode.S))
+                {
+                    if (Vector3.Angle(rotationTarget.forward, Vector3.forward) <= 90.0 ||
+                            Vector3.Angle(rotationTarget.forward, Vector3.forward) >= 160)
+                        rotationTarget.position += Vector3.back * forwardBackwardSpeed;
+                    else
+                        rotationTarget.position += Vector3.forward * -forwardBackwardSpeed;
+                }
+            }
+            else
+                shiftKey = false;
 
-              dragStartPos = dragCurrentPos;
+            /*  if (Input.GetMouseButton(0))
+              {
+                  dragCurrentPos = Input.mousePosition;
+                  Vector3 diff = dragStartPos - dragCurrentPos;
 
-              //  rotationAmount += diff.x;
+                  dragStartPos = dragCurrentPos;
 
-              newRot *= Quaternion.Euler(Vector3.up * (-diff.x / 5f));
-              rotationTarget.rotation = newRot;
-          }*/
-		//  newRot *= Quaternion.Euler(Vector3.up * rotationAmount);
-		// rotationTarget.rotation = Quaternion.Lerp(rotationTarget.rotation, newRot, Time.deltaTime * speed);
-	}
+                  //  rotationAmount += diff.x;
 
+                  newRot *= Quaternion.Euler(Vector3.up * (-diff.x / 5f));
+                  rotationTarget.rotation = newRot;
+              }*/
+            //  newRot *= Quaternion.Euler(Vector3.up * rotationAmount);
+            // rotationTarget.rotation = Quaternion.Lerp(rotationTarget.rotation, newRot, Time.deltaTime * speed);
+        }
+    }
     public void SetZoomSpeed(float v)
     {
         zoomSpeed = v;

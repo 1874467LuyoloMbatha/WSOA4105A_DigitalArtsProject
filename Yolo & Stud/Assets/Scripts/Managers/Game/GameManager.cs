@@ -90,7 +90,7 @@ public class GameManager : Singleton<GameManager>
    
     void Update()
     {
-       if(Input.GetKeyDown(KeyCode.Tab) && timer.PomodoroSteps != TimerManager.PomodoroStages.Pomodoro)
+       if(Input.GetKey(KeyCode.Tab) && timer.PomodoroSteps != TimerManager.PomodoroStages.Pomodoro)
 		{
 			SwitchToCustomisingMode();
 			//isTabParentOpen = !isTabParentOpen;
@@ -130,6 +130,7 @@ public class GameManager : Singleton<GameManager>
 
 		if(gameState == GameState.PlayerCustomiserMode)
 		{
+			player.gameObject.transform.position = exerciseSpot.position;
 			//mainVirtualCam.Priority = 0;
 			customisingVirtualCamera.Priority = 1;
 			clearShotParent.SetActive(false);
