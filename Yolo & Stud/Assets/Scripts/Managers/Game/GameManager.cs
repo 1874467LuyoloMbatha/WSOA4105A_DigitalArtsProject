@@ -275,8 +275,8 @@ public class GameManager : Singleton<GameManager>
 		player.SetIsMoving(true);
 		playerMode = PlayerMode.Studying;
 
-		player.transform.position = desk.position;
-		//player.SetDestination(desk.position);
+		//player.transform.position = desk.position;
+		player.SetDestination(desk.position);
 		EnableDisablePlayerControl();
 		SetMonitorScreen(false);
 	}
@@ -287,8 +287,8 @@ public class GameManager : Singleton<GameManager>
 		player.SetIsMoving(true);
 		playerMode = PlayerMode.Couch;
 
-		player.transform.position = couch.position;
-		//player.SetDestination(couch.position);
+		//player.transform.position = couch.position;
+		player.SetDestination(couch.position);
 		EnableDisablePlayerControl();
 		SetMonitorScreen(false);
 		clearShotParent.SetActive(true);
@@ -304,8 +304,8 @@ public class GameManager : Singleton<GameManager>
 			//player.SetExercisingMode(true);
 			playerMode = PlayerMode.Exercising;
 
-			player.transform.position = exerciseSpot.position;
-			//player.SetDestination(exerciseSpot.position);
+			//player.transform.position = exerciseSpot.position;
+			player.SetDestination(exerciseSpot.position);
 		}
 		else
 		{
