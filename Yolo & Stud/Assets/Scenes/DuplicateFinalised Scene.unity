@@ -2603,21 +2603,54 @@ MonoBehaviour:
     - {fileID: 2100000, guid: 586ad296d78b75c47b7a200e5c647c4f, type: 2}
     - {fileID: 2100000, guid: 626ce7f081a4c534db21ed7abdbae862, type: 2}
   bed:
-    objectName: 
-    objectType: []
-    materialsNeeded: []
+    objectName: 'Bed  Sheet '
+    objectType:
+    - {fileID: 4174822282393919998}
+    materialsNeeded:
+    - {fileID: 2100000, guid: 512eb1fff8694da46abf86d3b5355046, type: 2}
+    - {fileID: 2100000, guid: f9cef70ed006bf34ebade5aecc7d5cb5, type: 2}
+    - {fileID: 2100000, guid: 48caad6b2da3eff4d8d0829d9c1ac921, type: 2}
+    - {fileID: 2100000, guid: 5f04350965f340943a75ecddcac2b899, type: 2}
+    - {fileID: 2100000, guid: ddc9d2a735b08f847945c4519e0effed, type: 2}
+    - {fileID: 2100000, guid: cfb40733ebdbb0247b11fa90cfbbc0b3, type: 2}
   couch:
-    objectName: 
+    objectName: 'Couch '
     objectType: []
     materialsNeeded: []
   sibuClothing:
-    objectName: 
+    objectName: Sibu Top
     objectType: []
-    materialsNeeded: []
+    materialsNeeded:
+    - {fileID: 2100000, guid: f7788e8c43bf9554d9e9bf6dfbae0dc4, type: 2}
+    - {fileID: 2100000, guid: f0353990774e3a3489541f37f1203b61, type: 2}
+    - {fileID: 2100000, guid: 5f0ddac051f449141a67b825bc2feeca, type: 2}
+    - {fileID: 2100000, guid: 8d648ae5583a179479f29cabbf6f3142, type: 2}
+    - {fileID: 2100000, guid: 1eb2c9e0085169b4a93cb58567b6f95d, type: 2}
+    - {fileID: 2100000, guid: 266ed0d6de1c0324281900d6506d2adf, type: 2}
+    - {fileID: 2100000, guid: 859ac4dc239fb1548a5a2afd9e454d22, type: 2}
+    - {fileID: 2100000, guid: ddc9d2a735b08f847945c4519e0effed, type: 2}
+    - {fileID: 2100000, guid: 668e8b324bf78384c98af9259a607db1, type: 2}
+    - {fileID: 2100000, guid: 3f166b5916adf31459155f9d5faaf386, type: 2}
+    - {fileID: 2100000, guid: d822fe2e9d1af4c4fa50bac825ad0240, type: 2}
+    - {fileID: 2100000, guid: 4eacbfb8ea2c3d84ead228fcaa18ec14, type: 2}
+    - {fileID: 2100000, guid: e5a78ca65d73d3849a1237760c6851c2, type: 2}
+    - {fileID: 2100000, guid: f1b45551ed559814f84ff03465e8d4e8, type: 2}
+    - {fileID: 2100000, guid: 782853ecced9ad448948236aff712ebf, type: 2}
+    - {fileID: 2100000, guid: cfb40733ebdbb0247b11fa90cfbbc0b3, type: 2}
+    - {fileID: 2100000, guid: 5f04350965f340943a75ecddcac2b899, type: 2}
+    - {fileID: 2100000, guid: f3b223fbd146c5e46897f6b9fa797689, type: 2}
   carpet:
-    objectName: 
-    objectType: []
-    materialsNeeded: []
+    objectName: Carpet Floor
+    objectType:
+    - {fileID: 1297890979}
+    - {fileID: 848890548}
+    materialsNeeded:
+    - {fileID: 2100000, guid: 782853ecced9ad448948236aff712ebf, type: 2}
+    - {fileID: 2100000, guid: d822fe2e9d1af4c4fa50bac825ad0240, type: 2}
+    - {fileID: 2100000, guid: 1eb2c9e0085169b4a93cb58567b6f95d, type: 2}
+    - {fileID: 2100000, guid: 266ed0d6de1c0324281900d6506d2adf, type: 2}
+    - {fileID: 2100000, guid: 859ac4dc239fb1548a5a2afd9e454d22, type: 2}
+    - {fileID: 2100000, guid: 512eb1fff8694da46abf86d3b5355046, type: 2}
   wallMatChangeSlider: {fileID: 1495645041}
   bedMatChangeSlider: {fileID: 1495645040}
   couchMatChangeSlider: {fileID: 1495645039}
@@ -7989,15 +8022,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1807829252033741788, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.13880181
+      value: 0.9760686
       objectReference: {fileID: 0}
     - target: {fileID: 1807829252033741788, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7523197
+      value: 1.557117
       objectReference: {fileID: 0}
     - target: {fileID: 1807829252033741788, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.6412286
+      value: 2.556572
       objectReference: {fileID: 0}
     - target: {fileID: 1807829252033741788, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8130,6 +8163,10 @@ PrefabInstance:
     - target: {fileID: 2111816201011008176, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
       value: 1.7752976
+      objectReference: {fileID: 0}
+    - target: {fileID: 7184263178037993178, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
+      propertyPath: m_ChildCameras.Array.size
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1102053311, guid: a67870f316fd6284d9666fb59c8ce597, type: 3}
