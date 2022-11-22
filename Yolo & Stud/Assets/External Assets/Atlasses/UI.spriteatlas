@@ -35,11 +35,11 @@ SpriteAtlas:
       m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
       serializedVersion: 2
-      padding: 4
+      padding: 8
       blockOffset: 1
       allowAlphaSplitting: 0
       enableRotation: 0
-      enableTightPacking: 1
+      enableTightPacking: 0
       enableAlphaDilation: 0
     secondaryTextureSettings: {}
     variantMultiplier: 1
@@ -73,7 +73,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 88103b3199defcb458dc9444611f7020, type: 3}
   - {fileID: 21300000, guid: efa44871ddaa57f41804ba59db05b210, type: 3}
   - {fileID: 21300000, guid: 20c16cb15d8b0f449bd5f3db640c8baa, type: 3}
-  - {fileID: 21300000, guid: 4516c6c1ac0f4014ab6e416d501ec950, type: 3}
   - {fileID: 21300000, guid: 045b0cd1e45881249a2987ca58c2e620, type: 3}
   - {fileID: 21300000, guid: 97c4f022299af1044a206ecde413971b, type: 3}
   - {fileID: 21300000, guid: 47eafb22882126f4fb60fadbb061690d, type: 3}
@@ -124,7 +123,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f124c7d73f1705241a688bc32dd18a6f, type: 3}
   - {fileID: 21300000, guid: 6d47abe74181dfc47a184bc4eba2a545, type: 3}
   - {fileID: 21300000, guid: 3d87d0f7833074247a67882c94170eed, type: 3}
-  - {fileID: 21300000, guid: eec7b3f7ec3db8544bb52787a9b1356f, type: 3}
   - {fileID: 21300000, guid: bd563538cf60e7443a3bc4c5be874874, type: 3}
   - {fileID: 21300000, guid: e4f3f77822675104ba27bfcc843fba90, type: 3}
   - {fileID: 21300000, guid: a0d70978ed6c5cf4b899143af91df50f, type: 3}
@@ -195,7 +193,6 @@ SpriteAtlas:
   - more
   - message-question
   - candle-2
-  - TopRightPanelBG
   - clock
   - next
   - lamp-charge
@@ -246,7 +243,6 @@ SpriteAtlas:
   - Circle(edited)
   - TurnOff Edited
   - repeate-one
-  - LeftPanelBG
   - clipboard
   - timer
   - arrow-bottom

@@ -15,9 +15,11 @@ public class CharacterCustomise : MonoBehaviour
 
     [Header("Floats")]
     [SerializeField] float rotationAmount = 1;
-    [SerializeField] float speed = 1;
+    [SerializeField] float speed = 1, forwardBackwardSpeed;
     [SerializeField] float zoomSpeed, zoomMin, zoomMax;
 
+    [Header("Booleans")]
+    [SerializeField] bool shiftKey;
     void Start()
     {
         if (customisingVCam == null)
@@ -25,7 +27,11 @@ public class CharacterCustomise : MonoBehaviour
 
         if (rotationTarget == null)
             rotationTarget = customisingVCam.LookAt.gameObject.transform;
-        newRot = rotationTarget.rotation;
+
+        if(PlayerPrefs.HasKey(zoomSpeed.ToString()))
+			zoomSpeed = PlayerPrefs.GetFloat(zoomSpeed.ToString());
+
+		newRot = rotationTarget.rotation;
     }
 
 
@@ -35,6 +41,9 @@ public class CharacterCustomise : MonoBehaviour
     }
     void HandleInput()
     {
+        if (GameManager.Instance.GetGameState() != GameManager.GameState.PlayerCustomiserMode)
+            return;
+
         if (Input.mouseScrollDelta.y != 0)
         {
             float fov = customisingVCam.m_Lens.FieldOfView;
@@ -56,23 +65,38 @@ public class CharacterCustomise : MonoBehaviour
         }
 
         //Panning
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-		{
-            rotationTarget.position += Vector3.up * speed;
+        if (!shiftKey)
+        {
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+            {
+                rotationTarget.localPosition += new Vector3 (0, 1, 0) * speed;
+            }
+            if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+            {
+				rotationTarget.localPosition += new Vector3(0, 1, 0) * -speed;
+			}
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            {
+				rotationTarget.position += new Vector3(1, 0, 0) * -speed;
+			}
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            {
+				rotationTarget.position += new Vector3(1, 0, 0) * speed;
+			}
+        }
+        //Move back and forward
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            shiftKey = true;
+            if (Input.GetKey(KeyCode.W))
+                rotationTarget.position += Vector3.forward * forwardBackwardSpeed;
+			if (Input.GetKey(KeyCode.S))
+				rotationTarget.position += Vector3.back * forwardBackwardSpeed;
 		}
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-        {
-            rotationTarget.position += Vector3.up * -speed;
-        }
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-        {
-            rotationTarget.position += Vector3.left * speed;
-        }
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-            rotationTarget.position += Vector3.left * -speed;
-        }
-        /*  if (Input.GetMouseButton(0))
+        else
+            shiftKey = false;
+         
+		/*  if (Input.GetMouseButton(0))
           {
               dragCurrentPos = Input.mousePosition;
               Vector3 diff = dragStartPos - dragCurrentPos;
@@ -84,10 +108,20 @@ public class CharacterCustomise : MonoBehaviour
               newRot *= Quaternion.Euler(Vector3.up * (-diff.x / 5f));
               rotationTarget.rotation = newRot;
           }*/
-        //  newRot *= Quaternion.Euler(Vector3.up * rotationAmount);
-        // rotationTarget.rotation = Quaternion.Lerp(rotationTarget.rotation, newRot, Time.deltaTime * speed);
+		//  newRot *= Quaternion.Euler(Vector3.up * rotationAmount);
+		// rotationTarget.rotation = Quaternion.Lerp(rotationTarget.rotation, newRot, Time.deltaTime * speed);
+	}
+
+    public void SetZoomSpeed(float v)
+    {
+        zoomSpeed = v;
+        PlayerPrefs.SetFloat(zoomSpeed.ToString(), v);
     }
 
+    public float GetZoomSpeed()
+    {
+        return zoomSpeed;
+    }
 }
 
 /*

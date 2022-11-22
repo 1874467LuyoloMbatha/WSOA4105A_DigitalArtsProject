@@ -13,6 +13,7 @@ public class SettingsMenu : Singleton<SettingsMenu>
 {
 	[Header("External References")]
     [SerializeField] List<ThemeGameObject> themes = new List<ThemeGameObject>();
+    [SerializeField] CharacterCustomise customisingScript;
 
     [Header("Volume Sliders")]
     public Slider masterVolume;
@@ -82,6 +83,7 @@ public class SettingsMenu : Singleton<SettingsMenu>
 	{
         SetUpPrefs();
         SetUpSliders();
+        SetUpCustomisingScript();
 	}
 	 void Start()
 	{
@@ -507,6 +509,21 @@ public class SettingsMenu : Singleton<SettingsMenu>
         // obj.SetTaskInfo(ta, index);
         if(!themes.Contains(obj))
             themes.Add(obj);
+    }
+
+    public void SetZoomSpeedValue(float v)
+    {
+        if (customisingScript != null)
+            customisingScript.SetZoomSpeed(v);
+    }
+    public void SetZoomSpeedText(Text textControl)
+    {
+        textControl.text = "Scroll Speed (" + customisingScript.GetZoomSpeed() + ")";
+    }
+    void SetUpCustomisingScript()
+    {
+        if (customisingScript == null)
+            customisingScript = FindObjectOfType<CharacterCustomise>();
     }
 	#endregion
 

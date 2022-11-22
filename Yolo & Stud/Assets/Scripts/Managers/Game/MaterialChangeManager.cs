@@ -19,33 +19,43 @@ public class MaterialChangeManager : MonoBehaviour
 
 	void Start()
     {
-        SetUpSliders();
 		SetPlayerPrefs();
+		SetUpSliders();
     }
 
 	#region Setting Up
 	void SetUpSliders()
     {
 		if (wallMatChangeSlider != null)
+		{
+			wallMatChangeSlider.maxValue = wall.materialsNeeded.Length - 1;
 			wallMatChangeSlider.onValueChanged.AddListener(value => UpdateWallSlider((int)value));
-
+		}
 		if (bedMatChangeSlider != null)
+		{
+			bedMatChangeSlider.maxValue = bed.materialsNeeded.Length - 1;
 			bedMatChangeSlider.onValueChanged.AddListener(value => UpdateBedSlider((int)value));
-		
-        if (couchMatChangeSlider != null)
+		}
+		if (couchMatChangeSlider != null)
+		{
+			couchMatChangeSlider.maxValue = couch.materialsNeeded.Length - 1;
 			couchMatChangeSlider.onValueChanged.AddListener(value => UpdateCouchSlider((int)value));
-
+		}
 		if (sibuClothingMatChangeSlider != null)
+		{
+			sibuClothingMatChangeSlider.maxValue = sibuClothing.materialsNeeded.Length - 1;
 			sibuClothingMatChangeSlider.onValueChanged.AddListener(value => UpdateClothingSlider((int)value));
-
+		}
 		if (carpetMatChangeSlider != null)
+		{
+			carpetMatChangeSlider.maxValue = carpet.materialsNeeded.Length - 1;
 			carpetMatChangeSlider.onValueChanged.AddListener(value => UpdateCarpetSlider((int)value));
-
+		}
 	}
 
 	public void SetPlayerPrefs()
 	{
-		if (PlayerPrefs.HasKey(wall.objectName))
+			if (PlayerPrefs.HasKey(wall.objectName))
 		{
 			if (wallMatChangeSlider != null)
 			{
