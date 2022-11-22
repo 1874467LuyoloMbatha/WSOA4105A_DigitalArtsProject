@@ -749,7 +749,6 @@ GameObject:
   - component: {fileID: 1330074131}
   - component: {fileID: 1330074133}
   - component: {fileID: 1330074132}
-  - component: {fileID: 1330074134}
   m_Layer: 5
   m_Name: PlayerName
   m_TagString: Untagged
@@ -818,30 +817,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1330074130}
   m_CullTransparentMesh: 1
---- !u!114 &1330074134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1330074130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 485e7f04beeb6954c98f1c27bbab3bd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectToTween: {fileID: 1330074130}
-  from: {x: 1, y: 1, z: 1}
-  to: {x: 0, y: 0, z: 0}
-  TweenType: 5
-  easeType: 15
-  duration: 0.2
-  delay: 0
-  loopTween: 0
-  pingpong: 0
-  startAtOffset: 0
-  showOnEnable: 0
-  workOnDisable: 1
 --- !u!1 &1381490956
 GameObject:
   m_ObjectHideFlags: 0
@@ -853,7 +828,6 @@ GameObject:
   - component: {fileID: 1381490957}
   - component: {fileID: 1381490959}
   - component: {fileID: 1381490958}
-  - component: {fileID: 1381490960}
   m_Layer: 5
   m_Name: GreetingText
   m_TagString: Untagged
@@ -922,30 +896,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1381490956}
   m_CullTransparentMesh: 1
---- !u!114 &1381490960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1381490956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 485e7f04beeb6954c98f1c27bbab3bd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectToTween: {fileID: 1381490956}
-  from: {x: 0, y: 0, z: 0}
-  to: {x: 0, y: 0, z: 0}
-  TweenType: 5
-  easeType: 0
-  duration: 0.2
-  delay: 0
-  loopTween: 0
-  pingpong: 0
-  startAtOffset: 0
-  showOnEnable: 1
-  workOnDisable: 0
 --- !u!1 &1921104161
 GameObject:
   m_ObjectHideFlags: 0
