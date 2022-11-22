@@ -76,10 +76,15 @@ public class GameManager : Singleton<GameManager>
 		}
 
 		SetMonitorScreen(false);
+
+		QualitySettings.vSyncCount = 0;
+		Application.targetFrameRate = 60;
 	}
 	void Start()
     {
         tabParent.SetActive(isTabParentOpen);
+		QualitySettings.vSyncCount = 0;
+		Application.targetFrameRate = 60;
 
 		//Set The Cameras
 		mainVirtualCam.Priority = 1;

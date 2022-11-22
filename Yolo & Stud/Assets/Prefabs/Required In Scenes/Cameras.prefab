@@ -105,6 +105,7 @@ MonoBehaviour:
   zoomMin: 2
   zoomMax: 30
   shiftKey: 0
+  disableMovement: 0
 --- !u!1 &268214062
 GameObject:
   m_ObjectHideFlags: 0
@@ -815,7 +816,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1807829252397904460
 Transform:
