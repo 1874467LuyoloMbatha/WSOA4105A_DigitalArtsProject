@@ -2583,9 +2583,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wall:
-    objectName: 
-    objectType: []
-    materialsNeeded: []
+    objectName: Wall Mats
+    objectType:
+    - {fileID: 7562988005204178251}
+    - {fileID: 1853465080015835557}
+    materialsNeeded:
+    - {fileID: 2100000, guid: 114e68fe974608f4d8ac494b2ee73f09, type: 2}
+    - {fileID: 2100000, guid: 895f3b66e046be44e81b234088778f00, type: 2}
+    - {fileID: 2100000, guid: 6c7017b04079deb45b82125eb54490bf, type: 2}
+    - {fileID: 2100000, guid: 74420821f44227a4ab14b445c0836d54, type: 2}
+    - {fileID: 2100000, guid: 16580bef26ed9c04cb16d182493748de, type: 2}
+    - {fileID: 2100000, guid: aa5a1872b83ba424f98f27c3ce0b90e8, type: 2}
+    - {fileID: 2100000, guid: ff38c3bb762278e4faa43a4c178bd00a, type: 2}
+    - {fileID: 2100000, guid: fb3b6f62b3f72f24492d07bc97425df5, type: 2}
+    - {fileID: 2100000, guid: 184fe6d6108488344a40573efa076123, type: 2}
+    - {fileID: 2100000, guid: e0887473ce2cd3b458501f96fd25d17f, type: 2}
+    - {fileID: 2100000, guid: 295ef040d377300498bf7f579889da59, type: 2}
+    - {fileID: 2100000, guid: b1de09410448a104e98e20c08179b9b6, type: 2}
+    - {fileID: 2100000, guid: 586ad296d78b75c47b7a200e5c647c4f, type: 2}
+    - {fileID: 2100000, guid: 626ce7f081a4c534db21ed7abdbae862, type: 2}
   bed:
     objectName: 
     objectType: []
