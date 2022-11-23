@@ -126,9 +126,79 @@ public class MaterialChangeManager : Singleton<MaterialChangeManager>
 
 	public void SetUpSibuPrefs()
 	{
+		if (PlayerPrefs.HasKey(skin.bodyType))
+		{
+			foreach (var item in skin.materialsToChange)
+			{
+				item.color = skin.colorsToChange[PlayerPrefs.GetInt(skin.bodyType)];
+			}
+		}
 
+		if (PlayerPrefs.HasKey(eyes.bodyType))
+		{
+			foreach (var item in eyes.materialsToChange)
+			{
+				item.color = eyes.colorsToChange[PlayerPrefs.GetInt(eyes.bodyType)];
+			}
+		}
+
+
+		if (PlayerPrefs.HasKey(mainHair.bodyType))
+		{
+			foreach (var item in mainHair.materialsToChange)
+			{
+				item.color = mainHair.colorsToChange[PlayerPrefs.GetInt(mainHair.bodyType)];
+			}
+		}
+
+		if (PlayerPrefs.HasKey(sideHair.bodyType))
+		{
+			foreach (var item in sideHair.materialsToChange)
+			{
+				item.color = sideHair.colorsToChange[PlayerPrefs.GetInt(sideHair.bodyType)];
+			}
+		}
+
+		if (PlayerPrefs.HasKey(hoodie.bodyType))
+		{
+			foreach (var item in hoodie.materialsToChange)
+			{
+				item.color = hoodie.colorsToChange[PlayerPrefs.GetInt(hoodie.bodyType)];
+			}
+		}
+
+		if (PlayerPrefs.HasKey(hoodiePatch.bodyType))
+		{
+			foreach (var item in hoodiePatch.materialsToChange)
+			{
+				item.color = hoodiePatch.colorsToChange[PlayerPrefs.GetInt(hoodiePatch.bodyType)];
+			}
+		}
+
+		if (PlayerPrefs.HasKey(shorts.bodyType))
+		{
+			foreach (var item in shorts.materialsToChange)
+			{
+				item.color = shorts.colorsToChange[PlayerPrefs.GetInt(shorts.bodyType)];
+			}
+		}
+
+		if (PlayerPrefs.HasKey(socks.bodyType))
+		{
+			foreach (var item in socks.materialsToChange)
+			{
+				item.color = socks.colorsToChange[PlayerPrefs.GetInt(socks.bodyType)];
+			}
+		}
+
+		if(PlayerPrefs.HasKey(shoes.bodyType))
+		{
+			foreach (var item in shoes.materialsToChange)
+			{
+				item.color = shoes.colorsToChange[PlayerPrefs.GetInt(shoes.bodyType)];
+			}
+		}
 	}
-
 	#endregion
 
 	#region Public Slider functions
